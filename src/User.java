@@ -3,6 +3,9 @@ public class User {
 	String username;
 	String password;
 	int user_id;
+	profile user_profile;
+	grid user_grid;
+	
 
 	//create profile
 	public create_profile ()
