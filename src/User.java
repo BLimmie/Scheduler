@@ -3,8 +3,15 @@ public class User {
 	String username;
 	String password;
 	int user_id;
-	profile user_profile;
-	grid user_grid;
+	Grid user_grid;
+	//profiles
+	String name;
+	String legal_name;
+	ArrayList <Major> user_majors;
+	ArrayList <Minor> user_minors;
+	ArrayList <int> AP;
+	ArrayList <courses> courses_before_university;
+	Grid class_taken;
 	
 
 	//create profile
