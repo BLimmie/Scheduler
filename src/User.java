@@ -1,4 +1,11 @@
 public class User {
+
+    private String firstName;
+    private String lastName;
+    private String classStanding;
+
+
+	/*
 	//Instance Var
 	String username;
 	String password;
@@ -61,5 +68,5 @@ public class User {
 	
 	//dismiss warning
 	public dismiss ()
-
+*/
 }
