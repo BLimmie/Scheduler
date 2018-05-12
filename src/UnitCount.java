@@ -34,6 +34,10 @@ public class UnitCount implements Requirement{
         courses.add(course);
     }
 
+    public void AddCourse(Course course){
+        courses.add(course.getID());
+    }
+
     public void RemoveCourse(String course){
         courses.remove(course);
     }
@@ -43,13 +47,25 @@ public class UnitCount implements Requirement{
         for (Course c : courseList){
             boolean found = false;
             for (String id : courses){
-                if (c.ContainsID(id)){
+                if (c.getID().equals(id)){
                     found = true;
                 }
             }
             if (found){
                 count += c.getUnits();
             }
+        }
+        if (count < unitCount){
+            System.out.println("\tYOU'RE SHORT " + (unitCount - count) + " UNITS!");
+            System.out.println("\tYOU NEED TO TAKE " + unitCount + " TOTAL UNITS FROM THIS LIST:");
+            for (String s : courses){
+                System.out.print("\t" + s);
+            }
+            System.out.println();
+            System.out.println();
+        }
+        else {
+            System.out.println("You've taken the correct number of units!");
         }
         return (count >= unitCount);
     }

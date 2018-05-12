@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 
 public class Course {
-    private ArrayList<String> IDs;
-    private String realID;
+    private String ID;
     private String title;
     private String fullTitle;
     private String college;
@@ -19,8 +18,7 @@ public class Course {
      * Default constructor for Course
      */
     public Course() {
-        this.IDs = new ArrayList<String>();
-        this.realID = "";
+        this.ID = "";
         this.title = "";
         this.fullTitle = "";
         this.college = "";
@@ -37,15 +35,14 @@ public class Course {
     /**
      * Partial Constructor used by Admin
      * @param ID        The ID for the class (e.g. CMPSC48)
-     * @param title     The short title for the class (e.g. Comp Sci Project)
+     * @param units     The number of units the class is
      */
-    public Course(String ID, String title) {
-        this.IDs.add(ID);
-        this.realID = String.join("/", IDs);
-        this.title = title;
+    public Course(String ID, int units) {
+        this.ID = ID;
+        this.title = "";
         this.fullTitle = "";
         this.college = "";
-        this.units = 0;
+        this.units = units;
         //TODO Change prereqs
         this.prereqs = new ArrayList<String>();
         this.fall = false;
@@ -57,7 +54,7 @@ public class Course {
     /**
      * Constructor to be used internally for making a full course completely in code
      *
-     * @param IDs       List of IDs associated with a course
+     * @param ID       ID associated with the course
      * @param title     Short name of course
      * @param fullTitle Full name of course
      * @param college   College that the course is being hosted in
@@ -68,7 +65,7 @@ public class Course {
      * @param spring    Class is hosted in spring
      * @param labels    GE Labels for a class
      */
-    public Course(ArrayList<String> IDs,
+    public Course(String ID,
                   String title,
                   String fullTitle,
                   String college,
@@ -79,8 +76,7 @@ public class Course {
                   boolean winter,
                   boolean spring,
                   ArrayList<String> labels) {
-        this.IDs = IDs;
-        this.realID = String.join("/", IDs);
+        this.ID = ID;
         this.title = title;
         this.fullTitle = fullTitle;
         this.college = college;
@@ -106,7 +102,7 @@ public class Course {
 
         Course course = (Course) o;
 
-        return getRealID().equals(course.getRealID());
+        return getID().equals(course.getID());
     }
 
     /**
@@ -115,44 +111,15 @@ public class Course {
      */
     @Override
     public int hashCode() {
-        return getRealID().hashCode();
+        return getID().hashCode();
     }
 
     /**
-     * Gets the ArrayList of IDs
-     * @return
+     * Gets the ID of the course
+     * @return The ID of the course
      */
-    public ArrayList<String> getIDs() {
-        return IDs;
-    }
-
-    /**
-     * Adds an ID to the IDs ArrayList
-     * @param ID ID to add
-     */
-    public void addID(String ID) {
-        this.IDs.add(ID);
-        this.realID = String.join("/", IDs);
-    }
-
-    /**
-     * Deletes an ID from the IDs ArrayList
-     *
-     * @param ID ID to remove
-     * @return If deleting an ID was successful
-     */
-    public boolean deleteID(String ID) {
-        boolean success = this.IDs.remove(ID);
-        this.realID = String.join("/", IDs);
-        return success;
-    }
-
-    /**
-     * Gets the realID of a course
-     * @return The course's realID
-     */
-    public String getRealID() {
-        return realID;
+    public String getID() {
+        return ID;
     }
 
     /**
@@ -227,15 +194,13 @@ public class Course {
         return prereqs;
     }
 
-    //TODO Change prereqs
     public void addPrereq(Course prereq) {
-        this.prereqs.addAll(prereq.getIDs());
+        this.prereqs.add(prereq.getID());
     }
 
     public void deletePrereq(Course prereq) {
-        this.prereqs.removeAll(prereq.getIDs());
+        this.prereqs.remove(prereq.getID());
     }
-    //end TODO
 
     /**
      * Checks if a course is held in the fall
@@ -286,17 +251,11 @@ public class Course {
     }
 
     public boolean CheckPrereqs(ArrayList<Course> courseList){
+        if (prereqs.size() == 0){
+            return true;
+        }
         ANDList tempReq = new ANDList(prereqs);
         return tempReq.Check(courseList);
-    }
-
-    public boolean ContainsID(String id){
-        for (String c : IDs){
-            if (c.equals(id)){
-                return true;
-            }
-        }
-        return false;
     }
 
 }

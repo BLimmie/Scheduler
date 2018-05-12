@@ -20,4 +20,12 @@ public class Quarter {
     public ArrayList<Course> getCourses(){
         return courses;
     }
+
+    public void Print(){
+        System.out.print("\t");
+        for (Course c : courses){
+            System.out.print("\t" + c.getID());
+        }
+        System.out.println();
+    }
 }
