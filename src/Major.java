@@ -19,10 +19,6 @@ public class Major {
         this.title = title;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -36,11 +32,12 @@ public class Major {
     }
 
     public boolean CheckRequirements(ArrayList<Course> c){
+        boolean success = true;
         for (Requirement r : requirements){
             if (!(r.Check(c))){
-                return false;
+                success = false;
             }
         }
-        return true;
+        return success;
     }
 }

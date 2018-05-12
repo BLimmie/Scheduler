@@ -35,6 +35,10 @@ public class CoursesCount implements Requirement{
         courses.add(course);
     }
 
+    public void AddCourse(Course course){
+        courses.add(course.getID());
+    }
+
     public void RemoveCourse(String course){
         courses.remove(course);
     }
@@ -44,13 +48,22 @@ public class CoursesCount implements Requirement{
         for (Course c : courseList){
             boolean found = false;
             for (String id : courses){
-                if (c.ContainsID(id)){
+                if (c.getID().equals(id)){
                     found = true;
                 }
             }
             if (found){
                 count ++;
             }
+        }
+        if (count < minCount){
+            System.out.println("\tYOU'RE SHORT " + (minCount - count) + " COURSES!");
+            System.out.println("\tYOU NEED TO TAKE " + minCount + " TOTAL COURSES FROM THIS LIST:");
+            for (String s : courses){
+                System.out.print("\t" + s);
+            }
+            System.out.println();
+            System.out.println();
         }
         return (count >= minCount);
     }

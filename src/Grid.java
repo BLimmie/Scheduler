@@ -11,6 +11,25 @@ public class Grid{
 
     public Grid(ArrayList<Course> library){
         this.library = library;
+        InitializeArray();
+    }
+
+    public Grid(ArrayList<Course> library, Major major){
+        this.library = library;
+        this.major = major;
+        InitializeArray();
+    }
+
+    private void InitializeArray(){
+        for (int i = 0; i < 4; i++){
+            for (int j = 0; j < 3; j++){
+                grid[i][j] = new Quarter();
+            }
+        }
+    }
+
+    public void UpdateLibrary(ArrayList<Course> library){
+        this.library = library;
     }
 
     /**
@@ -43,6 +62,21 @@ public class Grid{
         grid[year - 1][quarter - 1].remove(c);
     }
 
+    public void PrintGrid(){
+        for (int i = 0; i < grid.length; i++){
+            System.out.println("--------------------------------------");
+            System.out.println("YEAR " + (i + 1) + ":");
+            for (int j = 0; j < grid[i].length; j++){
+                System.out.println("- - - - - - - - -");
+                System.out.println("\tQUARTER " + (j + 1) + ": ");
+                grid[i][j].Print();
+                System.out.println("- - - - - - - - -");
+            }
+            System.out.println("--------------------------------------");
+            System.out.println();
+        }
+    }
+
     /**
     Checks to see if the grid is currently valid and produces an error otherwise.
      */
@@ -50,19 +84,32 @@ public class Grid{
 
         ArrayList<Course> tempLibrary = new ArrayList<>();
 
+        boolean prereqsGood = true;
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
-                //ArrayList<Course> quarterClasses = new ArrayList<>();
                 for (Course c : grid[i][j].getCourses()) {
                     if (!(c.CheckPrereqs(tempLibrary))) {
-                        System.out.println("MISSING PREREQUISITE AT " + c.getTitle() + "!");
+                        System.out.println("MISSING PREREQUISITE(S) FOR " + c.getID() + "!");
+                        prereqsGood = false;
                     }
                 }
                 tempLibrary.addAll(grid[i][j].getCourses());
             }
         }
 
-        major.CheckRequirements(tempLibrary);
+        if (prereqsGood) {
+            System.out.println("All Course Prerequisites met.");
+        }
+
+        System.out.println();
+
+        if (major.CheckRequirements(tempLibrary)){
+            System.out.println("SUCCESS - You've met the requirements of your major!");
+        }
+        else{
+            System.out.println("FAILURE - You have not met the requirements of your major.");
+        }
+
     }
 
  }

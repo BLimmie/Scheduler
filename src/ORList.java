@@ -16,6 +16,10 @@ public class ORList implements Requirement{
         this.courses = courses;
     }
 
+    public void AddCourse(Course course){
+        courses.add(course.getID());
+    }
+
     public void AddCourse(String course){
         courses.add(course);
     }
@@ -27,11 +31,17 @@ public class ORList implements Requirement{
     public boolean Check(ArrayList<Course> courseList){
         for (String id : courses){
             for (Course c : courseList){
-                if (c.ContainsID(id)){
+                if (c.getID().equals(id)){
                     return true;
                 }
             }
         }
+        System.out.println("\tYOU NEED TO TAKE ONE OF THESE COURSES:");
+        for (String s : courses){
+            System.out.print("\t" + s);
+        }
+        System.out.println();
+        System.out.println();
         return false;
     }
 }
