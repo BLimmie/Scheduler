@@ -7,9 +7,9 @@ public class Course {
     private String fullTitle;
     private String college;
     private String description;
-    private double units;
+    private int units;
     //TODO Change prereqs to ArrayList of ArrayLists of Course
-    private ArrayList<Course> prereqs;
+    private ArrayList<String> prereqs;
     private boolean fall;
     private boolean winter;
     private boolean spring;
@@ -24,9 +24,30 @@ public class Course {
         this.title = "";
         this.fullTitle = "";
         this.college = "";
-        this.units = 0.0;
+        this.units = 0;
         //TODO Change prereqs
-        this.prereqs = new ArrayList<Course>();
+        //The prereqs shoudl be strings to hold the IDs of the classes
+        this.prereqs = new ArrayList<String>();
+        this.fall = false;
+        this.winter = false;
+        this.spring = false;
+        this.labels = new ArrayList<String>();
+    }
+
+    /**
+     * Partial Constructor used by Admin
+     * @param ID        The ID for the class (e.g. CMPSC48)
+     * @param title     The short title for the class (e.g. Comp Sci Project)
+     */
+    public Course(String ID, String title) {
+        this.IDs.add(ID);
+        this.realID = String.join("/", IDs);
+        this.title = title;
+        this.fullTitle = "";
+        this.college = "";
+        this.units = 0;
+        //TODO Change prereqs
+        this.prereqs = new ArrayList<String>();
         this.fall = false;
         this.winter = false;
         this.spring = false;
@@ -52,8 +73,8 @@ public class Course {
                   String fullTitle,
                   String college,
                   String description,
-                  double units,
-                  ArrayList<Course> prereqs,
+                  int units,
+                  ArrayList<String> prereqs,
                   boolean fall,
                   boolean winter,
                   boolean spring,
@@ -186,7 +207,7 @@ public class Course {
      * Gets the number of units associated with a course
      * @return Number of units
      */
-    public double getUnits() {
+    public int getUnits() {
         return units;
     }
 
@@ -194,7 +215,7 @@ public class Course {
      * Sets the number of units associated with a course
      * @param units
      */
-    public void setUnits(double units) {
+    public void setUnits(int units) {
         this.units = units;
     }
 
@@ -202,17 +223,17 @@ public class Course {
      * Gets the List of prerequisites for a course
      * @return List of prerequisites
      */
-    public ArrayList<Course> getPrereqs() {
+    public ArrayList<String> getPrereqs() {
         return prereqs;
     }
 
     //TODO Change prereqs
     public void addPrereq(Course prereq) {
-        this.prereqs.add(prereq);
+        this.prereqs.addAll(prereq.getIDs());
     }
 
     public void deletePrereq(Course prereq) {
-        this.prereqs.remove(prereq);
+        this.prereqs.removeAll(prereq.getIDs());
     }
     //end TODO
 
@@ -264,27 +285,18 @@ public class Course {
         this.spring = spring;
     }
 
-    /**
-     * Gets an ArrayList of GE labels for a course
-     * @return ArrayList of GE labels
-     */
-    public ArrayList<String> getLabels() {
-        return labels;
+    public boolean CheckPrereqs(ArrayList<Course> courseList){
+        ANDList tempReq = new ANDList(prereqs);
+        return tempReq.Check(courseList);
     }
 
-    /**
-     * Adds a label to the list of GE labels
-     * @param label Label to be added
-     */
-    public void addLabel(String label) {
-        this.labels.add(label);
+    public boolean ContainsID(String id){
+        for (String c : IDs){
+            if (c.equals(id)){
+                return true;
+            }
+        }
+        return false;
     }
 
-    /**
-     * Deletes a label from the list of GE labels
-     * @param label Label to be deleted
-     */
-    public void deleteLabel(String label) {
-        this.labels.remove(label);
-    }
 }
