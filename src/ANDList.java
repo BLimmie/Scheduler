@@ -28,6 +28,14 @@ public class ANDList implements Requirement{
         courses.remove(course);
     }
 
+    public void RemoveCourse(Course course){
+        courses.add(course.getID());
+    }
+
+    public ArrayList<String> getCourses(){
+        return courses;
+    }
+
     public boolean Check(ArrayList<Course> courseList){
         ArrayList<String> ids = new ArrayList<>();
         ids.addAll(courses);

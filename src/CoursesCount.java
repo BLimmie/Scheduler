@@ -43,6 +43,12 @@ public class CoursesCount implements Requirement{
         courses.remove(course);
     }
 
+    public void RemoveCourse(Course course) { courses.remove(course.getID()); }
+
+    public ArrayList<String> getCourses(){
+        return courses;
+    }
+
     public boolean Check(ArrayList<Course> courseList){
         int count = 0;
         for (Course c : courseList){

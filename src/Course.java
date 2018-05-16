@@ -8,7 +8,7 @@ public class Course {
     private String description;
     private int units;
     //TODO Change prereqs to ArrayList of ArrayLists of Course
-    private ArrayList<String> prereqs;
+    private ANDList prereqs;
     private boolean fall;
     private boolean winter;
     private boolean spring;
@@ -25,7 +25,7 @@ public class Course {
         this.units = 0;
         //TODO Change prereqs
         //The prereqs shoudl be strings to hold the IDs of the classes
-        this.prereqs = new ArrayList<String>();
+        this.prereqs = new ANDList();
         this.fall = false;
         this.winter = false;
         this.spring = false;
@@ -44,7 +44,7 @@ public class Course {
         this.college = "";
         this.units = units;
         //TODO Change prereqs
-        this.prereqs = new ArrayList<String>();
+        this.prereqs = new ANDList();
         this.fall = false;
         this.winter = false;
         this.spring = false;
@@ -71,7 +71,7 @@ public class Course {
                   String college,
                   String description,
                   int units,
-                  ArrayList<String> prereqs,
+                  ANDList prereqs,
                   boolean fall,
                   boolean winter,
                   boolean spring,
@@ -191,15 +191,23 @@ public class Course {
      * @return List of prerequisites
      */
     public ArrayList<String> getPrereqs() {
-        return prereqs;
+        return prereqs.getCourses();
     }
 
     public void addPrereq(Course prereq) {
-        this.prereqs.add(prereq.getID());
+        this.prereqs.AddCourse(prereq);
+    }
+
+    public void addPrereq(String prereq) {
+        this.prereqs.AddCourse(prereq);
     }
 
     public void deletePrereq(Course prereq) {
-        this.prereqs.remove(prereq.getID());
+        this.prereqs.RemoveCourse(prereq);
+    }
+
+    public void deletePrereq(String prereq) {
+        this.prereqs.RemoveCourse(prereq);
     }
 
     /**
@@ -251,11 +259,7 @@ public class Course {
     }
 
     public boolean CheckPrereqs(ArrayList<Course> courseList){
-        if (prereqs.size() == 0){
-            return true;
-        }
-        ANDList tempReq = new ANDList(prereqs);
-        return tempReq.Check(courseList);
+        return prereqs.Check(courseList);
     }
 
 }

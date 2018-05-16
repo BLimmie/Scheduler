@@ -28,6 +28,12 @@ public class ORList implements Requirement{
         courses.remove(course);
     }
 
+    public void RemoveCourse(Course course) { courses.remove(course.getID()); }
+
+    public ArrayList<String> getCourses(){
+        return courses;
+    }
+
     public boolean Check(ArrayList<Course> courseList){
         for (String id : courses){
             for (Course c : courseList){

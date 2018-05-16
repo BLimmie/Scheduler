@@ -27,6 +27,10 @@ public class Major {
         return department;
     }
 
+    public void Print(){
+        System.out.println(title + ", " + department);
+    }
+
     public void AddRequirement(Requirement r){
         requirements.add(r);
     }

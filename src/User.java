@@ -2,7 +2,72 @@ public class User {
 
     private String firstName;
     private String lastName;
+    private String password;
     private String classStanding;
+    private Major major;
+    private Grid grid;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getClassStanding() {
+        return classStanding;
+    }
+
+    public void setClassStanding(String classStanding) {
+        this.classStanding = classStanding;
+    }
+
+    public Major getMajor() {
+        return major;
+    }
+
+    public void setMajor(Major major) {
+        this.major = major;
+    }
+
+    public Grid getGrid() {
+        return grid;
+    }
+
+    public void setGrid(Grid grid) {
+        this.grid = grid;
+    }
+
+    public User(String firstName, String lastName, String password, Major major){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.major = major;
+        this.grid = new Grid();
+    }
+
+    public User(String firstName, String lastName, String password, Major major, Grid grid){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.major = major;
+        this.grid = grid;
+    }
 
 
 	/*
