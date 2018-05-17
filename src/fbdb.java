@@ -1,9 +1,12 @@
+import java.util.HashMap;
+import firebase.database.*; //Needs Firebase SDK being installed
+
 /* firebase_dict
 type: reference to database
 storage: O(1)
 Note: all values are immutable
 */
-public class firebase_dict:
+public class firebase_dict {
 	private DatabaseReference ref;
 
 	//Constructor
@@ -15,7 +18,7 @@ public class firebase_dict:
 			.build();
 		FirebaseApp.initializeApp(options);
 		ref = FirebaseDatabase.getInstance().getReference();
-	)
+    }
 	
 	//get value
 	public Object get (String key){
@@ -23,16 +26,17 @@ public class firebase_dict:
 	}
 	
 	//set value
-	public void set (String key, <T> value){
-		ref.child(key).setValue(value)
+	public void set (String key, String value){
+		ref.child(key).setValue(value);
 	}
 	
 	//delete value 
 	public void del (String key){
-		ref.child(key).removeValue()
+		ref.child(key).removeValue();
 	}
 	
 	//get whole dataset
 	public HashMap call (){
 		return ref.getValue();
 	}
+}
