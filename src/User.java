@@ -17,7 +17,7 @@ public class User {
 
     /**
      * Adds a User to the static list of Users
-     * @param u
+     * @param u User to add to the list
      */
     public static void AddUser(User u){
         users.add(u);
@@ -25,7 +25,7 @@ public class User {
 
     /**
      * Removes a User from the static list of Users
-     * @param u
+     * @param u User to remove from the list
      */
     public static void RemoveUser(User u) {
         users.remove(u);
@@ -245,8 +245,10 @@ public class User {
 
     /**
      * Constructor for User
+     * @param email User's email
      * @param firstName User's first name
      * @param lastName User's last name
+     * @param perm User's perm
      * @param password User's password
      * @param major User's major
      */
@@ -263,8 +265,10 @@ public class User {
 
     /**
      * Constructor for User
+     * @param email User's email
      * @param firstName User's first name
      * @param lastName User's second name
+     * @param perm User's perm
      * @param password User's password
      * @param major User's major
      * @param grid User's grid
