@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+/**
+ * A Class containing a 2D Array (grid) of Quarters that contain a list of Courses.
+ */
 public class Grid{
 
     // [year] [quarter]
@@ -7,19 +10,36 @@ public class Grid{
     private ArrayList<Course> library = new ArrayList<>();
     private Major major;
 
-    public Grid() {}
+    /**
+     * Default Constructor for Grid.
+     */
+    public Grid() {
+        InitializeArray();
+    }
 
+    /**
+     * Constructor for Grid.
+     * @param library Library of Courses to be used by the Grid
+     */
     public Grid(ArrayList<Course> library){
         this.library = library;
         InitializeArray();
     }
 
+    /**
+     * Constructor for Grid.
+     * @param library Library of Courses to be used by the Grid
+     * @param major The Major against which to check Requirements
+     */
     public Grid(ArrayList<Course> library, Major major){
         this.library = library;
         this.major = major;
         InitializeArray();
     }
 
+    /**
+     * Helper function for the Constructor which initializes each Quarter object in the 2D array.
+     */
     private void InitializeArray(){
         for (int i = 0; i < 4; i++){
             for (int j = 0; j < 3; j++){
@@ -28,6 +48,10 @@ public class Grid{
         }
     }
 
+    /**
+     * Updates the current Course library.
+     * @param library The new Library to be used by the Grid.
+     */
     public void UpdateLibrary(ArrayList<Course> library){
         this.library = library;
     }
@@ -62,6 +86,9 @@ public class Grid{
         grid[year - 1][quarter - 1].remove(c);
     }
 
+    /**
+     * Prints the current Grid.
+     */
     public void PrintGrid(){
         for (int i = 0; i < grid.length; i++){
             System.out.println("--------------------------------------");

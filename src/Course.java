@@ -1,17 +1,60 @@
 import java.util.ArrayList;
 
 public class Course {
+
+    /**
+     * The Course ID (e.g. CMPSC48)
+     */
     private String ID;
+
+    /**
+     * The Course title (e.g. Comp Sci Project)
+     */
     private String title;
+
+    /**
+     * The full Course title (e.g. Computer Science Project)
+     */
     private String fullTitle;
+
+    /**
+     * The college the Course is offered under (e.g. Engineering)
+     */
     private String college;
+
+    /**
+     * The description of the Course
+     */
     private String description;
+
+    /**
+     * The number of units this Course offers
+     */
     private int units;
-    //TODO Change prereqs to ArrayList of ArrayLists of Course
+
+    /**
+     * An ANDList of Courses to have been taken as prerequisites for this Course
+     */
     private ANDList prereqs;
+
+    /**
+     * Whether this Course is offered in the Fall
+     */
     private boolean fall;
+
+    /**
+     * Whether this Course is offered in the Winter.
+     */
     private boolean winter;
+
+    /**
+     * Whether this Course is offered in the Spring.
+     */
     private boolean spring;
+
+    /**
+     * GE labels this Course contains.
+     */
     private ArrayList<String> labels;
 
     /**
@@ -194,18 +237,34 @@ public class Course {
         return prereqs.getCourses();
     }
 
+    /**
+     * Adds a Course to this Course's prerequisites.
+     * @param prereq The Course to add to this Course's prerequisites.
+     */
     public void addPrereq(Course prereq) {
         this.prereqs.AddCourse(prereq);
     }
 
+    /**
+     * Adds a Course ID to this Course's prerequisites.
+     * @param prereq The Course ID to add to this Course's prerequisites.
+     */
     public void addPrereq(String prereq) {
         this.prereqs.AddCourse(prereq);
     }
 
+    /**
+     * Removes a Course from this Course's prerequisites.
+     * @param prereq The Course to remove from this Course's prerequisites.
+     */
     public void deletePrereq(Course prereq) {
         this.prereqs.RemoveCourse(prereq);
     }
 
+    /**
+     * Removes a Course ID from this Course's prerequisites.
+     * @param prereq The Course ID to remove from this Course's prerequisites.
+     */
     public void deletePrereq(String prereq) {
         this.prereqs.RemoveCourse(prereq);
     }
@@ -258,6 +317,11 @@ public class Course {
         this.spring = spring;
     }
 
+    /**
+     * Calls Check() on the prereqs Requirement and returns the result.
+     * @param courseList The list of classes to checked against the prereqs Requirement.
+     * @return The result of the Check() method.
+     */
     public boolean CheckPrereqs(ArrayList<Course> courseList){
         return prereqs.Check(courseList);
     }
