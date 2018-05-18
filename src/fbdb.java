@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import firebase.database.*; //Needs Firebase SDK being installed
 
 /* firebase_dict
 type: reference to database
@@ -18,7 +17,7 @@ public class firebase_dict {
 			.build();
 		FirebaseApp.initializeApp(options);
 		ref = FirebaseDatabase.getInstance().getReference();
-    }
+	}
 	
 	//get value
 	public Object get (String key){
