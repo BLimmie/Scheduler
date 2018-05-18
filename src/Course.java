@@ -66,8 +66,6 @@ public class Course {
         this.fullTitle = "";
         this.college = "";
         this.units = 0;
-        //TODO Change prereqs
-        //The prereqs shoudl be strings to hold the IDs of the classes
         this.prereqs = new ANDList();
         this.fall = false;
         this.winter = false;
@@ -86,7 +84,6 @@ public class Course {
         this.fullTitle = "";
         this.college = "";
         this.units = units;
-        //TODO Change prereqs
         this.prereqs = new ANDList();
         this.fall = false;
         this.winter = false;
@@ -125,7 +122,6 @@ public class Course {
         this.college = college;
         this.description = description;
         this.units = units;
-        //TODO Change prereqs
         this.prereqs = prereqs;
         this.fall = fall;
         this.winter = winter;
