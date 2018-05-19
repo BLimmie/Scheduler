@@ -72,8 +72,11 @@ public class Grid{
       * @param quarter The quarter in which you wish to add the class
       */
     public void AddCourse(Course c, int year, int quarter){
+        if (year < 1 || year > 4 || quarter < 1 || quarter > 3){
+            System.out.println("ERROR: Year or quarter exceeded bounds.  There's only 4 years and 3 quarters!");
+            return;
+        }
         grid[year - 1][quarter - 1].add(c);
-
     }
 
      /**
@@ -83,6 +86,10 @@ public class Grid{
       * @param quarter Quarter you want to add the class to
       */
     public void DeleteCourse(Course c, int year, int quarter){
+        if (year < 1 || year > 4 || quarter < 1 || quarter > 3){
+            System.out.println("ERROR: Year or quarter exceeded bounds.  There's only 4 years and 3 quarters!");
+            return;
+        }
         grid[year - 1][quarter - 1].remove(c);
     }
 

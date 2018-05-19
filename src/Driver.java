@@ -187,20 +187,20 @@ public class Driver {
             System.out.println("2. SIGN IN TO USER");
 
             Scanner in = new Scanner(System.in);
-            int a = in.nextInt();
+            String a = in.nextLine();
             in.nextLine();
-            if (a == 1) {
+            if (a.equals("1")) {
                 CreateUser();
                 if (!(user == null)) {
                     return;
                 }
-            } else if (a == 2) {
+            } else if (a.equals("2")) {
                 SignIn();
                 if (!(user == null)) {
                     return;
                 }
             } else {
-                System.out.println("Please enter a 1 or 2.");
+                System.out.println("Invalid input.  Try again.");
             }
         }
     }
@@ -225,8 +225,7 @@ public class Driver {
         System.out.println("Enter your last name:");
         String lastName = in.nextLine();
         System.out.println("Enter a unique perm number:");
-        int perm = in.nextInt();
-        in.nextLine();
+        String perm = in.nextLine();
         System.out.println("Enter a password:");
         String password = in.nextLine();
         System.out.println("What is your major? (For a list of majors, type HELP)");
@@ -301,25 +300,24 @@ public class Driver {
             System.out.println("4. PROFILE MANAGER");
             System.out.println("5. EXIT");
             Scanner in = new Scanner(System.in);
-            int input = in.nextInt();
-            in.nextLine();
-            if (input == 1) {
+            String input = in.nextLine();
+            if (input.equals("1")) {
                 CourseManager();
             }
-            else if (input == 2) {
+            else if (input.equals("2")) {
                 MajorManager();
             }
-            else if (input == 3) {
+            else if (input.equals("3")) {
                 GridManager();
             }
-            else if (input == 4){
+            else if (input.equals("4")){
                 ProfileManager();
             }
-            else if (input == 5){
+            else if (input.equals("5")){
                 return;
             }
             else {
-                System.out.println("Please enter 1, 2, or 3!");
+                System.out.println("Invalid Input.  Try again.");
             }
         }
     }
@@ -344,20 +342,18 @@ public class Driver {
             System.out.println("3. CHANGE MAJOR");
             System.out.println("4. VIEW PROFILE");
             System.out.println("5. EXIT");
-
-            int in1 = in.nextInt();
-            in.nextLine();
-            if (in1 == 1){
+            String in1 = in.nextLine();
+            if (in1.equals("1")){
                 System.out.println("Enter your first name:");
                 String first = in.nextLine();
                 user.setFirstName(first);
             }
-            else if (in1 == 2){
+            else if (in1.equals("2")){
                 System.out.println("Enter your last name:");
                 String last = in.nextLine();
                 user.setLastName(last);
             }
-            else if (in1 == 3){
+            else if (in1.equals("3")){
                 System.out.println("Enter your major");
                 String major = in.nextLine();
                 boolean found = false;
@@ -371,10 +367,10 @@ public class Driver {
                     System.out.println("Couldn't find that major!");
                 }
             }
-            else if (in1 == 4){
+            else if (in1.equals("4")){
                 user.Print();
             }
-            else if (in1 == 5){
+            else if (in1.equals("5")){
                 return;
             }
             else {
@@ -405,12 +401,11 @@ public class Driver {
             System.out.println("3. REMOVE COURSE FROM GRID");
             System.out.println("4. VERIFY GRID");
             System.out.println("5. EXIT");
-            int in1 = in.nextInt();
-            in.nextLine();
-            if (in1 == 1){
+            String in1 = in.nextLine();
+            if (in1.equals("1")){
                 user.PrintGrid();
             }
-            else if (in1 == 2){
+            else if (in1.equals("2")){
                 System.out.println("Which year do you want to add the course to?");
                 int year = in.nextInt();
                 in.nextLine();
@@ -425,7 +420,7 @@ public class Driver {
                     }
                 }
             }
-            else if (in1 == 3){
+            else if (in1.equals("3")){
                 System.out.println("Which year do you want to remove the course from?");
                 int year = in.nextInt();
                 in.nextLine();
@@ -440,10 +435,10 @@ public class Driver {
                     }
                 }
             }
-            else if (in1 == 4){
+            else if (in1.equals("4")){
                 user.VerifyGrid();
             }
-            else if (in1 == 5){
+            else if (in1.equals("5")){
                 return;
             }
             else {
@@ -468,18 +463,18 @@ public class Driver {
             System.out.println("1. GET LIST OF MAJORS");
             System.out.println("2. CREATE MAJOR");
             System.out.println("3. GO BACK");
-            int input = in.nextInt();
+            String input = in.nextLine();
             in.nextLine();
-            if (input == 1) {
+            if (input.equals("1")) {
                 System.out.println("Current Majors:");
                 for (Major m : majors) {
                     m.Print();
                 }
             }
-            else if (input == 2) {
+            else if (input.equals("2")) {
                 MajorCreator();
             }
-            else if (input == 3) {
+            else if (input.equals("3")) {
                 return;
             }
             else {
@@ -512,21 +507,20 @@ public class Driver {
             System.out.println("\t4) Unit Count: a specified number of units from this list must be taken.");
             System.out.println();
             System.out.println("Which Requirement do you wish to add?  Enter a number (enter 5 to exit)");
-            int in1 = in.nextInt();
-            in.nextLine();
-            if (in1 == 5) {
+            String in1 = in.nextLine();
+            if (in1.equals("5")) {
                 majors.add(major);
                 return;
-            } else if (in1 == 1) {
+            } else if (in1.equals("1")) {
                 ANDList r = ANDListCreator();
                 major.AddRequirement(r);
-            } else if (in1 == 2) {
+            } else if (in1.equals("2")) {
                 ORList r = ORListCreator();
                 major.AddRequirement(r);
-            } else if (in1 == 3) {
+            } else if (in1.equals("3")) {
                 CoursesCount r = CCountCreator();
                 major.AddRequirement(r);
-            } else if (in1 == 4) {
+            } else if (in1.equals("4")) {
                 UnitCount r = UnitCountCreator();
                 major.AddRequirement(r);
             } else {
@@ -705,7 +699,7 @@ public class Driver {
             System.out.println("Current Prerequisites:");
             ArrayList<String> preq = c.getPrereqs();
             for (String s : preq){
-                System.out.println("\t" + c.getID());
+                System.out.println("\t" + s);
             }
             System.out.println("Enter next prerequisite:");
             String in1 = in.nextLine();
@@ -738,8 +732,7 @@ public class Driver {
      * Course manager; user can choose
      * 1) Get list of courses
      * 2) Create course
-     * 3) Edit Course
-     * 4) Go back
+     * 3) Go back
      */
     private void CourseManager() {
         while (true) {
@@ -751,18 +744,18 @@ public class Driver {
             System.out.println("1. GET LIST OF COURSES");
             System.out.println("2. CREATE COURSE");
             System.out.println("3. GO BACK");
-            int input = in.nextInt();
+            String input = in.nextLine();
             in.nextLine();
-            if (input == 1) {
+            if (input.equals("1")) {
                 System.out.println("Current Courses:");
                 for (Course c : library) {
                     System.out.println(c.getID() + "\t-\t" + c.getTitle());
                 }
             }
-            else if (input == 2) {
+            else if (input.equals("2")) {
                 CourseCreator();
             }
-            else if (input == 3) {
+            else if (input.equals("3")) {
                 return;
             }
             else {
