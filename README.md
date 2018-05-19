@@ -10,6 +10,6 @@ To compile the java files, just type "make".  To clean the src folder and get ri
 
 To run the program, run the static void main function in Driver by typing "java Driver".  The Command-Line interface should then run and you're good to go.
 
-A few things to note.  MajorEditor() and CourseEditor() don't have functionality yet (although that's addressed by the program when you attempt to launch those two functions).  Furthermore, there are no pre-loaded Users in the program, so on the first execution of the program you won't be able to sign into any existing User.
+One thing to note: there are no pre-loaded Users in the program, so on the first execution of the program you won't be able to sign into any existing User.
 
 Good luck, Commander.

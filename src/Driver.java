@@ -456,8 +456,7 @@ public class Driver {
      * Major Manager; User can choose
      * 1) Get list of Majors
      * 2) Create Major
-     * 3) Edit Major
-     * 4) Go back
+     * 3) Go back
      */
     private void MajorManager(){
         while (true) {
@@ -468,8 +467,7 @@ public class Driver {
             System.out.println("MAJOR MANAGER:");
             System.out.println("1. GET LIST OF MAJORS");
             System.out.println("2. CREATE MAJOR");
-            System.out.println("3. EDIT MAJOR");
-            System.out.println("4. GO BACK");
+            System.out.println("3. GO BACK");
             int input = in.nextInt();
             in.nextLine();
             if (input == 1) {
@@ -482,13 +480,10 @@ public class Driver {
                 MajorCreator();
             }
             else if (input == 3) {
-                MajorEditor();
-            }
-            else if (input == 4) {
                 return;
             }
             else {
-                System.out.println("Please enter 1, 2, 3, or 4!");
+                System.out.println("Please enter 1, 2, or 3!");
             }
         }
     }
@@ -679,13 +674,6 @@ public class Driver {
     }
 
     /**
-     * Edits a Major.
-     */
-    private void MajorEditor(){
-        System.out.println("We don't have this functionality yet.  Stay tuned!");
-    }
-
-    /**
      * Creates a Course with user inputs.
      */
     private void CourseCreator() {
@@ -747,14 +735,6 @@ public class Driver {
     }
 
     /**
-     * Edits a Course.
-     */
-    private void CourseEditor(){
-        System.out.println("We don't have this functionality yet.  Stay tuned!");
-        return;
-    }
-
-    /**
      * Course manager; user can choose
      * 1) Get list of courses
      * 2) Create course
@@ -770,8 +750,7 @@ public class Driver {
             System.out.println("COURSE MANAGER:");
             System.out.println("1. GET LIST OF COURSES");
             System.out.println("2. CREATE COURSE");
-            System.out.println("3. EDIT COURSE");
-            System.out.println("4. GO BACK");
+            System.out.println("3. GO BACK");
             int input = in.nextInt();
             in.nextLine();
             if (input == 1) {
@@ -784,13 +763,10 @@ public class Driver {
                 CourseCreator();
             }
             else if (input == 3) {
-                CourseEditor();
-            }
-            else if (input == 4) {
                 return;
             }
             else {
-                System.out.println("Please enter 1, 2, 3, or 4!");
+                System.out.println("Please enter 1, 2, or 3!");
             }
         }
     }
