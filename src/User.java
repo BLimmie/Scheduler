@@ -54,7 +54,7 @@ public class User {
                 return u;
             }
         }
-        System.out.println("ERROR - Couldn't find student with these parameters!  Returning stub User instead.");
+        System.out.println("We couldn't find an account registered to this email!");
         return new User();
     }
 
@@ -222,12 +222,27 @@ public class User {
     }
 
     /**
+     * Updates the Course library of this User's grid.
+     * @param m The major to update the grid with.
+     */
+    public void UpdateGridMajor(Major m){
+        this.grid.UpdateMajor(m);
+    }
+
+    /**
      * Checks to see if the input String is this User's password.
      * @param p The String to test.
      * @return True if input p is equal to the password; false otherwise.
      */
     public boolean CheckPassword(String p){
         return password.equals(p);
+    }
+
+    public void Print(){
+        System.out.println(email);
+        System.out.println(lastName + ", " + firstName);
+        major.Print();
+        System.out.println("PERM #: " + perm);
     }
 
     /**
