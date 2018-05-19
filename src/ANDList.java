@@ -54,7 +54,7 @@ public class ANDList implements Requirement{
      * @param course The Course whose ID is to be removed from the list.
      */
     public void RemoveCourse(Course course){
-        courses.add(course.getID());
+        courses.remove(course.getID());
     }
 
     /**
