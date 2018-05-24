@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
@@ -17,26 +18,42 @@ public class fbdb {
 	private DatabaseReference ref;
 
 	//Constructor
-	public fbdb (String certificate, String url){
-	    try {
-            FileInputStream serviceAccount = new FileInputStream(certificate);
-            FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl(url)
-                    .build();
-            FirebaseApp.initializeApp(options);
-            this.ref = FirebaseDatabase.getInstance().getReference();
-        }
-        catch (Exception e){System.out.printf("exception");}
+	public fbdb(String certificate, String url) {
+		try {
+			FileInputStream serviceAccount = new FileInputStream(certificate);
+			FirebaseOptions options = new FirebaseOptions.Builder()
+					.setCredentials(GoogleCredentials.fromStream(serviceAccount))
+					.setDatabaseUrl(url)
+					.build();
+			FirebaseApp.initializeApp(options);
+			this.ref = FirebaseDatabase.getInstance().getReference();
+		} catch (Exception e) {
+			System.out.printf("exception");
+		}
 	}
 
-	public fbdb (DatabaseReference ref){
+	public fbdb(DatabaseReference ref) {
 		this.ref = ref;
+	}
+}
+public class firebase_dict {
+	private DatabaseReference ref;
+
+	//Constructor
+	public firebase_dict (String certificate, String url){
+		FileInputStream serviceAccount = new FileInputStream(certificate);
+		FirebaseOptions options = new FirebaseOptions.Builder()
+			.setCredentials(GoogleCredentials.fromStream(serviceAccount))
+			.setDatabaseUrl(url)
+			.build();
+		FirebaseApp.initializeApp(options);
+		ref = FirebaseDatabase.getInstance().getReference();
 	}
 	
 	//get value
 	public Object get (String key){
 		return ref.child(key).getKey();
+		return ref.child(key).getValue();
 	}
 	
 	//set value
@@ -54,4 +71,9 @@ public class fbdb {
 	}
 
 	public fbdb father() {return new fbdb(ref.getParent());}
+	
+	//get whole dataset
+	public HashMap call (){
+		return ref.getValue();
+	}
 }
