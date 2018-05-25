@@ -2,14 +2,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-public class fbdbrCourse extends fbdbr{
-    private Course tempCourse;
+public class fbdbrMajor extends fbdbr{
+    private Major tempMajor;
 
     public void retrieve () {
         this.ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                tempCourse = dataSnapshot.getValue(Course.class);
+                tempMajor = dataSnapshot.getValue(Major.class);
             }
 
             @Override
@@ -19,5 +19,5 @@ public class fbdbrCourse extends fbdbr{
         });
     }
     
-    public Course get () {return tempCourse;}
+    public Major get () {return tempMajor;}
 }

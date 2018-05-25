@@ -1,4 +1,3 @@
-package servlet;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -19,6 +18,6 @@ public class fbdbrUser extends fbdbr{
             }
         });
     }
-	
-	public User get () {return tempUser;}
+    
+    public User get () {return tempUser;}
 }
