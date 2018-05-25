@@ -7,7 +7,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.FileInputStream;
 import java.util.HashMap;
 
-/* firebase reader object
+/* firebase writer object
 1. can get child and parent nodes based on their key
 2. can set and/or delete current node 
 */
@@ -39,7 +39,7 @@ public class fbdbw {
 	}
 	
 	//set value
-	public void set (String key, String value) {ref.child(key).setValue(value);}
+	public void set (String key, Map<String, Object> value) {ref.updateChildren(value);}
 	
 	//delete value 
 	public void del (String key) {ref.child(key).removeValue();}
