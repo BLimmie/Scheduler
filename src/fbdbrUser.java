@@ -18,4 +18,6 @@ public class fbdbrUser extends fbdbr{
             }
         });
     }
+	
+	public User get () {return tempUser;}
 }

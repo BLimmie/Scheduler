@@ -18,4 +18,6 @@ public class fbdbrCourse extends fbdbr{
             }
         });
     }
+	
+	public Course get () {return tempCourse;}
 }

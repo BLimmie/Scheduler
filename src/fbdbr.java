@@ -29,9 +29,9 @@ public class fbdbr {
 }
 
 /*Sample code 
-CS8 = Course()
-fbdbw_CS8 = fbdbw(certificate, url).child("Course").child("CS8")
-fbdbr_CS8 = fbdbr <Course> (fbdbw_CS8)
+fbdbw alldb = new fbdbw(certificate, url)
+fbdbw fbdbw_CS8 = alldb.child("Course").child("CS8")
+fbdbrCourse fbdbr_CS8(fbdbw_CS8)
 fbdbr_CS8.retrieve()
-fbdbr_CS8.assign(CS8)
+Course CS8 = fbdbr_CS8.get()
 */
