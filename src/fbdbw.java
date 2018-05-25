@@ -38,11 +38,11 @@ public class fbdbw {
 		this.fullpath = this.ref.toString();
 	}
 	
-	//set value
-	public void set (String key, Map<String, Object> value) {ref.updateChildren(value);}
+	//set node
+	public void set (Map<String, Object> value) {ref.updateChildren(value);}
 	
-	//delete value 
-	public void del (String key) {ref.child(key).removeValue();}
+	//delete node
+	public void del () {ref.removeValue();}
 
 	//get child node
 	public fbdbw child(String key) {return new fbdbw(ref.child(key));}
