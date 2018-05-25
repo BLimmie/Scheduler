@@ -28,14 +28,14 @@ public class fbdbw {
                     .build();
             FirebaseApp.initializeApp(options);
             this.ref = FirebaseDatabase.getInstance().getReference();
-			this.fullpath = this.ref.toString()
+			this.fullpath = this.ref.toString();
         }
         catch (Exception e){System.out.printf("exception");}
 	}
 
 	public fbdbw (DatabaseReference ref){
 		this.ref = ref;
-		this.fullpath = this.ref.toString()
+		this.fullpath = this.ref.toString();
 	}
 	
 	//set value
