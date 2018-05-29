@@ -23,7 +23,12 @@ public class MainServlet extends HttpServlet {
     @Override
     public void init() throws ServletException{
         //TODO Make servlet fields to store data for quick retrieval
-
+        courses = new ArrayList<Course>();
+        users = new ArrayList<User>();
+        majors = new ArrayList<Major>();
+        majors.add(new Major("Computer Science", "College of Engineering"));
+        users.add(new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", majors.get(0)));
+        super.init();
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
