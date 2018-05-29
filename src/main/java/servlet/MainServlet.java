@@ -35,7 +35,7 @@ public class MainServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             resp.setContentType("application/json");
-            ServletOutputStream out = resp.getOutputStream();
+//            ServletOutputStream out = resp.getOutputStream();
             String method = req.getHeader("Method");
             if (method.equals("default")){
                 resp.getWriter().write("Testing");
