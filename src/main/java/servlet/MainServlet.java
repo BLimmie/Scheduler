@@ -91,6 +91,7 @@ public class MainServlet extends HttpServlet {
                 String json = new Gson().toJson(output.getGrid());
                 resp.getWriter().write(json);
             }
+            resp.getWriter().flush();
         } catch(Exception e){
             //TODO print error in request
         }
