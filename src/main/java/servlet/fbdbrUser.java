@@ -1,6 +1,8 @@
+package servlet;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DatabaseReference;
 
 public class fbdbrUser extends fbdbr{
     private User tempUser;
@@ -14,12 +16,10 @@ public class fbdbrUser extends fbdbr{
 
     public void retrieve () {
         this.ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 tempUser = dataSnapshot.getValue(User.class);
             }
 
-            @Override
             public void onCancelled(DatabaseError databaseError) {
                 // ...
             }

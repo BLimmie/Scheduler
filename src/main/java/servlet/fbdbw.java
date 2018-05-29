@@ -1,3 +1,4 @@
+package servlet;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
@@ -39,7 +40,7 @@ public class fbdbw {
 	}
 	
 	//set node
-	public void set (Map<String, Object> value) {ref.updateChildren(value);}
+	public void set (HashMap<String, Object> value) {ref.updateChildren(value);}
 	
 	//delete node
 	public void del () {ref.removeValue();}

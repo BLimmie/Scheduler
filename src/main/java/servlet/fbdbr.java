@@ -1,3 +1,4 @@
+package servlet;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.common.reflect.TypeToken;
 import com.google.firebase.FirebaseApp;
@@ -16,6 +17,8 @@ public class fbdbr {
 	public DatabaseReference ref;
 
 	//Constructor
+	public fbdbr(){}
+
 	public fbdbr (String certificate, String url){this(new fbdbw(certificate, url));}
 
 	public fbdbr (DatabaseReference ref){this.ref = ref;}

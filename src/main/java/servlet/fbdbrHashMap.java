@@ -1,7 +1,10 @@
+package servlet;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DatabaseReference;
 
+import java.util.HashMap;
 public class fbdbrHashMap extends fbdbr{
     private HashMap tempHashMap;
 	
@@ -14,12 +17,10 @@ public class fbdbrHashMap extends fbdbr{
 
     public void retrieve () {
         this.ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 tempHashMap = dataSnapshot.getValue(HashMap.class);
             }
 
-            @Override
             public void onCancelled(DatabaseError databaseError) {
                 // ...
             }
