@@ -37,7 +37,10 @@ public class MainServlet extends HttpServlet {
             resp.setContentType("application/json");
             ServletOutputStream out = resp.getOutputStream();
             String method = req.getHeader("Method");
-            if (method.equals("course")) {
+            if (method.equals("default")){
+                resp.getWriter().write("Testing");
+            }
+            else if (method.equals("course")) {
                 String courseID = req.getHeader("ID");
 //                fbdbw writer = new fbdbw("cs48courseplanner-firebase-adminsdk-m9s7y-f4080e1e58.json", "https://cs48courseplanner.firebaseio.com/");
 //                writer = writer.child("Course").child(courseID);
