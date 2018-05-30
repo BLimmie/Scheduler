@@ -17,6 +17,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
         name = "MainServlet",
         urlPatterns = {"/main"}
 )
+
 public class MainServlet extends HttpServlet {
 
     ArrayList<Course> courses;
@@ -32,13 +33,42 @@ public class MainServlet extends HttpServlet {
         users.add(new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", majors.get(0)));
         super.init();
     }
+
+    /**
+     * GET http://grid-scheduler.herokuapp.com/main
+     *
+     * Headers:
+     * {
+     *     Method:
+     *     {
+     *         course: gets course by CourseID
+     *         courses: gets JSON ArrayList of courses that match query
+     *         user: gets user by perm#
+     *         major: gets major by majorTitle
+     *         grid: gets GRID by user perm#
+     *     }
+     *     ID: User perm# or CourseID. Use with Method = {course,user,grid}
+     *     Title: majorTitle. Use with Method = major
+     *     Quarter:
+     *     {
+     *         fall: Query by Course.fall == true
+     *         winter: Query by Course.winter == true
+     *         spring: Query by Course.spring == true
+     *     } Use with Method = courses
+     *     Dept: DeptID. Query by DeptID. Use with Method = courses, can be uses with header:Quarter
+     * }
+     * @param req HTTP GET request
+     * @param resp HTTP Response object
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
             resp.setContentType("application/json");
             String method = req.getHeader("Method");
-            if (method.equals("default")){
+            if (method.equals("test")){
                 resp.getWriter().write("Testing");
             }
             else if (method.equals("course")) {
@@ -91,6 +121,7 @@ public class MainServlet extends HttpServlet {
                 String json = new Gson().toJson(query);
                 resp.getWriter().write(json);
             } else if (method.equals("user")) {
+                //TODO Get rid of password
                 int userID = Integer.parseInt(req.getHeader("ID"));
                 User output = null;
                 for (User u : this.users) {
@@ -125,7 +156,7 @@ public class MainServlet extends HttpServlet {
                 resp.getWriter().write(json);
             }
             else{
-                resp.getWriter().write("Idk what's happening");
+                resp.getWriter().write("Wrong method");
             }
             resp.getWriter().flush();
         } catch(Exception e){
@@ -133,15 +164,74 @@ public class MainServlet extends HttpServlet {
         }
     }
 
+    /**
+     * POST http:/grid-scheduler.herokuapp.com/main
+     *
+     * Headers:
+     * {
+     *     Method:
+     *     {
+     *         Course: Adds, deletes, or edits a course
+     *         Major: Adds, deletes, or edits a major
+     *         GRID: Adds or deletes a course from a user GRID
+     *     }
+     *     Action:
+     *     {
+     *         add: Add item
+     *         delete: Delete item
+     *         edit: Edit item. Use with Method = {Course, Major}
+     *     }
+     *     ID: User ID. Use with Method = GRID
+     *     CourseID: CourseID
+     *     Title: Title of Course or Major. Use with Method = {Course, Major}
+     *     Full Title: Full title of Course. Use with Method = Course
+     *     Department: DepartmentID of Course. Use with Method = {Course, Major}
+     *     Description: Description of Course. Use with Method = Course
+     *     Units: Number of units. Use with Method = Course
+     *     Fall:
+     *     {
+     *         true: Course held in Fall
+     *         false: Course not held in Fall
+     *     } Use with Method = Course
+     *     Winter:
+     *     {
+     *         true: Course held in Winter
+     *         false: Course not held in Winter
+     *     } Use with Method = Course
+     *     Spring:
+     *     {
+     *         true: Course held in Spring
+     *         false: Course not held in Spring
+     *     } Use with Method = Course
+     *     Prerequisites: List of prerequisites. Use with Method = Major. **Unstable**
+     *     Year: {
+     *         0: Freshman year
+     *         1: Sophomore year
+     *         2: Junior year
+     *         3: Senior year
+     *     } Use with Method = GRID
+     *     Quarter {
+     *         0: Fall
+     *         1: Winter
+     *         2: Spring
+     *     } Use with Method = GRID
+     * }
+     *
+     * @param req HTTP POST Request
+     * @param resp HTTP response object
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException{
         try{
             resp.setContentType("application/json");
             String method = req.getHeader("Method");
+            //TODO Check if user is admin
             if(method.equals("Course")){
                 if(req.getHeader("Action").equals("delete")){
-                    String id = req.getHeader("ID");
+                    String id = req.getHeader("CourseID");
                     for (Course c : courses) {
                         if (c.getID().equals(id)) {
                             //TODO Remove from database
@@ -151,7 +241,7 @@ public class MainServlet extends HttpServlet {
                     }
                 } else if(req.getHeader("Action").equals("add")){
                     courses.add(new Course(
-                            req.getHeader("ID"),
+                            req.getHeader("CourseID"),
                             req.getHeader("Title"),
                             req.getHeader("Full Title"),
                             req.getHeader("Department"),
@@ -214,6 +304,7 @@ public class MainServlet extends HttpServlet {
                             Integer.parseInt(req.getHeader("Year")),
                             Integer.parseInt(req.getHeader("Quarter"))
                     );
+                    //TODO Add course to grid in database
                 }
                 else if(req.getHeader("Action").equals("delete")){
                     int perm = Integer.parseInt(req.getHeader("ID"));
@@ -240,6 +331,7 @@ public class MainServlet extends HttpServlet {
                             Integer.parseInt(req.getHeader("Year")),
                             Integer.parseInt(req.getHeader("Quarter"))
                     );
+                    //TODO Delete course from grid in database
                 }
             }
         }catch(Exception e){
