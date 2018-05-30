@@ -334,6 +334,8 @@ public class MainServlet extends HttpServlet {
                     //TODO Delete course from grid in database
                 }
             }
+            resp.getWriter().write("success");
+            resp.getWriter().flush();
         }catch(Exception e){
             //TODO print error in request
         }
