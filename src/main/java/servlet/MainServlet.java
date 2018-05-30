@@ -130,7 +130,7 @@ public class MainServlet extends HttpServlet {
                         break;
                     }
                 }
-                String json = new Gson().toJson(new Gson().toJsonTree(output,new TypeToken<User>(){}.getType()).getAsJsonObject().remove("password"));
+                String json = new Gson().toJson(output);
                 resp.getWriter().write(json);
             } else if (method.equals("major")) {
                 String majorTitle = req.getHeader("Title");
