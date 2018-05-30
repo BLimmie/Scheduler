@@ -131,13 +131,12 @@ public class MainServlet extends HttpServlet {
                     }
                 }
                 String json = "";
-                if(output.getPassword() == password){
+                if(output.getPassword().equals(password)){
                     json = new Gson().toJson(output);
                 } else {
                     json = "Login Failed";
                 }
                 resp.getWriter().write(json);
-                resp.getWriter().flush();
             } else if (method.equals("major")) {
                 String majorTitle = req.getHeader("Title");
                 Major output = null;
