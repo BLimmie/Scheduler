@@ -127,7 +127,7 @@ public class User {
      * Gets the User's password
      * @return The user's password
      */
-    private String getPassword() {
+    public String getPassword() {
         return password;
     }
 
