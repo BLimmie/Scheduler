@@ -134,7 +134,7 @@ public class MainServlet extends HttpServlet {
                 if(output.getPassword().equals(password)){
                     json = new Gson().toJson(output);
                 } else {
-                    json = "Login Failed";
+                    json = new Gson().toJson(FailedResponse.getInstance());
                 }
                 resp.getWriter().write(json);
             } else if (method.equals("major")) {
