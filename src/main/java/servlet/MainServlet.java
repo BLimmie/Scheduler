@@ -130,7 +130,7 @@ public class MainServlet extends HttpServlet {
                         break;
                     }
                 }
-                String json = new Gson().toJson(output);
+                String json = new Gson().toJson(new Gson().toJsonTree(output,new TypeToken<User>(){}.getType()).getAsJsonObject().remove("password"));
                 resp.getWriter().write(json);
             } else if (method.equals("major")) {
                 String majorTitle = req.getHeader("Title");
@@ -333,6 +333,8 @@ public class MainServlet extends HttpServlet {
                     );
                     //TODO Delete course from grid in database
                 }
+            } else if(method.equals("Login")){
+
             }
             resp.getWriter().write("success");
             resp.getWriter().flush();
