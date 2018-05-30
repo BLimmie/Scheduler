@@ -19,9 +19,9 @@ public class Course {
     private String fullTitle;
 
     /**
-     * The college the Course is offered under (e.g. Engineering)
+     * The department the Course is offered under (e.g. Engineering)
      */
-    private String college;
+    private String department;
 
     /**
      * The description of the Course
@@ -56,7 +56,6 @@ public class Course {
     /**
      * GE labels this Course contains.
      */
-    private ArrayList<String> labels;
 
     /**
      * Default constructor for Course
@@ -65,13 +64,12 @@ public class Course {
         this.ID = "";
         this.title = "";
         this.fullTitle = "";
-        this.college = "";
+        this.department = "";
         this.units = 0;
         this.prereqs = new ANDList();
         this.fall = false;
         this.winter = false;
         this.spring = false;
-        this.labels = new ArrayList<String>();
     }
 
     /**
@@ -83,13 +81,12 @@ public class Course {
         this.ID = ID;
         this.title = "";
         this.fullTitle = "";
-        this.college = "";
+        this.department = "";
         this.units = units;
         this.prereqs = new ANDList();
         this.fall = false;
         this.winter = false;
         this.spring = false;
-        this.labels = new ArrayList<String>();
     }
 
     /**
@@ -98,36 +95,33 @@ public class Course {
      * @param ID       ID associated with the course
      * @param title     Short name of course
      * @param fullTitle Full name of course
-     * @param college   College that the course is being hosted in
+     * @param department   College that the course is being hosted in
      * @param units     Number of units as a double
      * @param prereqs   List of prerequisistes for a course
      * @param fall      Class is hosted in fall
      * @param winter    Class is hosted in winter
      * @param spring    Class is hosted in spring
-     * @param labels    GE Labels for a class
      */
     public Course(String ID,
                   String title,
                   String fullTitle,
-                  String college,
+                  String department,
                   String description,
                   int units,
                   ANDList prereqs,
                   boolean fall,
                   boolean winter,
-                  boolean spring,
-                  ArrayList<String> labels) {
+                  boolean spring) {
         this.ID = ID;
         this.title = title;
         this.fullTitle = fullTitle;
-        this.college = college;
+        this.department = department;
         this.description = description;
         this.units = units;
         this.prereqs = prereqs;
         this.fall = fall;
         this.winter = winter;
         this.spring = spring;
-        this.labels = labels;
     }
 
     /**
@@ -198,16 +192,16 @@ public class Course {
      * Gets the college a course is hosted under
      * @return CoE or L&S
      */
-    public String getCollege() {
-        return college;
+    public String getDepartment() {
+        return department;
     }
 
     /**
      * Sets the college a course is hosted under
-     * @param college CoE or L&S
+     * @param department CoE or L&S
      */
-    public void setCollege(String college) {
-        this.college = college;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     /**

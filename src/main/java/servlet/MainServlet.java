@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 @WebServlet(
         name = "MainServlet",
@@ -35,7 +37,6 @@ public class MainServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             resp.setContentType("application/json");
-//            ServletOutputStream out = resp.getOutputStream();
             String method = req.getHeader("Method");
             if (method.equals("default")){
                 resp.getWriter().write("Testing");
@@ -56,7 +57,39 @@ public class MainServlet extends HttpServlet {
                 String json = new Gson().toJson(output);
                 resp.getWriter().write(json);
             } else if (method.equals("courses")) {
-                //TODO Implement search
+                String quarter = req.getHeader("Quarter");
+                ArrayList<Course> query= new ArrayList<Course>(courses);
+                if(quarter.equals("fall")){
+                    for(Course c:query){
+                        if(!c.isFall()){
+                            query.remove(c);
+                        }
+                    }
+                }
+                else if(quarter.equals("winter")){
+                    for(Course c:query){
+                        if(!c.isWinter()){
+                            query.remove(c);
+                        }
+                    }
+                }
+                else if(quarter.equals("spring")){
+                    for(Course c:query){
+                        if(!c.isSpring()){
+                            query.remove(c);
+                        }
+                    }
+                }
+                String deptID = req.getHeader("Dept");
+                if(deptID != null){
+                    for(Course c: query){
+                        if(!c.getDepartment().equals(deptID)){
+                            query.remove(c);
+                        }
+                    }
+                }
+                String json = new Gson().toJson(query);
+                resp.getWriter().write(json);
             } else if (method.equals("user")) {
                 int userID = Integer.parseInt(req.getHeader("ID"));
                 User output = null;
@@ -103,7 +136,115 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException{
-
+        try{
+            resp.setContentType("application/json");
+            String method = req.getHeader("Method");
+            if(method.equals("Course")){
+                if(req.getHeader("Action").equals("delete")){
+                    String id = req.getHeader("ID");
+                    for (Course c : courses) {
+                        if (c.getID().equals(id)) {
+                            //TODO Remove from database
+                            courses.remove(c);
+                            break;
+                        }
+                    }
+                } else if(req.getHeader("Action").equals("add")){
+                    courses.add(new Course(
+                            req.getHeader("ID"),
+                            req.getHeader("Title"),
+                            req.getHeader("Full Title"),
+                            req.getHeader("Department"),
+                            req.getHeader("Description"),
+                            Integer.parseInt(req.getHeader("Units")),
+                            new ANDList(), //TODO
+                            Boolean.parseBoolean(req.getHeader("Fall")),
+                            Boolean.parseBoolean(req.getHeader("Winter")),
+                            Boolean.parseBoolean(req.getHeader("Spring"))
+                    ));
+                    //TODO Add to database
+                } else if(req.getHeader("Action").equals("edit")){
+                    //TODO this is much more complex
+                }
+            } else if(method.equals("Major")){
+                if(req.getHeader("Action").equals("delete")){
+                    String id = req.getHeader("Title");
+                    for (Major m : majors) {
+                        if (m.getTitle().equals(id)) {
+                            //TODO Remove from database
+                            majors.remove(m);
+                            break;
+                        }
+                    }
+                } else if(req.getHeader("Action").equals("add")){
+                    majors.add(new Major(
+                            req.getHeader("Title"),
+                            req.getHeader("Department")
+                    ));
+                    //TODO Add to database
+                    Major temp = majors.get(majors.size()-1);
+                    ArrayList<String> reqs = new Gson().fromJson(req.getHeader("Prerequisites"),new TypeToken<ArrayList<String>>(){}.getType());
+                    for(String s: reqs){
+                        temp.AddRequirement(new ANDList(reqs));
+                        //TODO fix the total requirements
+                    }
+                } else if(req.getHeader("Action").equals("edit")){
+                    //TODO this is much more complex
+                }
+            } else if(method.equals("GRID")){
+                if(req.getHeader("Action").equals("add")) {
+                    int perm = Integer.parseInt(req.getHeader("ID"));
+                    User found = null;
+                    for (User u : users) {
+                        if (u.getPerm() == perm) {
+                            found = u;
+                            break;
+                        }
+                    }
+                    String courseID = req.getHeader("CourseID");
+                    Course adding = null;
+                    for (Course c : courses) {
+                        if (c.getID().equals(courseID)) {
+                            adding = c;
+                            break;
+                        }
+                    }
+                    found.getGrid().AddCourse(
+                            adding,
+                            Integer.parseInt(req.getHeader("Year")),
+                            Integer.parseInt(req.getHeader("Quarter"))
+                    );
+                }
+                else if(req.getHeader("Action").equals("delete")){
+                    int perm = Integer.parseInt(req.getHeader("ID"));
+                    User found = null;
+                    for (User u : users) {
+                        if (u.getPerm() == perm) {
+                            found = u;
+                            break;
+                        }
+                    }
+                    String courseID = req.getHeader("CourseID");
+                    Course deleting = null;
+                    for (Course c : found.getGrid().getQuarter(
+                            Integer.parseInt(req.getHeader("Year")),
+                            Integer.parseInt(req.getHeader("Quarter"))
+                    ).getCourses()) {
+                        if (c.getID().equals(courseID)) {
+                            deleting = c;
+                            break;
+                        }
+                    }
+                    found.getGrid().DeleteCourse(
+                            deleting,
+                            Integer.parseInt(req.getHeader("Year")),
+                            Integer.parseInt(req.getHeader("Quarter"))
+                    );
+                }
+            }
+        }catch(Exception e){
+            //TODO print error in request
+        }
     }
 
 }

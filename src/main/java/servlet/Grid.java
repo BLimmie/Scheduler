@@ -88,6 +88,15 @@ public class Grid{
     }
 
     /**
+     * Gets the quarter
+     * @param year Number of year
+     * @param quarter Number of quarter (Fall=0,Winter=1,Spring=2)
+     * @return
+     */
+    public Quarter getQuarter(int year, int quarter){
+        return this.grid[year][quarter];
+    }
+    /**
      * Prints the current Grid.
      */
     public void PrintGrid(){
