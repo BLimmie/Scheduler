@@ -121,8 +121,8 @@ public class MainServlet extends HttpServlet {
                 String json = new Gson().toJson(query);
                 resp.getWriter().write(json);
             } else if (method.equals("user")) {
-                //TODO Get rid of password
                 int userID = Integer.parseInt(req.getHeader("ID"));
+                String password = req.getHeader("password");
                 User output = null;
                 for (User u : this.users) {
                     if (u.getPerm() == (userID)) {
@@ -130,8 +130,14 @@ public class MainServlet extends HttpServlet {
                         break;
                     }
                 }
-                String json = new Gson().toJson(output);
+                String json = "";
+                if(output.getPassword() == password){
+                    json = new Gson().toJson(output);
+                } else {
+                    json = "Login Failed";
+                }
                 resp.getWriter().write(json);
+                resp.getWriter().flush();
             } else if (method.equals("major")) {
                 String majorTitle = req.getHeader("Title");
                 Major output = null;
@@ -333,24 +339,6 @@ public class MainServlet extends HttpServlet {
                     );
                     //TODO Delete course from grid in database
                 }
-            } else if(method.equals("Login")){
-                int userID = Integer.parseInt(req.getHeader("ID"));
-                String password = req.getHeader("password");
-                User output = null;
-                for (User u : this.users) {
-                    if (u.getPerm() == (userID)) {
-                        output = u;
-                        break;
-                    }
-                }
-                String json = "";
-                if(output.getPassword() == password){
-                    json = new Gson().toJson(output);
-                } else {
-                    json = "Login Failed";
-                }
-                resp.getWriter().write(json);
-                resp.getWriter().flush();
             }
             resp.getWriter().write("success");
             resp.getWriter().flush();
