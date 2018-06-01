@@ -1,10 +1,13 @@
+package servlet;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.dataSnapshot;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.DatabaseError;
 
 import java.io.FileInputStream;
 import java.util.HashMap;
@@ -14,13 +17,13 @@ import java.util.HashMap;
 */
 
 public class fbdbr <T> {
-	private DatabaseReference ref;
+	public DatabaseReference ref;
 	public T t;
 
 	//Constructor
 	public fbdbr () {}
 	
-	public fbdbr (String certificate, String url){fbdbr(fbdbw(certificate, url));}
+	public fbdbr (String certificate, String url){new fbdbr(new fbdbw(certificate, url));}
 
 	public fbdbr (DatabaseReference ref){this.ref = ref;}
 	
@@ -29,12 +32,10 @@ public class fbdbr <T> {
 	//retrieve value
 	public void retrieve (){
 		this.ref.addListenerForSingleValueEvent(new ValueEventListener() {
-			@Override
 			public void onDataChange(DataSnapshot dataSnapshot) {
 				this.t = dataSnapshot.getValue(T.class);
 			}
 
-			@Override
 			public void onCancelled(DatabaseError databaseError) {
 				// ...
 			}

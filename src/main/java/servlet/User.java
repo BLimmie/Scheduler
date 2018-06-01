@@ -9,7 +9,7 @@ public class User {
     private String email;
     private String firstName;
     private String lastName;
-    private String perm;
+    private int perm;
     private String password;
     private Major major;
     private Grid grid;
@@ -111,7 +111,7 @@ public class User {
      * Gets the User's perm number
      * @return The User's perm number
      */
-    public String getPerm(){
+    public int getPerm(){
         return this.perm;
     }
 
@@ -119,7 +119,7 @@ public class User {
      * Sets the User's perm number
      * @param perm The User's perm number
      */
-    public void setPerm(String perm){
+    public void setPerm(int perm){
         this.perm = perm;
     }
 
@@ -253,7 +253,7 @@ public class User {
         this.email = "";
         this.firstName = "";
         this.lastName = "";
-        this.perm = "";
+        this.perm = 0;
         this.password = "";
         this.major = new Major();
         this.grid = new Grid();
@@ -268,7 +268,7 @@ public class User {
      * @param password User's password
      * @param major User's major
      */
-    public User(String email, String firstName, String lastName, String perm, String password, Major major) {
+    public User(String email, String firstName, String lastName, int perm, String password, Major major) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -289,7 +289,7 @@ public class User {
      * @param major User's major
      * @param grid User's grid
      */
-    public User(String email, String firstName, String lastName, String perm, String password, Major major, Grid grid) {
+    public User(String email, String firstName, String lastName, int perm, String password, Major major, Grid grid) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
