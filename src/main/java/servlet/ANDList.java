@@ -55,7 +55,7 @@ public class ANDList implements Requirement{
      * @param course The Course whose ID is to be removed from the list.
      */
     public void RemoveCourse(Course course){
-        courses.add(course.getID());
+        courses.remove(course.getID());
     }
 
     /**
@@ -72,27 +72,23 @@ public class ANDList implements Requirement{
      * @return True if each course in this object's list is contained in the input list; false otherwise.
      */
     public boolean Check(ArrayList<Course> courseList){
+<<<<<<< HEAD:src/main/java/servlet/ANDList.java
         ArrayList<String> ids = new ArrayList<String>();
         ids.addAll(courses);
         boolean found = false;
+=======
+>>>>>>> origin/master:src/ANDList.java
         for (String id : courses){
-            boolean courseFound = false;
+            boolean Found = false;
             for (Course c : courseList){
                 if (c.getID().equals(id)){
-                    courseFound = true;
-                    ids.remove(id);
+                    Found = true;
                 }
             }
-            found = courseFound;
-        }
-        if (!found){
-            System.out.println("\tMISSING COURSES:");
-            for (String s : ids){
-                System.out.println("\t" + s);
+            if (!Found){
+                return false;
             }
-            System.out.println();
-            System.out.println();
         }
-        return found;
+        return true;
     }
 }
