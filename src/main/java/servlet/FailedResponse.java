@@ -8,6 +8,6 @@ public class FailedResponse {
     }
 
     private FailedResponse() {
-        response = "Failed Login";
+        response = "Failed Response";
     }
 }

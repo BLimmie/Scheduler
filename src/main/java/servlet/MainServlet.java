@@ -20,9 +20,9 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 
 public class MainServlet extends HttpServlet {
 
-    ArrayList<Course> courses;
-    ArrayList<User> users;
-    ArrayList<Major> majors;
+    private ArrayList<Course> courses;
+    private ArrayList<User> users;
+    private ArrayList<Major> majors;
     @Override
     public void init() throws ServletException{
         //TODO Make servlet fields to store data for quick retrieval
@@ -47,7 +47,8 @@ public class MainServlet extends HttpServlet {
      *         major: gets major by majorTitle
      *         grid: gets GRID by user perm#
      *     }
-     *     ID: User perm# or CourseID. Use with Method = {course,user,grid}
+     *     email: User email. User with Method = {user, grid}
+     *     ID: CourseID. Use with Method = course
      *     Title: majorTitle. Use with Method = major
      *     Quarter:
      *     {
@@ -121,7 +122,7 @@ public class MainServlet extends HttpServlet {
                 String json = new Gson().toJson(query);
                 resp.getWriter().write(json);
             } else if (method.equals("user")) {
-                int userID = Integer.parseInt(req.getHeader("ID"));
+                int userID = Integer.parseInt(req.getHeader("email"));
                 String password = req.getHeader("password");
                 User output = null;
                 for (User u : this.users) {
@@ -149,7 +150,7 @@ public class MainServlet extends HttpServlet {
                 String json = new Gson().toJson(output);
                 resp.getWriter().write(json);
             } else if (method.equals("grid")) {
-                int userID = Integer.parseInt(req.getHeader("ID"));
+                int userID = Integer.parseInt(req.getHeader("email"));
                 User output = null;
                 for (User u : this.users) {
                     if (u.getPerm() == (userID)) {
@@ -188,26 +189,29 @@ public class MainServlet extends HttpServlet {
      *     }
      *     ID: User ID. Use with Method = GRID
      *     CourseID: CourseID
-     *     Title: Title of Course or Major. Use with Method = {Course, Major}
-     *     Full Title: Full title of Course. Use with Method = Course
-     *     Department: DepartmentID of Course. Use with Method = {Course, Major}
-     *     Description: Description of Course. Use with Method = Course
-     *     Units: Number of units. Use with Method = Course
-     *     Fall:
-     *     {
-     *         true: Course held in Fall
-     *         false: Course not held in Fall
-     *     } Use with Method = Course
-     *     Winter:
-     *     {
-     *         true: Course held in Winter
-     *         false: Course not held in Winter
-     *     } Use with Method = Course
-     *     Spring:
-     *     {
-     *         true: Course held in Spring
-     *         false: Course not held in Spring
-     *     } Use with Method = Course
+     *     courseData: {
+     *         CourseID: CourseID
+     *         Title: Title of Course or Major. Use with Method = {Course, Major}
+     *         Full Title: Full title of Course. Use with Method = Course
+     *         Department: DepartmentID of Course. Use with Method = {Course, Major}
+     *         Description: Description of Course. Use with Method = Course
+     *         Units: Number of units. Use with Method = Course
+     *         Fall:
+     *         {
+     *             true: Course held in Fall
+     *             false: Course not held in Fall
+     *         }
+     *         Winter:
+     *         {
+     *             true: Course held in Winter
+     *             false: Course not held in Winter
+     *         }
+     *         Spring:
+     *         {
+     *             true: Course held in Spring
+     *             false: Course not held in Spring
+     *         }
+     *     }
      *     Prerequisites: List of prerequisites. Use with Method = Major. **Unstable**
      *     Year: {
      *         0: Freshman year
@@ -245,21 +249,19 @@ public class MainServlet extends HttpServlet {
                         }
                     }
                 } else if(req.getHeader("Action").equals("add")){
-                    courses.add(new Course(
-                            req.getHeader("CourseID"),
-                            req.getHeader("Title"),
-                            req.getHeader("Full Title"),
-                            req.getHeader("Department"),
-                            req.getHeader("Description"),
-                            Integer.parseInt(req.getHeader("Units")),
-                            new ANDList(), //TODO
-                            Boolean.parseBoolean(req.getHeader("Fall")),
-                            Boolean.parseBoolean(req.getHeader("Winter")),
-                            Boolean.parseBoolean(req.getHeader("Spring"))
-                    ));
+                    courses.add((Course)new Gson().fromJson(req.getHeader("courseData"), new TypeToken<Course>(){}.getType()));
                     //TODO Add to database
                 } else if(req.getHeader("Action").equals("edit")){
-                    //TODO this is much more complex
+                    String id = req.getHeader("CourseID");
+                    Course edit = null;
+                    for (Course c : courses) {
+                        if (c.getID().equals(id)) {
+                            //TODO Remove from database
+                            courses.remove(c);
+                            break;
+                        }
+                    }
+                    courses.add((Course)new Gson().fromJson(req.getHeader("courseData"), new TypeToken<Course>(){}.getType()));
                 }
             } else if(method.equals("Major")){
                 if(req.getHeader("Action").equals("delete")){
@@ -279,12 +281,27 @@ public class MainServlet extends HttpServlet {
                     //TODO Add to database
                     Major temp = majors.get(majors.size()-1);
                     ArrayList<String> reqs = new Gson().fromJson(req.getHeader("Prerequisites"),new TypeToken<ArrayList<String>>(){}.getType());
-                    for(String s: reqs){
-                        temp.AddRequirement(new ANDList(reqs));
-                        //TODO fix the total requirements
-                    }
+                    temp.AddRequirement(new ANDList(reqs));
+                    //TODO fix the total requirements
+
                 } else if(req.getHeader("Action").equals("edit")){
-                    //TODO this is much more complex
+                    String id = req.getHeader("Title");
+                    for (Major m : majors) {
+                        if (m.getTitle().equals(id)) {
+                            //TODO Remove from database
+                            majors.remove(m);
+                            break;
+                        }
+                    }
+                    majors.add(new Major(
+                            req.getHeader("Title"),
+                            req.getHeader("Department")
+                    ));
+                    //TODO Add to database
+                    Major temp = majors.get(majors.size()-1);
+                    ArrayList<String> reqs = new Gson().fromJson(req.getHeader("Prerequisites"),new TypeToken<ArrayList<String>>(){}.getType());
+                    temp.AddRequirement(new ANDList(reqs));
+                    //TODO fix the total requirements
                 }
             } else if(method.equals("GRID")){
                 if(req.getHeader("Action").equals("add")) {
@@ -338,8 +355,23 @@ public class MainServlet extends HttpServlet {
                     );
                     //TODO Delete course from grid in database
                 }
+            } else if(method.equals("User")){
+                if(req.getHeader("Action").equals("add")){
+                    User input = new Gson().fromJson(req.getHeader("userInfo"), new TypeToken<User>(){}.getType());
+                    users.add(input);
+                }
+                else if(req.getHeader("Action").equals("edit")){
+                    User input = new Gson().fromJson(req.getHeader("userInfo"), new TypeToken<User>(){}.getType());
+                    for(User u: users){
+                        if(u.getPerm() == input.getPerm()){
+                            users.remove(u);
+                            break;
+                        }
+                    }
+                    users.add(input);
+                }
             }
-            resp.getWriter().write("success");
+            resp.getWriter().write(new Gson().toJson(SuccessResponse.getInstance()));
             resp.getWriter().flush();
         }catch(Exception e){
             //TODO print error in request
