@@ -40,7 +40,7 @@ public class fbdbw {
 	}
 	
 	//set node
-	public void set (HashMap<String, Object> value) {ref.updateChildren(value);}
+	public void set (HashMap<String, Object> value) {ref.updateChildrenAsync(value);}
 	
 	//delete node
 	public void del () {ref.removeValue();}
