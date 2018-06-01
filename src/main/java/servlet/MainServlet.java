@@ -25,7 +25,7 @@ public class MainServlet extends HttpServlet {
     private ArrayList<Major> majors;
     @Override
     public void init() throws ServletException{
-        //TODO Make servlet fields to store data for quick retrieval
+        //TODO Make servlet fields to store data for quick retrieval from database
         courses = new ArrayList<Course>();
         users = new ArrayList<User>();
         majors = new ArrayList<Major>();
@@ -262,6 +262,7 @@ public class MainServlet extends HttpServlet {
                         }
                     }
                     courses.add((Course)new Gson().fromJson(req.getHeader("courseData"), new TypeToken<Course>(){}.getType()));
+                    //TODO Add back to database
                 }
             } else if(method.equals("Major")){
                 if(req.getHeader("Action").equals("delete")){
@@ -297,7 +298,7 @@ public class MainServlet extends HttpServlet {
                             req.getHeader("Title"),
                             req.getHeader("Department")
                     ));
-                    //TODO Add to database
+                    //TODO Add back to database
                     Major temp = majors.get(majors.size()-1);
                     ArrayList<String> reqs = new Gson().fromJson(req.getHeader("Prerequisites"),new TypeToken<ArrayList<String>>(){}.getType());
                     temp.AddRequirement(new ANDList(reqs));
@@ -359,15 +360,18 @@ public class MainServlet extends HttpServlet {
                 if(req.getHeader("Action").equals("add")){
                     User input = new Gson().fromJson(req.getHeader("userInfo"), new TypeToken<User>(){}.getType());
                     users.add(input);
+                    //TODO Add user to database
                 }
                 else if(req.getHeader("Action").equals("edit")){
                     User input = new Gson().fromJson(req.getHeader("userInfo"), new TypeToken<User>(){}.getType());
                     for(User u: users){
                         if(u.getPerm() == input.getPerm()){
+                            //TODO Remove user from database
                             users.remove(u);
                             break;
                         }
                     }
+                    //TODO Add back to database
                     users.add(input);
                 }
             }
