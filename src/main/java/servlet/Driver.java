@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class Driver {
 
     private User user;
-    private ArrayList<Course> library = new ArrayList<>();
-    private ArrayList<Major> majors = new ArrayList<>();
+    private ArrayList<Course> library = new ArrayList<Course>();
+    private ArrayList<Major> majors = new ArrayList<Major>();
 
     /**
      * The static main function that calls Driver's static Run() function.
@@ -75,12 +75,9 @@ public class Driver {
         cs32.addPrereq(cs24);
         cs56.addPrereq(cs32);
         cs64.addPrereq(cs56);
-<<<<<<< HEAD:src/main/java/servlet/Driver.java
         System.out.println("Added Prerequisites");
         System.out.println("Adding them to the library...");
         ArrayList<Course> library = new ArrayList<Course>();
-=======
->>>>>>> origin/master:src/Driver.java
         library.add(cs16);
         library.add(cs24);
         library.add(cs32);
@@ -232,7 +229,7 @@ public class Driver {
         System.out.println("Enter your last name:");
         String lastName = in.nextLine();
         System.out.println("Enter a unique perm number:");
-        String perm = in.nextLine();
+        int perm = in.nextInt();
         System.out.println("Enter a password:");
         String password = in.nextLine();
         System.out.println("What is your major? (For a list of majors, type HELP)");
@@ -701,7 +698,7 @@ public class Driver {
         Course c = new Course(id, units);
         c.setTitle(title);
         c.setFullTitle(fulltitle);
-        c.setCollege(college);
+        c.setDepartment(college);
         while (true) {
             System.out.println("Current Prerequisites:");
             ArrayList<String> preq = c.getPrereqs();

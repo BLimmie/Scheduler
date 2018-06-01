@@ -72,12 +72,9 @@ public class ANDList implements Requirement{
      * @return True if each course in this object's list is contained in the input list; false otherwise.
      */
     public boolean Check(ArrayList<Course> courseList){
-<<<<<<< HEAD:src/main/java/servlet/ANDList.java
         ArrayList<String> ids = new ArrayList<String>();
         ids.addAll(courses);
         boolean found = false;
-=======
->>>>>>> origin/master:src/ANDList.java
         for (String id : courses){
             boolean Found = false;
             for (Course c : courseList){
