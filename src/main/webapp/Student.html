@@ -1,10 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Mapache - Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="fancy-font.css">
+    <style>
+        button {
+            width: 25%;
+            background-color: #dddddd;
+            color: slategray;
+            padding: 2px;
+            border: none;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        button:hover {
+            background-color: #cccccc;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
+<div class="w3-container">
+    <h2 align="center">Here's your Grid</h2>
+    <p align="center">Here's your Four Year Grid!  Just enter the ID of the course you want to take in the right quarter.  When you're done, click verify to see if your grid checks out.</p>
+</div>
+<p></p>
+<div id="grid">
+    <div class="w3-row-padding">
+        <div class="w3-third" align="center">Spring
+            <div id="y1q1"></div>
+            <button type="button" onclick="addField('y1q1', this)">Add Course</button>
+        </div>
+        <div class="w3-third" align="center">Spring
+            <div id="y1q2"></div>
+            <button type="button" onclick="addField('y1q2', this)">Add Course</button>
+        </div>
+        <div class="w3-third" align="center">Spring
+            <div id="y1q3"></div>
+            <button type="button" onclick="addField('y1q3', this)">Add Course</button>
+        </div>
+    </div>
+    <p></p>
+
+    <div class="w3-row-padding">
+        <div class="w3-third" align="center">Spring
+            <div id="y2q1"></div>
+            <button type="button" onclick="addField('y2q1', this)">Add Course</button>
+        </div>
+        <div class="w3-third" align="center">Spring
+            <div id="y2q2"></div>
+            <button type="button" onclick="addField('y2q2', this)">Add Course</button>
+        </div>
+        <div class="w3-third" align="center">Spring
+            <div id="y2q3"></div>
+            <button type="button" onclick="addField('y2q3', this)">Add Course</button>
+        </div>
+    </div>
+    <p></p>
+
+    <div class="w3-row-padding">
+        <div class="w3-third" align="center">Spring
+            <div id="y3q1"></div>
+            <button type="button" onclick="addField('y3q1', this)">Add Course</button>
+        </div>
+        <div class="w3-third" align="center">Spring
+            <div id="y3q2"></div>
+            <button type="button" onclick="addField('y3q2', this)">Add Course</button>
+        </div>
+        <div class="w3-third" align="center">Spring
+            <div id="y3q3"></div>
+            <button type="button" onclick="addField('y3q3', this)">Add Course</button>
+        </div>
+    </div>
+    <p></p>
+
+    <div class="w3-row-padding">
+        <div class="w3-third" align="center">Spring
+            <div id="y4q1"></div>
+            <button type="button" onclick="addField('y4q1', this)">Add Course</button>
+        </div>
+        <div class="w3-third" align="center">Spring
+            <div id="y4q2"></div>
+            <button type="button" onclick="addField('y4q2', this)">Add Course</button>
+        </div>
+        <div class="w3-third" align="center">Spring
+            <div id="y4q3"></div>
+            <button type="button" onclick="addField('y4q3', this)">Add Course</button>
+        </div>
+    </div>
+    <p></p>
+<p></p>
+
+</div>
+
+<script>
+    function addField(id, butt) {
+        var quarter = document.getElementById(id);
+        var input = document.createElement("input");
+        input.type = "text";
+        input.className= "w3-input w3-border";
+        input.style.width = "90%";
+        input.style.cssFloat = "left";
+        input.placeholder = "e.g. CMPSC56";
+        var button = document.createElement("button");
+        button.className= "w3-input w3-border";
+        button.textContent = "X";
+        button.style.backgroundColor = "#162e54";
+        button.style.color = "white";
+        //button.style.color = "red";
+        button.style.width = "10%";
+        button.onclick = function()
+        {
+            document.getElementById(id).removeChild(input);
+            document.getElementById(id).removeChild(button)
+        }
+        ;
+        quarter.appendChild(input);
+        quarter.appendChild(button);
+    }
+</script>
+
+
 </body>
 </html>
+
