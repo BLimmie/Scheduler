@@ -79,7 +79,9 @@
 <h2>Course List</h2>
 
 <div class="panel2">
-    <button class="addbutton" id="addbutton"><img src="resources/plus-sign.png" align="center">           Add Course</button>
+    <button class="addbutton" id="addcourse"><img src="resources/plus-sign.png" align="center">           Add Course</button>
+    <button class="addbutton" id="addmajor"><img src="resources/plus-sign.png" align="center">           Add Major</button>
+
     <br>
     <button class="accordion">Computer Science (CMPSC)</button>
     <div class="panel">
@@ -132,6 +134,43 @@
     </div>
 
 </div>
+
+<!-- The Modal -->
+<div id="majorCreator" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Create a Major!</h2>
+        </div>
+        <div class="modal-body">
+            <p>Major:</p>
+            <input type="text" id="major" name="major" placeholder="e.g. Computer Science">
+            <p>College:</p>
+            <input type="text" id="college" name="college" placeholder="e.g. College of Engineering">
+            <p>Requirements:</p>
+            <div id="Requirements"></div>
+            <div id="reqMaker">
+                <select id="reqSelect" name="reqSelect">
+                    <option value="1">AND List</option>
+                    <option value="2">OR List</option>
+                    <option value="3">Minimum Number of Courses from List</option>
+                    <option value="4">Minimum Number of Units from Course List</option>
+                </select>
+                <p></p>
+            <button class="addprereqbutton" onclick="addReqField()">Add Requirement</button>
+            </div>
+            <br>
+            <br>
+            <input type="submit" value="Add Major">
+            <br>
+            <br>
+        </div>
+    </div>
+
+</div>
+
 <script>
     function addPrereqField() {
         var container = document.getElementById("prereqsList");
@@ -150,31 +189,234 @@
         container.appendChild(button);
         container.appendChild(input);
     }
+
+    function addReqField() {
+        var e = document.getElementById("reqSelect");
+        var choice = e.options[e.selectedIndex].value;
+        if (choice == "1"){
+            var c = document.getElementById("Requirements");
+            var courses = document.createElement("div");
+            var butt = document.createElement("button");
+            var label = document.createElement("p");
+            courses.class = "ANDList";
+            butt.textContent = "Add Course";
+            label.appendChild(document.createTextNode("You must take all of the courses in this list:"));
+            var b = document.createElement("button");
+            b.textContent = "Remove Requirement";
+            b.style.color = "red";
+            b.onclick = function()
+            {
+                c.removeChild(label);
+                c.removeChild(courses);
+                c.removeChild(butt);
+                c.removeChild(b);
+            }
+            ;
+            c.appendChild(label);
+            c.appendChild(courses);
+            c.appendChild(butt);
+            c.appendChild(b);
+            c.appendChild(document.createElement("p"));
+            butt.onclick = function()
+            {
+                var input = document.createElement("input");
+                input.type = "text";
+                input.placeholder = "e.g. CMPSC56";
+                var button = document.createElement("button");
+                button.textContent = "X";
+                button.style.color = "red";
+                button.onclick = function()
+                {
+                    courses.removeChild(input);
+                    courses.removeChild(button)
+                }
+                ;
+                courses.appendChild(button);
+                courses.appendChild(input);
+            }
+            ;
+        }
+        if (choice == "2"){
+            var c2 = document.getElementById("Requirements");
+            var courses2 = document.createElement("div");
+            var label2 = document.createElement("p");
+            courses2.class = "ORList";
+            var butt2 = document.createElement("button");
+            butt2.textContent = "Add Course";
+            label2.appendChild(document.createTextNode("You must take at least one course from this list:"));
+            var b2 = document.createElement("button");
+            b2.textContent = "Remove Requirement";
+            b2.style.color = "red";
+            b2.onclick = function()
+            {
+                c2.removeChild(label2);
+                c2.removeChild(courses2);
+                c2.removeChild(butt2);
+                c2.removeChild(b2);
+            }
+            ;
+            c2.appendChild(label2);
+            c2.appendChild(courses2);
+            c2.appendChild(butt2);
+            c2.appendChild(b2);
+            c2.appendChild(document.createElement("p"));
+            butt2.onclick = function()
+            {
+                var input = document.createElement("input");
+                input.type = "text";
+                input.placeholder = "e.g. CMPSC56";
+                var button = document.createElement("button");
+                button.textContent = "X";
+                button.style.color = "red";
+                button.onclick = function()
+                {
+                    courses2.removeChild(input);
+                    courses2.removeChild(button)
+                }
+                ;
+                courses2.appendChild(button);
+                courses2.appendChild(input);
+            }
+            ;
+        }
+        if (choice == "3"){
+            var c3 = document.getElementById("Requirements");
+            var courses3 = document.createElement("div");
+            var label3 = document.createElement("p");
+            var count3 = document.createElement("input");
+                count3.type = "number";
+                count3.value = "0";
+            courses3.class = "MinCourses";
+            var butt3 = document.createElement("button");
+            butt3.textContent = "Add Course";
+            label3.appendChild(document.createTextNode("You must take this many courses from this list:"));
+            var b3 = document.createElement("button");
+            b3.textContent = "Remove Requirement";
+            b3.style.color = "red";
+            b3.onclick = function()
+            {
+                c3.removeChild(label3);
+                c3.removeChild(courses3);
+                c3.removeChild(butt3);
+                c3.removeChild(b3);
+                c3.removeChild(count3);
+            }
+            ;
+            c3.appendChild(label3);
+            c3.appendChild(count3);
+            c3.appendChild(courses3);
+            c3.appendChild(butt3);
+            c3.appendChild(b3);
+            c3.appendChild(document.createElement("p"));
+            butt3.onclick = function()
+            {
+                var input = document.createElement("input");
+                input.type = "text";
+                input.placeholder = "e.g. CMPSC56";
+                var button = document.createElement("button");
+                button.textContent = "X";
+                button.style.color = "red";
+                button.onclick = function()
+                {
+                    courses3.removeChild(input);
+                    courses3.removeChild(button)
+                }
+                ;
+                courses3.appendChild(button);
+                courses3.appendChild(input);
+            }
+            ;
+        }
+        if (choice == "4"){
+            var c4 = document.getElementById("Requirements");
+            var courses4 = document.createElement("div");
+            var label4 = document.createElement("p");
+            var count4 = document.createElement("input");
+                count4.type = "number";
+                count4.value = "0";
+            courses4.class = "MinUnits";
+            var butt4 = document.createElement("button");
+            butt4.textContent = "Add Course";
+            label4.appendChild(document.createTextNode("You must take this many units from this list of courses:"));
+            var b4 = document.createElement("button");
+            b4.textContent = "Remove Requirement";
+            b4.style.color = "red";
+            b4.onclick = function()
+            {
+                c4.removeChild(label4);
+                c4.removeChild(courses4);
+                c4.removeChild(butt4);
+                c4.removeChild(b4);
+                c4.removeChild(count4);
+            }
+            ;
+            c4.appendChild(label4);
+            c4.appendChild(count4);
+            c4.appendChild(courses4);
+            c4.appendChild(butt4);
+            c4.appendChild(b4);
+            c4.appendChild(document.createElement("p"));
+            butt4.onclick = function()
+            {
+                var input = document.createElement("input");
+                input.type = "text";
+                input.placeholder = "e.g. CMPSC56";
+                var button = document.createElement("button");
+                button.textContent = "X";
+                button.style.color = "red";
+                button.onclick = function()
+                {
+                    courses4.removeChild(input);
+                    courses4.removeChild(button)
+                }
+                ;
+                courses4.appendChild(button);
+                courses4.appendChild(input);
+            }
+            ;
+        }
+    }
+
 </script>
 
 <script>
     // Get the modal
     var modal1 = document.getElementById('courseCreator');
+    var modal2 = document.getElementById('majorCreator');
     // Get the button that opens the modal
-    var btn1 = document.getElementById("addbutton");
-
+    var btn1 = document.getElementById("addcourse");
+    var btn2 = document.getElementById("addmajor");
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
+    var span2 = document.getElementsByClassName("close")[1];
 
     // When the user clicks the button, open the modal
     btn1.onclick = function() {
         modal1.style.display = "block";
     }
 
+    btn2.onclick = function() {
+        modal2.style.display = "block";
+    }
+
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal1.style.display = "none";
+        modal2.style.display = "none";
+    }
+
+    span2.onclick = function() {
+        modal1.style.display = "none";
+        modal2.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal1) {
             modal1.style.display = "none";
+        }
+        if (event.target == modal2) {
+            modal2.style.display = "none";
         }
     }
 </script>
