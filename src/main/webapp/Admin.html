@@ -1,10 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mapache - Home</title>
+    <style>
+        * {
+            font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+            box-sizing: border-box;
+            font-weight: lighter;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 40%;
+            height: auto;
+            overflow-y: auto;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {top:-300px; opacity:0}
+            to {top:0; opacity:1}
+        }
+
+        @keyframes animatetop {
+            from {top:-300px; opacity:0}
+            to {top:0; opacity:1}
+        }
+
+        /* The Close Button */
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #162e54;
+            color: white;
+        }
+
+        .modal-body {
+            padding: 18px 16px;
+        }
+
+        input[type=text], [type=password], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        .accordion {
+            background-color: #eee;
+            background-color: #162e54;
+            color: #444;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        .active, .accordion:hover, .addbutton:hover {
+            background-color: #ccc;
+        }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        .panel2 {
+            float: left;
+            width: 20%;
+        }
+
+        input[type=submit] {
+            background-color: #162e54;
+            font-size: 14px;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        input[type=submit]:hover {
+            background-color: #314668;
+            color: white;
+        }
+
+        .addprereqbutton {
+            background-color: #162e54;
+            font-size: 14px;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: left;
+        }
+
+        .addprereqbutton:hover {
+            background-color: #314668;
+            color: white;
+        }
+
+        img {
+            width: 10%;
+            height: 10%;
+            text-align: left;
+        }
+
+        .addbutton {
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            background-color: #162e54;
+            transition: 0.4s;
+        }
+
+    </style>
 </head>
 <body>
+
+<h2>Course List</h2>
+
+<div class="panel2">
+    <button class="addbutton" id="addbutton"><img src="resources/plus-sign.png" align="center">           Add Course</button>
+    <br>
+    <button class="accordion">Computer Science (CMPSC)</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <button class="accordion">Chemical Engineering (CH E)</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <button class="accordion">Electrical Engineering (ECE)</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="courseCreator" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Create a Course!</h2>
+        </div>
+        <div class="modal-body">
+            <p>Course ID:</p>
+            <input type="text" id="courseid" name="courseid" placeholder="e.g. CMPSC48">
+            <p>Course Title (Short):</p>
+            <input type="text" id="coursetitle" name="coursetitle" placeholder="e.g. COMP SCI PROJECT">
+            <p>Course Title (Full):</p>
+            <input type="text" id="coursefulltitle" name="coursefulltitle" placeholder="e.g. Computer Science Project">
+            <p>Department:</p>
+            <select id="dept" name="dept">
+                <option>Computer Science - CMPSC</option>
+                <option>Electrical Engineering - ECE</option>
+                <option>Chemical Engineering - CH E</option>
+            </select>
+            <p>Prerequisites:</p>
+            <div id="prereqsList"></div>
+            <button class="addprereqbutton" onclick="addPrereqField()">Add Prerequisite</button>
+
+            <br>
+            <br>
+            <input type="submit" value="Add Course">
+            <br>
+            <br>
+        </div>
+    </div>
+
+</div>
+<script>
+    function addPrereqField() {
+        var container = document.getElementById("prereqsList");
+        var input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = "e.g. CMPSC56";
+        var button = document.createElement("button");
+        button.textContent = "X";
+        button.style.color = "red";
+        button.onclick = function()
+        {
+            document.getElementById("prereqsList").removeChild(input);
+            document.getElementById("prereqsList").removeChild(button)
+        }
+        ;
+        container.appendChild(button);
+        container.appendChild(input);
+    }
+</script>
+
+<script>
+    // Get the modal
+    var modal1 = document.getElementById('courseCreator');
+    // Get the button that opens the modal
+    var btn1 = document.getElementById("addbutton");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn1.onclick = function() {
+        modal1.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal1.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal1) {
+            modal1.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+</script>
 
 </body>
 </html>
