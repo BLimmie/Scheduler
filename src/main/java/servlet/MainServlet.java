@@ -301,8 +301,10 @@ public class MainServlet extends HttpServlet {
                     ));
                     //TODO Add back to database
                     Major temp = majors.get(majors.size()-1);
-                    ArrayList<String> reqs = new Gson().fromJson(req.getHeader("Prerequisites"),new TypeToken<ArrayList<String>>(){}.getType());
-                    temp.AddRequirement(new ANDList(reqs));
+                    ArrayList<Requirement> reqs = new Gson().fromJson(req.getHeader("Prerequisites"),new TypeToken<ArrayList<Requirement>>(){}.getType());
+                    for(Requirement r: reqs){
+                        temp.AddRequirement(r);
+                    }
                     //TODO fix the total requirements
                 }
             } else if(method.equals("GRID")){
