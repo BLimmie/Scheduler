@@ -1,3 +1,6 @@
+//TODO: Have the student's grid autoload values to the grid displayed on the webpage
+//TODO: HAVE "Edit Profile" LINK TO THE PROPER WEBPAGE
+
 function addField(id) {
     var quarter = document.getElementById(id);
     var input = document.createElement("input");
@@ -12,6 +15,7 @@ function addField(id) {
     button.style.backgroundColor = "#162e54";
     button.style.color = "white";
     button.style.width = "10%";
+    button.style.height = "100%";
     button.onclick = function()
     {
         document.getElementById(id).removeChild(input);
@@ -26,6 +30,8 @@ function addField(id) {
 var grid;
 
 function Verify(){
+    //TODO: SET THE grid VAR TO A NEW EMPTY GRID
+
     var y1q1 = document.getElementById("y1q1");
     AddCourses(y1q1, 1, 1);
     var y1q2 = document.getElementById("y1q1");
@@ -54,18 +60,24 @@ function Verify(){
     var y4q3 = document.getElementById("y4q1");
     AddCourses(y4q3, 4, 3);
 
-    // CALL VERIFY ON THIS GRID OBJECT
-    // SOMEHOW DISPLAY RESULTS
+    // TODO: CALL VERIFY ON THE GRID OBJECT
+    // TODO: SOMEHOW DISPLAY RESULTS
 }
 
 function AddCourses(quarterName, year, quarter){
     var courses = quarter.childNodes;
     var i;
     for (i = 0; i < courses.length; i++){
-        // ADD courses[i] TO grid
+        //TODO: ADD COURSES TO GRID OBJECT
     }
 }
 
 function Save(){
-    // SET STUDENT'S GRID TO THIS GRID
+    //TODO: SET THE CURRENT GRID TO THE STUDENT'S GRID
+}
+
+function LogOut(){
+    //TODO: FILL IN URL FOR LOGIN PAGE
+    //window.location.assign("http://www.google.com");
+    window.location.assign("http://localhost:63342/Grid-Scheduler/src/main/webapp/Login.html");
 }
