@@ -124,16 +124,16 @@ public class Grid{
     /**
     Checks to see if the grid is currently valid and produces an error otherwise.
      */
-    public void Verify(){
+    public Response Verify(){
 
         ArrayList<Course> tempLibrary = new ArrayList<Course>();
-
+        String messages = "";
         boolean prereqsGood = true;
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
                 for (Course c : grid[i][j].getCourses()) {
                     if (!(c.CheckPrereqs(tempLibrary))) {
-                        System.out.println("MISSING PREREQUISITE(S) FOR " + c.getID() + "!");
+                        messages += ("MISSING PREREQUISITE(S) FOR " + c.getID() + "!\n");
                         prereqsGood = false;
                     }
                 }
@@ -142,18 +142,19 @@ public class Grid{
         }
 
         if (prereqsGood) {
-            System.out.println("All Course Prerequisites met.");
+            messages += ("All Course Prerequisites met.\n");
         }
 
         System.out.println();
 
         if (major.CheckRequirements(tempLibrary)){
-            System.out.println("SUCCESS - You've met the requirements of your major!");
+            messages += ("SUCCESS - You've met the requirements of your major!\n");
+
         }
         else{
-            System.out.println("FAILURE - You have not met the requirements of your major.");
+            messages +=("FAILURE - You have not met the requirements of your major.\n");
         }
-
+        return new Response(messages);
     }
 
  }

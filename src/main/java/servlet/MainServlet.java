@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 @WebServlet(
         name = "MainServlet",
@@ -70,7 +68,7 @@ public class MainServlet extends HttpServlet {
             resp.setContentType("application/json");
             String method = req.getHeader("Method");
             if (method.equals("test")){
-                resp.getWriter().write("Testing");
+                resp.getWriter().write(new Gson().toJson(new Response("Testing message")));
             }
             else if (method.equals("course")) {
                 String courseID = req.getHeader("ID");
@@ -135,7 +133,7 @@ public class MainServlet extends HttpServlet {
                 if(output.getPassword().equals(password)){
                     json = new Gson().toJson(output);
                 } else {
-                    json = new Gson().toJson(FailedResponse.getInstance());
+                    json = new Gson().toJson(new Response("Invalid Login"));
                 }
                 resp.getWriter().write(json);
             } else if (method.equals("major")) {
@@ -160,9 +158,20 @@ public class MainServlet extends HttpServlet {
                 }
                 String json = new Gson().toJson(output.getGrid());
                 resp.getWriter().write(json);
+            } else if (method.equals("verify")){
+                int userID = Integer.parseInt(req.getHeader("email"));
+                User checking = null;
+                for (User u : this.users) {
+                    if (u.getPerm() == (userID)) {
+                        checking = u;
+                        break;
+                    }
+                }
+                String json = new Gson().toJson(checking.getGrid().Verify());
+                resp.getWriter().write(json);
             }
             else{
-                resp.getWriter().write("Wrong method");
+                resp.getWriter().write(new Gson().toJson(new Response("Invalid Method")));
             }
             resp.getWriter().flush();
         } catch(Exception e){
@@ -281,9 +290,10 @@ public class MainServlet extends HttpServlet {
                     ));
                     //TODO Add to database
                     Major temp = majors.get(majors.size()-1);
-                    ArrayList<String> reqs = new Gson().fromJson(req.getHeader("Prerequisites"),new TypeToken<ArrayList<String>>(){}.getType());
-                    temp.AddRequirement(new ANDList(reqs));
-                    //TODO fix the total requirements
+                    ArrayList<Requirement> reqs = new Gson().fromJson(req.getHeader("Requirements"),new TypeToken<ArrayList<Requirement>>(){}.getType());
+                    for(Requirement r: reqs){
+                        temp.AddRequirement(r);
+                    }
 
                 } else if(req.getHeader("Action").equals("edit")){
                     String id = req.getHeader("Title");
@@ -300,8 +310,10 @@ public class MainServlet extends HttpServlet {
                     ));
                     //TODO Add back to database
                     Major temp = majors.get(majors.size()-1);
-                    ArrayList<String> reqs = new Gson().fromJson(req.getHeader("Prerequisites"),new TypeToken<ArrayList<String>>(){}.getType());
-                    temp.AddRequirement(new ANDList(reqs));
+                    ArrayList<Requirement> reqs = new Gson().fromJson(req.getHeader("Prerequisites"),new TypeToken<ArrayList<Requirement>>(){}.getType());
+                    for(Requirement r: reqs){
+                        temp.AddRequirement(r);
+                    }
                     //TODO fix the total requirements
                 }
             } else if(method.equals("GRID")){
@@ -375,7 +387,7 @@ public class MainServlet extends HttpServlet {
                     users.add(input);
                 }
             }
-            resp.getWriter().write(new Gson().toJson(SuccessResponse.getInstance()));
+            resp.getWriter().write(new Gson().toJson(new Response("Success")));
             resp.getWriter().flush();
         }catch(Exception e){
             //TODO print error in request
