@@ -120,11 +120,11 @@ public class MainServlet extends HttpServlet {
                 String json = new Gson().toJson(query);
                 resp.getWriter().write(json);
             } else if (method.equals("user")) {
-                int userID = Integer.parseInt(req.getHeader("email"));
+                String userID = req.getHeader("email");
                 String password = req.getHeader("password");
                 User output = null;
                 for (User u : this.users) {
-                    if (u.getPerm() == (userID)) {
+                    if (u.getEmail() == (userID)) {
                         output = u;
                         break;
                     }
@@ -148,10 +148,10 @@ public class MainServlet extends HttpServlet {
                 String json = new Gson().toJson(output);
                 resp.getWriter().write(json);
             } else if (method.equals("grid")) {
-                int userID = Integer.parseInt(req.getHeader("email"));
+                String userID = req.getHeader("email");
                 User output = null;
                 for (User u : this.users) {
-                    if (u.getPerm() == (userID)) {
+                    if (u.getEmail() == (userID)) {
                         output = u;
                         break;
                     }
@@ -159,10 +159,10 @@ public class MainServlet extends HttpServlet {
                 String json = new Gson().toJson(output.getGrid());
                 resp.getWriter().write(json);
             } else if (method.equals("verify")){
-                int userID = Integer.parseInt(req.getHeader("email"));
+                String userID = req.getHeader("email");
                 User checking = null;
                 for (User u : this.users) {
-                    if (u.getPerm() == (userID)) {
+                    if (u.getEmail() == (userID)) {
                         checking = u;
                         break;
                     }
@@ -310,64 +310,23 @@ public class MainServlet extends HttpServlet {
                     ));
                     //TODO Add back to database
                     Major temp = majors.get(majors.size()-1);
-                    ArrayList<Requirement> reqs = new Gson().fromJson(req.getHeader("Prerequisites"),new TypeToken<ArrayList<Requirement>>(){}.getType());
+                    ArrayList<Requirement> reqs = new Gson().fromJson(req.getHeader("Requirements"),new TypeToken<ArrayList<Requirement>>(){}.getType());
                     for(Requirement r: reqs){
                         temp.AddRequirement(r);
                     }
                     //TODO fix the total requirements
                 }
             } else if(method.equals("GRID")){
-                if(req.getHeader("Action").equals("add")) {
-                    int perm = Integer.parseInt(req.getHeader("ID"));
-                    User found = null;
-                    for (User u : users) {
-                        if (u.getPerm() == perm) {
-                            found = u;
-                            break;
-                        }
+                String userID = req.getHeader("ID");
+                User found = null;
+                for (User u : users) {
+                    if (u.getEmail() == userID) {
+                        found = u;
+                        break;
                     }
-                    String courseID = req.getHeader("CourseID");
-                    Course adding = null;
-                    for (Course c : courses) {
-                        if (c.getID().equals(courseID)) {
-                            adding = c;
-                            break;
-                        }
-                    }
-                    found.getGrid().AddCourse(
-                            adding,
-                            Integer.parseInt(req.getHeader("Year")),
-                            Integer.parseInt(req.getHeader("Quarter"))
-                    );
-                    //TODO Add course to grid in database
                 }
-                else if(req.getHeader("Action").equals("delete")){
-                    int perm = Integer.parseInt(req.getHeader("ID"));
-                    User found = null;
-                    for (User u : users) {
-                        if (u.getPerm() == perm) {
-                            found = u;
-                            break;
-                        }
-                    }
-                    String courseID = req.getHeader("CourseID");
-                    Course deleting = null;
-                    for (Course c : found.getGrid().getQuarter(
-                            Integer.parseInt(req.getHeader("Year")),
-                            Integer.parseInt(req.getHeader("Quarter"))
-                    ).getCourses()) {
-                        if (c.getID().equals(courseID)) {
-                            deleting = c;
-                            break;
-                        }
-                    }
-                    found.getGrid().DeleteCourse(
-                            deleting,
-                            Integer.parseInt(req.getHeader("Year")),
-                            Integer.parseInt(req.getHeader("Quarter"))
-                    );
-                    //TODO Delete course from grid in database
-                }
+                found.setGrid((Grid) new Gson().fromJson(req.getHeader("GRID"), new TypeToken<Grid>(){}.getType()));
+                //TODO Update user's grid in database
             } else if(method.equals("User")){
                 if(req.getHeader("Action").equals("add")){
                     User input = new Gson().fromJson(req.getHeader("userInfo"), new TypeToken<User>(){}.getType());
