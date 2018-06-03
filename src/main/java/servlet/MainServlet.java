@@ -281,9 +281,10 @@ public class MainServlet extends HttpServlet {
                     ));
                     //TODO Add to database
                     Major temp = majors.get(majors.size()-1);
-                    ArrayList<String> reqs = new Gson().fromJson(req.getHeader("Prerequisites"),new TypeToken<ArrayList<String>>(){}.getType());
-                    temp.AddRequirement(new ANDList(reqs));
-                    //TODO fix the total requirements
+                    ArrayList<Requirement> reqs = new Gson().fromJson(req.getHeader("Requirements"),new TypeToken<ArrayList<Requirement>>(){}.getType());
+                    for(Requirement r: reqs){
+                        temp.AddRequirement(r);
+                    }
 
                 } else if(req.getHeader("Action").equals("edit")){
                     String id = req.getHeader("Title");
