@@ -60,8 +60,8 @@ function Verify(){
     var y4q3 = document.getElementById("y4q1");
     AddCourses(y4q3, 4, 3);
 
-    // TODO: CALL VERIFY ON THE GRID OBJECT
-    // TODO: SOMEHOW DISPLAY RESULTS
+    // TODO: SET THE USER'S GRID TO THIS GRID
+    // TODO: CALL VERIFY
 }
 
 function AddCourses(quarterName, year, quarter){
@@ -70,10 +70,6 @@ function AddCourses(quarterName, year, quarter){
     for (i = 0; i < courses.length; i++){
         //TODO: ADD COURSES TO GRID OBJECT
     }
-}
-
-function Save(){
-    //TODO: SET THE CURRENT GRID TO THE STUDENT'S GRID
 }
 
 function LogOut(){
