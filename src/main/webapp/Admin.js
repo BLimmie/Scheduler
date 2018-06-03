@@ -1,3 +1,5 @@
+//TODO: LOAD MAJOR AND COURSES INTO THE COURSE/MAJOR CREATOR MENUS TO EDIT THEM
+
 function LogOut(){
     //TODO: FILL IN URL FOR LOGIN PAGE
     //window.location.assign("http://www.google.com");
@@ -263,3 +265,18 @@ function addReqField() {
         ;
     }
 }
+/*
+function displayCourseMenu(){
+    var c = document.getElementById("coursemenu");
+    var m = document.getElementById("majormenu");
+    c.style.display = "inline";
+    m.style.display = "none";
+}
+
+function displayMajorMenu(){
+    var c = document.getElementById("coursemenu");
+    var m = document.getElementById("majormenu");
+    m.style.display = "inline";
+    c.style.display = "none";
+}
+*/
