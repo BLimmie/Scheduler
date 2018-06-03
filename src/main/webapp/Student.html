@@ -6,8 +6,88 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="fancy-font.css">
     <style>
-        button {
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #314668;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #cccccc;
+        }
+
+        .w3-button{
+            font-size: 12px;
+            float: left;
+            width: 100%
+        }
+
+        .accordion {
+            background-color: #314668;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: 6px white;
+            text-align: left;
+            outline: 6px white;
+            font-size: 15px;
+            transition: 0.4s;
+            float: left;
+        }
+
+        .active, .accordion:hover {
+            background-color: slategray;
+        }
+
+        .panel {
+            display: none;
+            background-color: white;
+            overflow: hidden;
+            float: left;
+        }
+
+        .panel2 {
             width: 25%;
+            height: 100%;
+            float: left;
+            padding-right: 100px;
+        }
+
+        .imgpanel{
+            padding: 18px;
+            background-color: #314668;
+        }
+
+        img {
+            height: 70%;
+            width: 70%;
+            text-align: left;
+            background
+        }
+
+        .panel3 {
+            height: 71vh;
+            overflow:scroll;
+        }
+
+        button {
+            width: 40%;
             background-color: #dddddd;
             color: slategray;
             padding: 2px;
@@ -15,80 +95,313 @@
             cursor: pointer;
             transition: 0.4s;
         }
-        button:hover {
-            background-color: #cccccc;
+        button:hover, .bar2:hover{
+            background-color: slategray;
             color: white;
         }
+
+        h1{
+            color: darkslategray;
+        }
+
+        p{
+            color: slategray;
+        }
+
+        .bar2{
+            background-color:white;
+            color: slategray;
+        }
+
+        .grid{
+            margin: auto;
+            width: 70%;
+            padding: 0px 16px;
+            float: left;
+        }
+
+        .w3-row-padding{
+            padding:18px 18px;
+            /*background-color: gainsboro;*/
+        }
+
     </style>
 </head>
 <body>
 
-<div class="w3-container">
-    <h2 align="center">Here's your Grid</h2>
-    <p align="center">Here's your Four Year Grid!  Just enter the ID of the course you want to take in the right quarter.  When you're done, click verify to see if your grid checks out.</p>
-</div>
-<p></p>
-<div id="grid">
-    <div class="w3-row-padding">
-        <div class="w3-third" align="center">Spring
-            <div id="y1q1"></div>
-            <button type="button" onclick="addField('y1q1', this)">Add Course</button>
+<ul>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#editprofile">Edit Profile</a></li>
+    <li style="float:right"><a href="#logout">Log Out</a></li>
+</ul>
+
+<div class="panel2" align="center">
+    <div class="imgpanel">
+        <img src="resources/logo.png">
+    </div>
+    <div class="panel3" align="center">
+    <button class="accordion">Computer Science (CMPSC)</button>
+    <div class="panel">
+        <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+    </div>
+
+    <button class="accordion">Chemical Engineering (CH E)</button>
+    <div class="panel">
+        <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+    </div>
+
+    <button class="accordion">Electrical Engineering (ECE)</button>
+    <div class="panel">
+        <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+    </div>
+
+    <button class="accordion">Computer Engineering (ENGR)</button>
+    <div class="panel">
+        <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+    </div>
+
+    <button class="accordion">Mechanical Engineering (ME)</button>
+    <div class="panel">
+        <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+    </div>
+
+    <button class="accordion">Dance (DANCE)</button>
+    <div class="panel">
+        <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+    </div>
+
+    <button class="accordion">Art History (ARTHI)</button>
+    <div class="panel">
+        <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+    </div>
+
+    <button class="accordion">History (HIST)</button>
+    <div class="panel">
+        <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+    </div>
+
+        <button class="accordion">Anthropology (ANTH)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
         </div>
-        <div class="w3-third" align="center">Spring
+
+        <button class="accordion">Art Studio (ARTST)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Astronomy (ASTRO)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Chicano Studies (CHST)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Earth Science (EARTH)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Economics (ECON)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Bird Studies (BRST)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Doggo Studies (DGST)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Pupper Studies (PPRST)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+</div>
+    </div>
+
+<div id="grid" class="grid">
+    <div class="w3-container">
+        <p></p>
+        <h1 align="center">Welcome, Justin!</h1>
+        <p align="center">This is your Four Year Grid.  Just enter the ID of the course you want to take in the right quarter.  When you're done, click verify to see if your grid checks out.</p>
+        <p align="center">You can browse various courses with that list on the left.</p>
+    </div>
+    <p></p>
+
+    <div class="w3-row-padding" style="background-color:gainsboro;">
+        <div class="w3-third" align="center">Fall
+            <div id="y1q1"></div>
+            <button class="bar1" type="button" onclick="addField('y1q1', this)">Add Course</button>
+        </div>
+        <div class="w3-third" align="center">Winter
             <div id="y1q2"></div>
-            <button type="button" onclick="addField('y1q2', this)">Add Course</button>
+            <button class="bar1" type="button" onclick="addField('y1q2', this)">Add Course</button>
         </div>
         <div class="w3-third" align="center">Spring
             <div id="y1q3"></div>
-            <button type="button" onclick="addField('y1q3', this)">Add Course</button>
+            <button class="bar1" type="button" onclick="addField('y1q3', this)">Add Course</button>
         </div>
     </div>
     <p></p>
 
+
     <div class="w3-row-padding">
-        <div class="w3-third" align="center">Spring
+        <div class="w3-third" align="center">Fall
             <div id="y2q1"></div>
-            <button type="button" onclick="addField('y2q1', this)">Add Course</button>
+            <button class="bar2" type="button" onclick="addField('y2q1', this)">Add Course</button>
         </div>
-        <div class="w3-third" align="center">Spring
+        <div class="w3-third" align="center">Winter
             <div id="y2q2"></div>
-            <button type="button" onclick="addField('y2q2', this)">Add Course</button>
+            <button class="bar2" type="button" onclick="addField('y2q2', this)">Add Course</button>
         </div>
         <div class="w3-third" align="center">Spring
             <div id="y2q3"></div>
-            <button type="button" onclick="addField('y2q3', this)">Add Course</button>
+            <button class="bar2" type="button" onclick="addField('y2q3', this)">Add Course</button>
         </div>
     </div>
     <p></p>
 
-    <div class="w3-row-padding">
-        <div class="w3-third" align="center">Spring
+
+    <div class="w3-row-padding" style="background-color:gainsboro;">
+        <div class="w3-third" align="center">Fall
             <div id="y3q1"></div>
-            <button type="button" onclick="addField('y3q1', this)">Add Course</button>
+            <button class="bar1" type="button" onclick="addField('y3q1', this)">Add Course</button>
         </div>
-        <div class="w3-third" align="center">Spring
+        <div class="w3-third" align="center">Winter
             <div id="y3q2"></div>
-            <button type="button" onclick="addField('y3q2', this)">Add Course</button>
+            <button class="bar1" type="button" onclick="addField('y3q2', this)">Add Course</button>
         </div>
         <div class="w3-third" align="center">Spring
             <div id="y3q3"></div>
-            <button type="button" onclick="addField('y3q3', this)">Add Course</button>
+            <button class="bar1" type="button" onclick="addField('y3q3', this)">Add Course</button>
         </div>
     </div>
     <p></p>
 
+
     <div class="w3-row-padding">
-        <div class="w3-third" align="center">Spring
+        <div class="w3-third" align="center">Fall
             <div id="y4q1"></div>
-            <button type="button" onclick="addField('y4q1', this)">Add Course</button>
+            <button class="bar2" type="button" onclick="addField('y4q1', this)">Add Course</button>
         </div>
-        <div class="w3-third" align="center">Spring
+        <div class="w3-third" align="center">Winter
             <div id="y4q2"></div>
-            <button type="button" onclick="addField('y4q2', this)">Add Course</button>
+            <button class="bar2" type="button" onclick="addField('y4q2', this)">Add Course</button>
         </div>
         <div class="w3-third" align="center">Spring
             <div id="y4q3"></div>
-            <button type="button" onclick="addField('y4q3', this)">Add Course</button>
+            <button class="bar2" type="button" onclick="addField('y4q3', this)">Add Course</button>
         </div>
     </div>
     <p></p>
@@ -120,6 +433,23 @@
         ;
         quarter.appendChild(input);
         quarter.appendChild(button);
+    }
+</script>
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
     }
 </script>
 
