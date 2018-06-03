@@ -15,7 +15,7 @@ function addField(id) {
     button.style.backgroundColor = "#162e54";
     button.style.color = "white";
     button.style.width = "10%";
-    button.style.height = "100%";
+    button.style.height = "49px";
     button.onclick = function()
     {
         document.getElementById(id).removeChild(input);

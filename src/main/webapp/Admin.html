@@ -1,61 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mapache - Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="fancy-font.css">
     <link rel="stylesheet" type="text/css" href="modal.css"/>
-    <link rel="stylesheet" type="text/css" href="fancy-font.css"/>
+    <script type="text/javascript" src="Admin.js"></script>
     <style>
 
-        body{
-            /*background-image: url("resources/gradient.png");*/
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            background-size: cover;
-            position: relative;
+        select{
+            display: inline;
+
         }
 
-        .accordion {
-            background-color: #eee;
-            background-color: #162e54;
-            color: #444;
-            color: white;
-            cursor: pointer;
-            padding: 10px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 15px;
-            transition: 0.4s;
-        }
-
-        .active, .accordion:hover, .addbutton:hover {
-            background-color: #ccc;
-        }
-
-        h2{
-            color: white;
-        }
-
-        .panel {
-            padding: 0 18px;
-            display: none;
-            background-color: white;
-            overflow: hidden;
-        }
-
-        .panel2 {
-            display: inline-block;
-            vertical-align: top;
-            width: 40%;
-            background-color: #162e54;
-            padding: 20px;
-        }
-
-        .addprereqbutton {
-            background-color: #162e54;
+        .editme {
+            background-color: #314668;
             font-size: 14px;
             color: white;
             padding: 12px 20px;
@@ -65,101 +25,404 @@
             float: left;
         }
 
-        .addprereqbutton:hover {
+        .editme:hover {
+            background-color: slategray;
+            color: white;
+        }
+
+        .verify{
+            color:white;
+            background-color: #314668;
+        }
+
+        .verify:hover{
+            background-color: slategray;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #314668;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: slategray;
+        }
+
+        .w3-button{
+            font-size: 12px;
+            float: left;
+            width: 100%
+        }
+
+        .accordion, .nullaccordion {
             background-color: #314668;
             color: white;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: 6px white;
+            text-align: left;
+            outline: 6px white;
+            font-size: 15px;
+            transition: 0.4s;
+            float: left;
+        }
+
+        .active, .accordion:hover, .nullaccordion:hover {
+            background-color: slategray;
+        }
+
+        .panel {
+            display: none;
+            background-color: white;
+            overflow: hidden;
+            float: left;
+        }
+
+        .panel2 {
+            width: 25%;
+            height: 100%;
+            float: left;
+            padding-right: 100px;
+        }
+
+        .imgpanel{
+            padding: 18px;
+            background-color: #314668;
+        }
+
+        /* answers */
+        .inf{
+            color: black;
+            margin: 2px;
+        }
+
+        /* headers */
+        .inf2{
+            margin: 2px;
         }
 
         img {
-            width: 10%;
-            height: 10%;
+            height: 70%;
+            width: 70%;
             text-align: left;
         }
 
-        .addbutton {
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-            width: 100%;
+        .panel3 {
+            height: 71vh;
+            overflow-y:scroll;
+        }
+
+        button {
+            width: 40%;
+            background-color: #dddddd;
+            color: slategray;
+            padding: 2px;
             border: none;
-            text-align: left;
-            outline: none;
-            font-size: 18px;
-            background-color: #162e54;
+            cursor: pointer;
             transition: 0.4s;
+        }
+        button:hover, .bar2:hover{
+            background-color: slategray;
+            color: white;
+        }
+
+        h1{
+            color: darkslategray;
+        }
+
+        p{
+            color: slategray;
+        }
+
+        .bar2{
+            background-color:white;
+            color: slategray;
+        }
+
+        .grid{
+            margin: auto;
+            width: 70%;
+            padding: 0px 16px;
+            float: left;
+        }
+
+        .w3-row-padding{
+            padding:18px 18px;
+            /*background-color: gainsboro;*/
         }
 
     </style>
 </head>
 <body>
-<h1 align="center" style="color:black">Here's a list of Courses and Majors at your school.</h1>
-<h3 align="center" style="color:black">Create or modify an existing Course or Major to get started!</h3>
-    <div style="background-color:#162e54;padding:8px 20px;">
-<div style="text-align:center">
-<div class="panel2" align="center">
-    <button class="addbutton" id="addcourse"><img src="resources/plus-sign.png" align="center">           Add Course</button>
-    <br>
-    <button class="accordion">Computer Science (CMPSC)</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
 
-    <button class="accordion">Chemical Engineering (CH E)</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-
-    <button class="accordion">Electrical Engineering (ECE)</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <button class="accordion">Computer Engineering (ENGR)</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <button class="accordion">Mechanical Engineering (ME)</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <button class="accordion">Dance (DANCE)</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <button class="accordion">Art History (ARTHI)</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <button class="accordion">History (HIST)</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-</div>
+<ul>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#editprofile">Edit Profile</a></li>
+    <li style="float:right" onclick="LogOut()"><a href="#logout">Log Out</a></li>
+</ul>
 
 <div class="panel2" align="center">
-    <button class="addbutton" id="addmajor"><img src="resources/plus-sign.png" align="center">           Add Major</button>
-
-    <br>
-    <button class="accordion">College of Engineering</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div class="imgpanel">
+        <img src="resources/logo.png">
     </div>
+    <div id="courses" class="panel3" align="center">
+        <button class="nullaccordion" style="background-color:slategray" onclick="coursecreator()">Create a Course +</button>
+        <button class="nullaccordion" style="background-color:slategray" onclick="majorcreator()">Create a Major +</button>
+        <button class="accordion">Computer Science (CMPSC)</button>
+        <div class="panel">
+            <button onclick="ViewCourse('CMPSC16')" class="w3-button w3-block w3-left-align">CMPSC16 - PROBLEM SOLVING I</button>
+            <button onclick="ViewCourse('CMPSC24')" class="w3-button w3-block w3-left-align">CMPSC24 - PROBLEM SOLVING II</button>
+            <button onclick="ViewCourse('CMPSC32')" class="w3-button w3-block w3-left-align">CMPSC32 - OBJ ORIENT DESIGN</button>
+            <button onclick="ViewCourse('CMPSC40')" class="w3-button w3-block w3-left-align">CMPSC40 - FOUNDATION COMP SCI</button>
+            <button onclick="ViewCourse('CMPSC48')" class="w3-button w3-block w3-left-align">CMPSC48 - COMP SCI PROJECT</button>
+            <button onclick="ViewCourse('CMPSC56')" class="w3-button w3-block w3-left-align">CMPSC56 - ADV APP PROGRAM</button>
+            <button onclick="ViewCourse('CMPSC64')" class="w3-button w3-block w3-left-align">CMPSC64 - COMP ORGANIZATION</button>
+        </div>
 
-    <button class="accordion">Letters and Sciences</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
+        <button class="accordion">Chemical Engineering (CH E)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
 
-    <button class="accordion">College of Creative Studies</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <button class="accordion">Electrical Engineering (ECE)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Computer Engineering (ENGR)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Mechanical Engineering (ME)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Dance (DANCE)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Art History (ARTHI)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">History (HIST)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Anthropology (ANTH)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Art Studio (ARTST)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Astronomy (ASTRO)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Chicano Studies (CHST)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Earth Science (EARTH)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Economics (ECON)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Bird Studies (BRST)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Doggo Studies (DGST)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
+        <button class="accordion">Pupper Studies (PPRST)</button>
+        <div class="panel">
+            <button class="w3-button w3-block w3-left-align">CMPSC16</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC24</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC32</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC40</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC48</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC56</button>
+            <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        </div>
+
     </div>
 </div>
-</div>
+
+<div id="grid" class="grid" align="center">
+    <div class="w3-container">
+        <p></p>
+        <h1 align="center">Welcome, Justin!</h1>
+        <p align="center">This is your Four Year Grid.  Just enter the ID of the course you want to take in the right quarter.  When you're done, click verify to see if your grid checks out.</p>
+        <p align="center">You can browse various courses with that list on the left.</p>
+    </div>
+    <p></p>
 </div>
 
-<h2 align="center" style="color:black">How to Go about Creating a Course and a Major</h2>
-<div class="paragraph">
-    <p align="center">Mapache is a dynamic application allowing you to construct a four-year plan of your college schedule and receive immediate feedback based on the requirements of your major and course prerequisites.</p>
+
+
+<!-- The Modal -->
+<div id="courseViewer" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3>CMPSC 48 - COMP SCI PROJECT</h3>
+        </div>
+        <div class="modal-body">
+            <br>
+            <p class="inf2">Course ID:</p>
+            <p style="font-weight:normal" id="cid" class="inf">CMPSC48</p>
+            <br>
+            <p class="inf2">Course Title (Short):</p>
+            <p style="font-weight:normal" id="ctitle" class="inf">COMP SCI PROJECT</p>
+            <br>
+            <p class="inf2">Course Title (Full):</p>
+            <p style="font-weight:normal" id = "coursetitlefull" class="inf">Computer Science Project</p>
+            <br>
+            <p class="inf2">Department:</p>
+            <p id = "department" class="inf">Computer Science</p>
+            <br>
+            <p class="inf2">Description:</p>
+            <p id = "description" class="inf">This is a fun course!  It's a project class where you create fun projects and have fun.</p>
+            <br>
+            <p class="inf2">Prerequisites:</p>
+            <div id="prerequisites">
+                <p class="inf">CMPSC32</p>
+                <p class="inf">CMPSC56</p>
+            </div>
+            <br>
+            <button class="editme">Edit Me!</button>
+            <br>
+            <br>
+        </div>
+    </div>
 
 </div>
 
@@ -170,7 +433,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <span class="close">&times;</span>
-            <h2>Create a Course!</h2>
+            <h3>Create a Course!</h3>
         </div>
         <div class="modal-body">
             <p>Course ID:</p>
@@ -180,6 +443,7 @@
             <p>Course Title (Full):</p>
             <input type="text" id="coursefulltitle" name="coursefulltitle" placeholder="e.g. Computer Science Project">
             <p>Department:</p>
+            <label for="dept"></label>
             <select id="dept" name="dept">
                 <option>Computer Science - CMPSC</option>
                 <option>Electrical Engineering - ECE</option>
@@ -187,11 +451,11 @@
             </select>
             <p>Prerequisites:</p>
             <div id="prereqsList"></div>
-            <button class="addprereqbutton" onclick="addPrereqField()">Add Prerequisite</button>
+            <button class="editme" onclick="addPrereqField()">Add Prerequisite</button>
 
             <br>
             <br>
-            <input type="submit" value="Add Course">
+            <input type="submit" value="Finish Course" onclick="CreateCourse()">
             <br>
             <br>
         </div>
@@ -209,13 +473,14 @@
             <h2>Create a Major!</h2>
         </div>
         <div class="modal-body">
-            <p>Major:</p>
+            <p style="color:black;">Major:</p>
             <input type="text" id="major" name="major" placeholder="e.g. Computer Science">
-            <p>College:</p>
+            <p style="color:black;">College:</p>
             <input type="text" id="college" name="college" placeholder="e.g. College of Engineering">
-            <p>Requirements:</p>
+            <p style="color:black;">Requirements:</p>
             <div id="Requirements"></div>
             <div id="reqMaker">
+                <label for="reqSelect"></label>
                 <select id="reqSelect" name="reqSelect">
                     <option value="1">AND List</option>
                     <option value="2">OR List</option>
@@ -223,267 +488,17 @@
                     <option value="4">Minimum Number of Units from Course List</option>
                 </select>
                 <p></p>
-            <button class="addprereqbutton" onclick="addReqField()">Add Requirement</button>
+                <button class="editme" onclick="addReqField()">Add Requirement</button>
             </div>
             <br>
             <br>
-            <input type="submit" value="Add Major">
+            <input type="submit" value="Finish Major" onclick="CreateMajor()">
             <br>
             <br>
         </div>
     </div>
 
 </div>
-
-<script>
-    function addPrereqField() {
-        var container = document.getElementById("prereqsList");
-        var input = document.createElement("input");
-        input.type = "text";
-        input.placeholder = "e.g. CMPSC56";
-        var button = document.createElement("button");
-        button.textContent = "X";
-        button.style.color = "red";
-        button.onclick = function()
-        {
-            document.getElementById("prereqsList").removeChild(input);
-            document.getElementById("prereqsList").removeChild(button)
-        }
-        ;
-        container.appendChild(button);
-        container.appendChild(input);
-    }
-
-    function addReqField() {
-        var e = document.getElementById("reqSelect");
-        var choice = e.options[e.selectedIndex].value;
-        if (choice == "1"){
-            var c = document.getElementById("Requirements");
-            var courses = document.createElement("div");
-            var butt = document.createElement("button");
-            var label = document.createElement("p");
-            courses.class = "ANDList";
-            butt.textContent = "Add Course";
-            label.appendChild(document.createTextNode("You must take all of the courses in this list:"));
-            var b = document.createElement("button");
-            b.textContent = "Remove Requirement";
-            b.style.color = "red";
-            b.onclick = function()
-            {
-                c.removeChild(label);
-                c.removeChild(courses);
-                c.removeChild(butt);
-                c.removeChild(b);
-            }
-            ;
-            c.appendChild(label);
-            c.appendChild(courses);
-            c.appendChild(butt);
-            c.appendChild(b);
-            c.appendChild(document.createElement("p"));
-            butt.onclick = function()
-            {
-                var input = document.createElement("input");
-                input.type = "text";
-                input.placeholder = "e.g. CMPSC56";
-                var button = document.createElement("button");
-                button.textContent = "X";
-                button.style.color = "red";
-                button.onclick = function()
-                {
-                    courses.removeChild(input);
-                    courses.removeChild(button)
-                }
-                ;
-                courses.appendChild(button);
-                courses.appendChild(input);
-            }
-            ;
-        }
-        if (choice == "2"){
-            var c2 = document.getElementById("Requirements");
-            var courses2 = document.createElement("div");
-            var label2 = document.createElement("p");
-            courses2.class = "ORList";
-            var butt2 = document.createElement("button");
-            butt2.textContent = "Add Course";
-            label2.appendChild(document.createTextNode("You must take at least one course from this list:"));
-            var b2 = document.createElement("button");
-            b2.textContent = "Remove Requirement";
-            b2.style.color = "red";
-            b2.onclick = function()
-            {
-                c2.removeChild(label2);
-                c2.removeChild(courses2);
-                c2.removeChild(butt2);
-                c2.removeChild(b2);
-            }
-            ;
-            c2.appendChild(label2);
-            c2.appendChild(courses2);
-            c2.appendChild(butt2);
-            c2.appendChild(b2);
-            c2.appendChild(document.createElement("p"));
-            butt2.onclick = function()
-            {
-                var input = document.createElement("input");
-                input.type = "text";
-                input.placeholder = "e.g. CMPSC56";
-                var button = document.createElement("button");
-                button.textContent = "X";
-                button.style.color = "red";
-                button.onclick = function()
-                {
-                    courses2.removeChild(input);
-                    courses2.removeChild(button)
-                }
-                ;
-                courses2.appendChild(button);
-                courses2.appendChild(input);
-            }
-            ;
-        }
-        if (choice == "3"){
-            var c3 = document.getElementById("Requirements");
-            var courses3 = document.createElement("div");
-            var label3 = document.createElement("p");
-            var count3 = document.createElement("input");
-                count3.type = "number";
-                count3.value = "0";
-            courses3.class = "MinCourses";
-            var butt3 = document.createElement("button");
-            butt3.textContent = "Add Course";
-            label3.appendChild(document.createTextNode("You must take this many courses from this list:"));
-            var b3 = document.createElement("button");
-            b3.textContent = "Remove Requirement";
-            b3.style.color = "red";
-            b3.onclick = function()
-            {
-                c3.removeChild(label3);
-                c3.removeChild(courses3);
-                c3.removeChild(butt3);
-                c3.removeChild(b3);
-                c3.removeChild(count3);
-            }
-            ;
-            c3.appendChild(label3);
-            c3.appendChild(count3);
-            c3.appendChild(courses3);
-            c3.appendChild(butt3);
-            c3.appendChild(b3);
-            c3.appendChild(document.createElement("p"));
-            butt3.onclick = function()
-            {
-                var input = document.createElement("input");
-                input.type = "text";
-                input.placeholder = "e.g. CMPSC56";
-                var button = document.createElement("button");
-                button.textContent = "X";
-                button.style.color = "red";
-                button.onclick = function()
-                {
-                    courses3.removeChild(input);
-                    courses3.removeChild(button)
-                }
-                ;
-                courses3.appendChild(button);
-                courses3.appendChild(input);
-            }
-            ;
-        }
-        if (choice == "4"){
-            var c4 = document.getElementById("Requirements");
-            var courses4 = document.createElement("div");
-            var label4 = document.createElement("p");
-            var count4 = document.createElement("input");
-                count4.type = "number";
-                count4.value = "0";
-            courses4.class = "MinUnits";
-            var butt4 = document.createElement("button");
-            butt4.textContent = "Add Course";
-            label4.appendChild(document.createTextNode("You must take this many units from this list of courses:"));
-            var b4 = document.createElement("button");
-            b4.textContent = "Remove Requirement";
-            b4.style.color = "red";
-            b4.onclick = function()
-            {
-                c4.removeChild(label4);
-                c4.removeChild(courses4);
-                c4.removeChild(butt4);
-                c4.removeChild(b4);
-                c4.removeChild(count4);
-            }
-            ;
-            c4.appendChild(label4);
-            c4.appendChild(count4);
-            c4.appendChild(courses4);
-            c4.appendChild(butt4);
-            c4.appendChild(b4);
-            c4.appendChild(document.createElement("p"));
-            butt4.onclick = function()
-            {
-                var input = document.createElement("input");
-                input.type = "text";
-                input.placeholder = "e.g. CMPSC56";
-                var button = document.createElement("button");
-                button.textContent = "X";
-                button.style.color = "red";
-                button.onclick = function()
-                {
-                    courses4.removeChild(input);
-                    courses4.removeChild(button)
-                }
-                ;
-                courses4.appendChild(button);
-                courses4.appendChild(input);
-            }
-            ;
-        }
-    }
-
-</script>
-
-<script>
-    // Get the modal
-    var modal1 = document.getElementById('courseCreator');
-    var modal2 = document.getElementById('majorCreator');
-    // Get the button that opens the modal
-    var btn1 = document.getElementById("addcourse");
-    var btn2 = document.getElementById("addmajor");
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-    var span2 = document.getElementsByClassName("close")[1];
-
-    // When the user clicks the button, open the modal
-    btn1.onclick = function() {
-        modal1.style.display = "block";
-    }
-
-    btn2.onclick = function() {
-        modal2.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal1.style.display = "none";
-        modal2.style.display = "none";
-    }
-
-    span2.onclick = function() {
-        modal1.style.display = "none";
-        modal2.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal1) {
-            modal1.style.display = "none";
-        }
-        if (event.target == modal2) {
-            modal2.style.display = "none";
-        }
-    }
-</script>
 
 <script>
     var acc = document.getElementsByClassName("accordion");
@@ -502,5 +517,68 @@
     }
 </script>
 
+<script>
+
+    // Get the modal
+    var modal1 = document.getElementById('courseCreator');
+    var modal2 = document.getElementById('majorCreator');
+    var modal3 = document.getElementById('courseViewer');
+    // Get the button that opens the modal
+    var btn1 = document.getElementById("addcourse");
+    var btn2 = document.getElementById("addmajor");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    var span2 = document.getElementsByClassName("close")[1];
+    var span3 = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    function coursecreator() {
+        modal1.style.display = "block";
+    }
+
+    function majorcreator() {
+        modal2.style.display = "block";
+    }
+
+    function ViewCourse(courseid) {
+        document.getElementById("cid").innerHTML = courseid;
+        modal3.style.display = "block";
+        //TODO: Using text passed to ViewCourse, find that course in database and send its info to the modal
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal1.style.display = "none";
+        modal2.style.display = "none";
+        modal3.style.display = "none";
+    }
+
+    span2.onclick = function() {
+        modal1.style.display = "none";
+        modal2.style.display = "none";
+        modal3.style.display = "none";
+    }
+
+    span3.onclick = function() {
+        modal1.style.display = "none";
+        modal2.style.display = "none";
+        modal3.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal1) {
+            modal1.style.display = "none";
+        }
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+        if (event.target == modal3) {
+            modal3.style.display = "none";
+        }
+    }
+</script>
+
 </body>
 </html>
+
