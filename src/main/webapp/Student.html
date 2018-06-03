@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="fancy-font.css">
+    <script src="Student.js"></script>
     <style>
+
+        .verify{
+            color:white;
+            background-color: #314668;
+        }
+
+        .verify:hover{
+            background-color: slategray;
+        }
 
         ul {
             list-style-type: none;
@@ -28,7 +38,7 @@
         }
 
         li a:hover {
-            background-color: #cccccc;
+            background-color: slategray;
         }
 
         .w3-button{
@@ -78,12 +88,11 @@
             height: 70%;
             width: 70%;
             text-align: left;
-            background
         }
 
         .panel3 {
             height: 71vh;
-            overflow:scroll;
+            overflow-y:scroll;
         }
 
         button {
@@ -142,13 +151,13 @@
     <div class="panel3" align="center">
     <button class="accordion">Computer Science (CMPSC)</button>
     <div class="panel">
-        <button class="w3-button w3-block w3-left-align">CMPSC16</button>
-        <button class="w3-button w3-block w3-left-align">CMPSC24</button>
-        <button class="w3-button w3-block w3-left-align">CMPSC32</button>
-        <button class="w3-button w3-block w3-left-align">CMPSC40</button>
-        <button class="w3-button w3-block w3-left-align">CMPSC48</button>
-        <button class="w3-button w3-block w3-left-align">CMPSC56</button>
-        <button class="w3-button w3-block w3-left-align">CMPSC64</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC16 - PROBLEM SOLVING I</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC24 - PROBLEM SOLVING II</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC32 - OBJ ORIENT DESIGN</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC40 - FOUNDATION COMP SCI</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC48 - COMP SCI PROJECT</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC56 - ADV APP PROGRAM</button>
+        <button class="w3-button w3-block w3-left-align">CMPSC64 - COMP ORGANIZATION</button>
     </div>
 
     <button class="accordion">Chemical Engineering (CH E)</button>
@@ -330,7 +339,7 @@
 </div>
     </div>
 
-<div id="grid" class="grid">
+<div id="grid" class="grid" align="center">
     <div class="w3-container">
         <p></p>
         <h1 align="center">Welcome, Justin!</h1>
@@ -342,15 +351,15 @@
     <div class="w3-row-padding" style="background-color:gainsboro;">
         <div class="w3-third" align="center">Fall
             <div id="y1q1"></div>
-            <button class="bar1" type="button" onclick="addField('y1q1', this)">Add Course</button>
+            <button class="bar1" type="button" onclick="addField('y1q1')">Add Course</button>
         </div>
         <div class="w3-third" align="center">Winter
             <div id="y1q2"></div>
-            <button class="bar1" type="button" onclick="addField('y1q2', this)">Add Course</button>
+            <button class="bar1" type="button" onclick="addField('y1q2')">Add Course</button>
         </div>
         <div class="w3-third" align="center">Spring
             <div id="y1q3"></div>
-            <button class="bar1" type="button" onclick="addField('y1q3', this)">Add Course</button>
+            <button class="bar1" type="button" onclick="addField('y1q3')">Add Course</button>
         </div>
     </div>
     <p></p>
@@ -359,15 +368,15 @@
     <div class="w3-row-padding">
         <div class="w3-third" align="center">Fall
             <div id="y2q1"></div>
-            <button class="bar2" type="button" onclick="addField('y2q1', this)">Add Course</button>
+            <button class="bar2" type="button" onclick="addField('y2q1')">Add Course</button>
         </div>
         <div class="w3-third" align="center">Winter
             <div id="y2q2"></div>
-            <button class="bar2" type="button" onclick="addField('y2q2', this)">Add Course</button>
+            <button class="bar2" type="button" onclick="addField('y2q2')">Add Course</button>
         </div>
         <div class="w3-third" align="center">Spring
             <div id="y2q3"></div>
-            <button class="bar2" type="button" onclick="addField('y2q3', this)">Add Course</button>
+            <button class="bar2" type="button" onclick="addField('y2q3')">Add Course</button>
         </div>
     </div>
     <p></p>
@@ -376,15 +385,15 @@
     <div class="w3-row-padding" style="background-color:gainsboro;">
         <div class="w3-third" align="center">Fall
             <div id="y3q1"></div>
-            <button class="bar1" type="button" onclick="addField('y3q1', this)">Add Course</button>
+            <button class="bar1" type="button" onclick="addField('y3q1')">Add Course</button>
         </div>
         <div class="w3-third" align="center">Winter
             <div id="y3q2"></div>
-            <button class="bar1" type="button" onclick="addField('y3q2', this)">Add Course</button>
+            <button class="bar1" type="button" onclick="addField('y3q2')">Add Course</button>
         </div>
         <div class="w3-third" align="center">Spring
             <div id="y3q3"></div>
-            <button class="bar1" type="button" onclick="addField('y3q3', this)">Add Course</button>
+            <button class="bar1" type="button" onclick="addField('y3q3')">Add Course</button>
         </div>
     </div>
     <p></p>
@@ -393,48 +402,23 @@
     <div class="w3-row-padding">
         <div class="w3-third" align="center">Fall
             <div id="y4q1"></div>
-            <button class="bar2" type="button" onclick="addField('y4q1', this)">Add Course</button>
+            <button class="bar2" type="button" onclick="addField('y4q1')">Add Course</button>
         </div>
         <div class="w3-third" align="center">Winter
             <div id="y4q2"></div>
-            <button class="bar2" type="button" onclick="addField('y4q2', this)">Add Course</button>
+            <button class="bar2" type="button" onclick="addField('y4q2')">Add Course</button>
         </div>
         <div class="w3-third" align="center">Spring
             <div id="y4q3"></div>
-            <button class="bar2" type="button" onclick="addField('y4q3', this)">Add Course</button>
+            <button class="bar2" type="button" onclick="addField('y4q3')">Add Course</button>
         </div>
     </div>
     <p></p>
-<p></p>
+
+    <button class="verify" id="verify" onclick="Verify()">Verify</button>
+    <button class="verify" id="save" onclick="Save()">Save Grid</button>
 
 </div>
-
-<script>
-    function addField(id, butt) {
-        var quarter = document.getElementById(id);
-        var input = document.createElement("input");
-        input.type = "text";
-        input.className= "w3-input w3-border";
-        input.style.width = "90%";
-        input.style.cssFloat = "left";
-        input.placeholder = "e.g. CMPSC56";
-        var button = document.createElement("button");
-        button.className= "w3-input w3-border";
-        button.textContent = "X";
-        button.style.backgroundColor = "#162e54";
-        button.style.color = "white";
-        //button.style.color = "red";
-        button.style.width = "10%";
-        button.onclick = function()
-        {
-            document.getElementById(id).removeChild(input);
-            document.getElementById(id).removeChild(button)
-        }
-        ;
-        quarter.appendChild(input);
-        quarter.appendChild(button);
-    }
-</script>
 
 <script>
     var acc = document.getElementsByClassName("accordion");
@@ -452,7 +436,6 @@
         });
     }
 </script>
-
 
 </body>
 </html>
