@@ -31,7 +31,7 @@ function initialize(){
             "email": email,
             "Method": "user",
             "password": password,
-            "admin": "true"
+            "admin": "false"
         },
         success: function(data){
             userGrid = data["grid"];
