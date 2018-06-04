@@ -124,7 +124,7 @@ public class MainServlet extends HttpServlet {
                 String password = req.getHeader("password");
                 User output = null;
                 for (User u : this.users) {
-                    if (u.getEmail() == (userID)) {
+                    if (u.getEmail().equals(userID)) {
                         output = u;
                         break;
                     }
@@ -320,7 +320,7 @@ public class MainServlet extends HttpServlet {
                 String userID = req.getHeader("ID");
                 User found = null;
                 for (User u : users) {
-                    if (u.getEmail() == userID) {
+                    if (u.getEmail().equals(userID)) {
                         found = u;
                         break;
                     }
