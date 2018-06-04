@@ -1,7 +1,7 @@
 function studentLogin(){
     $.ajax({
         type: "GET",
-        url: 'grid-scheduler.herokuapp.com/main',
+        url: '/main',
         headers: {
             "email": document.getElementById("email").value,
             "Method": "user",
