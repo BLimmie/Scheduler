@@ -13,7 +13,7 @@ public class User {
     private String password;
     private Major major;
     private Grid grid;
-    private boolean admin;
+    public boolean admin;
 
     private static ArrayList<User> users = new ArrayList<User>();
 

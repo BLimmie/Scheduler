@@ -137,7 +137,15 @@ public class MainServlet extends HttpServlet {
                 }
                 String json = "";
                 if(output.getPassword().equals(password)){
-                    json = new Gson().toJson(output);
+                    if(admin && output.admin) {
+                        json = new Gson().toJson(output);
+                    }
+                    else if(admin){
+                        json = new Gson().toJson(new Response("Not an admin"));
+                    }
+                    else{
+                        json = new Gson().toJson(output);
+                    }
                 } else {
                     json = new Gson().toJson(new Response("Invalid Login"));
                 }
