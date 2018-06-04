@@ -5,7 +5,8 @@ function studentLogin(){
         headers: {
             "email": document.getElementById("email").value,
             "Method": "user",
-            "password": document.getElementById("password").value
+            "password": document.getElementById("password").value,
+            "admin": "false"
         },
         success: function(data){
             console.log(data);

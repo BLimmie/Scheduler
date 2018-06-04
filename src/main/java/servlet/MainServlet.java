@@ -28,7 +28,7 @@ public class MainServlet extends HttpServlet {
         users = new ArrayList<User>();
         majors = new ArrayList<Major>();
         majors.add(new Major("Computer Science", "College of Engineering"));
-        users.add(new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", majors.get(0)));
+        users.add(new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", majors.get(0),true));
         courses.add(new Course("CS8", "Comp Sci 8", "Computer Science 8", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
         super.init();
     }
@@ -123,6 +123,7 @@ public class MainServlet extends HttpServlet {
             } else if (method.equals("user")) {
                 String userID = req.getHeader("email");
                 String password = req.getHeader("password");
+                boolean admin = Boolean.parseBoolean(req.getHeader("admin"));
                 User output = null;
                 for (User u : this.users) {
                     if (u.getEmail().equals(userID)) {
@@ -131,7 +132,7 @@ public class MainServlet extends HttpServlet {
                     }
                 }
                 if (output == null){
-                    output = new User(userID,password);
+                    output = new User(userID,password,admin);
                     users.add(output);
                 }
                 String json = "";

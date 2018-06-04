@@ -13,6 +13,7 @@ public class User {
     private String password;
     private Major major;
     private Grid grid;
+    private boolean admin;
 
     private static ArrayList<User> users = new ArrayList<User>();
 
@@ -257,6 +258,7 @@ public class User {
         this.password = "";
         this.major = new Major();
         this.grid = new Grid();
+        this.admin = false;
     }
 
     /**
@@ -268,7 +270,7 @@ public class User {
      * @param password User's password
      * @param major User's major
      */
-    public User(String email, String firstName, String lastName, int perm, String password, Major major) {
+    public User(String email, String firstName, String lastName, int perm, String password, Major major, boolean admin) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -276,6 +278,7 @@ public class User {
         this.password = password;
         this.major = major;
         this.grid = new Grid();
+        this.admin = admin;
         UpdateMajor();
     }
 
@@ -284,10 +287,11 @@ public class User {
      * @param email User's email
      * @param password User's password
      */
-    public User(String email, String password){
+    public User(String email, String password, boolean admin){
         this();
         this.setEmail(email);
         this.setPassword(password);
+        this.admin = admin;
     }
     /**
      * Constructor for User
@@ -299,7 +303,7 @@ public class User {
      * @param major User's major
      * @param grid User's grid
      */
-    public User(String email, String firstName, String lastName, int perm, String password, Major major, Grid grid) {
+    public User(String email, String firstName, String lastName, int perm, String password, Major major, Grid grid, boolean admin) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -307,6 +311,7 @@ public class User {
         this.password = password;
         this.major = major;
         this.grid = grid;
+        this.admin = admin;
         UpdateMajor();
     }
 
