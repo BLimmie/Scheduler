@@ -36,9 +36,11 @@ function initialize(){
             "admin": "false"
         },
         success: function(data){
+            console.log(data);
             userGrid = data["grid"];
             userMajor = data["major"];
             firstName = data["firstName"];
+            console.log(firstName);
         }
     });
 
