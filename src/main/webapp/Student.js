@@ -41,11 +41,9 @@ function initialize(){
             userMajor = data["major"];
             firstName = data["firstName"];
             console.log(firstName);
+            document.getElementById("header").innerHTML = "Welcome " + firstName + "!";
         }
     });
-
-    document.getElementById("header").innerHTML = "Welcome " + firstName + "!";
-
 
 }
 
