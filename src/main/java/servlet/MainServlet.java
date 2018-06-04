@@ -132,7 +132,7 @@ public class MainServlet extends HttpServlet {
                     }
                 }
                 if (output == null){
-                    output = new User(userID,password,admin);
+                    output = new User(userID,password,false);
                     users.add(output);
                 }
                 String json = "";
@@ -340,6 +340,7 @@ public class MainServlet extends HttpServlet {
                     }
                 }
                 found.setGrid((Grid) new Gson().fromJson(req.getHeader("GRID"), new TypeToken<Grid>(){}.getType()));
+                found.getGrid().UpdateLibrary(courses);
                 //TODO Update user's grid in database
             } else if(method.equals("User")){
                 if(req.getHeader("Action").equals("add")){
