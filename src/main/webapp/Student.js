@@ -21,7 +21,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
-function intialize(){
+function initialize(){
     var email = getUrlParameter("email");
     var password = getUrlParameter("password");
     $.ajax({
