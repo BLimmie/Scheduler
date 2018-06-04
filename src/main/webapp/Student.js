@@ -1,10 +1,6 @@
 //TODO: Have the student's grid autoload values to the grid displayed on the webpage
 //TODO: HAVE "Edit Profile" LINK TO THE PROPER WEBPAGE
 
-var courseList;
-var userGrid;
-var userMajor;
-var firstName;
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
