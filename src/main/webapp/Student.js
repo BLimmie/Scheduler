@@ -1,6 +1,50 @@
 //TODO: Have the student's grid autoload values to the grid displayed on the webpage
 //TODO: HAVE "Edit Profile" LINK TO THE PROPER WEBPAGE
 
+var courseList;
+var userGrid;
+var userMajor;
+var firstName;
+
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+function intialize(){
+    var email = getUrlParameter("email");
+    var password = getUrlParameter("password");
+    $.ajax({
+        type: "GET",
+        url: '/main',
+        headers: {
+            "email": email,
+            "Method": "user",
+            "password": password,
+            "admin": "true"
+        },
+        success: function(data){
+            userGrid = data["grid"];
+            userMajor = data["major"];
+            firstName = data["firstName"];
+        }
+    });
+
+    document.getElementById("header").innerHTML = "Welcome, " + firstName + "!";
+
+
+}
+
 function addField(id) {
     var quarter = document.getElementById(id);
     var input = document.createElement("input");
@@ -27,7 +71,7 @@ function addField(id) {
 }
 
 // THE GRID OBJECT
-var grid;
+var grid = (function(grid){while(grid.push([null,null,null]) < 4); return grid})([]);
 
 function Verify(){
     //TODO: SET THE grid VAR TO A NEW EMPTY GRID
@@ -60,7 +104,32 @@ function Verify(){
     var y4q3 = document.getElementById("y4q1");
     AddCourses(y4q3, 4, 3);
 
-    // TODO: SET THE USER'S GRID TO THIS GRID
+    $.ajax({
+        type: "POST",
+        url: "/main",
+        headers: {
+            "Method": "GRID",
+            "ID": email, //TODO
+            "GRID": JSON.stringify({
+                "grid": grid,
+                "library": [],
+                "major": userMajor //TODO
+            })
+        },
+        success: function (data) {
+            $.ajax({
+                type: "GET",
+                url: "/main",
+                headers: {
+                    "Method": "verify",
+                    "email": email //TODO
+                },
+                success: function(data){
+                    alert(data["response"]);
+                }
+            });
+        }
+    })
     // TODO: CALL VERIFY
 }
 
@@ -68,6 +137,18 @@ function AddCourses(quarterName, year, quarter){
     var courses = quarter.childNodes;
     var i;
     for (i = 0; i < courses.length; i++){
+        var course = courses[i].value;
+        $.ajax({
+            type: "GET",
+            url: '/main',
+            headers: {
+                "Method": "course",
+                "ID": course
+            },
+            success: function(data){
+                grid[year][quarter].push(data);
+            }
+        });
         //TODO: ADD COURSES TO GRID OBJECT
     }
 }
