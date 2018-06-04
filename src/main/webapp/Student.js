@@ -40,7 +40,7 @@ function initialize(){
         }
     });
 
-    document.getElementById("header").innerText = "Welcome, " + firstName + "!";
+    document.getElementById("header").innerText = "Welcome " + firstName + "!";
 
 
 }
