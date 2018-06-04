@@ -280,6 +280,16 @@ public class User {
     }
 
     /**
+     * Easy constructor
+     * @param email User's email
+     * @param password User's password
+     */
+    public User(String email, String password){
+        this();
+        this.setEmail(email);
+        this.setPassword(password);
+    }
+    /**
      * Constructor for User
      * @param email User's email
      * @param firstName User's first name

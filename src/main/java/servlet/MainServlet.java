@@ -29,6 +29,7 @@ public class MainServlet extends HttpServlet {
         majors = new ArrayList<Major>();
         majors.add(new Major("Computer Science", "College of Engineering"));
         users.add(new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", majors.get(0)));
+        courses.add(new Course("CS8", "Comp Sci 8", "Computer Science 8", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
         super.init();
     }
 
@@ -128,6 +129,10 @@ public class MainServlet extends HttpServlet {
                         output = u;
                         break;
                     }
+                }
+                if (output == null){
+                    output = new User(userID,password);
+                    users.add(output);
                 }
                 String json = "";
                 if(output.getPassword().equals(password)){
