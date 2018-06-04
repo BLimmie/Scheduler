@@ -8,6 +8,7 @@ function studentLogin(){
             "password": document.getElementById("password").value
         },
         success: function(data){
+            console.log(data);
             if(data["response"] == "Invalid Login"){
                 alert("Invalid Login");
             }
