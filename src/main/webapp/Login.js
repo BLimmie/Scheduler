@@ -13,7 +13,7 @@ function studentLogin(){
                 alert("Invalid Login");
             }
             else{
-                var url='grid-scheduler.herokuapp.com/Student.html';
+                var url='/Student.html';
                 url += "?email=";
                 url += data["email"];
                 url += "&password=";
