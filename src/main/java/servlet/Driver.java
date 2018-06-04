@@ -253,7 +253,7 @@ public class Driver {
                 }
             }
         }
-        user = new User(email, firstName, lastName, perm, password, major);
+        user = new User(email, firstName, lastName, perm, password, major, false);
         return;
     }
 

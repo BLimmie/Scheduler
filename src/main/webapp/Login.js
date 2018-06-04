@@ -25,7 +25,7 @@ function studentLogin(){
     })
 }
 
-function studentLogin(){
+function adminLogin(){
     $.ajax({
         type: "GET",
         url: '/main',
