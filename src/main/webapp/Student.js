@@ -42,6 +42,7 @@ function initialize(){
             firstName = data["firstName"];
             console.log(firstName);
             document.getElementById("header").innerHTML = "Welcome " + firstName + "!";
+            document.getElementById("header").innerHTML = "AHHHHH IT WORKS";
             var q11 = userGrid[0][0]["courses"];
             var q12 = userGrid[0][1]["courses"];
             var q13 = userGrid[0][2]["courses"];
