@@ -85,14 +85,14 @@ function initialize(){
         url: '/main',
         headers: {
             "email": email,
-            "Method": "grid",
+            "Method": "grid"
         },
         success: function(data){
             userGrid = data["grid"];
             document.getElementById("header").innerHTML = "So, we can get inside...";
             for (let y = 1; y < 5; y++){
                 for (let q = 1; q < 4; q++){
-                    //let l = userGrid[y-1][q-1]["courses"];
+                    let l = userGrid[y-1][q-1]["courses"];
                     for (c = 0; c < l.length; c++){
                         // fillFields(("y" + y + "q" + q), l[c]["ID"]);
                         fillFields(("y" + y + "q" + q), "TESTCOURSE");
