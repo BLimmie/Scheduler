@@ -31,14 +31,14 @@ public class MainServlet extends HttpServlet {
         ANDList req1 = new ANDList();
 	// Test
         //users.add(new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", majors.get(0),true));
-        course c1 = new Course("CMPSC8", "INTRO TO COMP", "Computer Science 8", "CMPSC", "bad class", 4, new ANDList(),true,true, true);
-        course c2 = (new Course("CMPSC16", "PROBLEM SOLVING I", "Problem Solving with Computers I", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
-        course c3 = (new Course("CMPSC24", "PROBLEM SOLVING II", "Problem Solving with Computers II", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
-        course c4 = (new Course("CMPSC32", "INTRO TO OOB", "Intro to Object Oriented Programming", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
-        course c5 = (new Course("CMPSC48", "COMP SCI PROJECT", "Computer Science Project", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
-        course c6 = (new Course("CMPSC40", "INTRO TO LOGIC", "Introduction to Computer Science Logic", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
-        course c7 = (new Course("CMPSC56", "COMP SCI APP", "Computer Science Applications", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
-        course c8 = (new Course("CMPSC64", "COMP SCI ARCH", "Computer Science Architecture", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        Course c1 = new Course("CMPSC8", "INTRO TO COMP", "Computer Science 8", "CMPSC", "bad class", 4, new ANDList(),true,true, true);
+        Course c2 = (new Course("CMPSC16", "PROBLEM SOLVING I", "Problem Solving with Computers I", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        Course c3 = (new Course("CMPSC24", "PROBLEM SOLVING II", "Problem Solving with Computers II", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        Course c4 = (new Course("CMPSC32", "INTRO TO OOB", "Intro to Object Oriented Programming", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        Course c5 = (new Course("CMPSC48", "COMP SCI PROJECT", "Computer Science Project", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        Course c6 = (new Course("CMPSC40", "INTRO TO LOGIC", "Introduction to Computer Science Logic", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        Course c7 = (new Course("CMPSC56", "COMP SCI APP", "Computer Science Applications", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        Course c8 = (new Course("CMPSC64", "COMP SCI ARCH", "Computer Science Architecture", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
         c3.addPrereq(c2);
         c4.addPrereq(c3);
         c5.addPrereq(c4);
