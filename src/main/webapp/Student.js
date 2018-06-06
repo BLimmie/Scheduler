@@ -41,8 +41,7 @@ function initialize(){
             userMajor = data["major"];
             firstName = data["firstName"];
             console.log(firstName);
-            //document.getElementById("header").innerHTML = "Welcome " + firstName + "!";
-            //document.getElementById("header").innerHTML = "AHHHHH IT WORKS";
+            document.getElementById("header").innerHTML = "Welcome " + firstName + "!";
 	    // document.getElementById("header").innerHTML = userGrid[1][1]["courses"][0]["ID"];
 		/*
             var q11 = userGrid[0][0]["courses"];
@@ -71,9 +70,6 @@ function initialize(){
         }
     });
 
-    document.getElementById("header").innerHTML = "So, we can get inside...";
-	document.getElementById("header").innerHTML = "So, we can get inside...";
-
     $.ajax({
         type: "GET",
         url: '/main',
@@ -83,12 +79,12 @@ function initialize(){
         },
         success: function(data){
             userGrid = data["grid"];
-            for (y = 1; y < 5; y++){
-                for (q = 1; q < 4; q++){
+            document.getElementById("header").innerHTML = "So, we can get inside...";
+            for (let y = 1; y < 5; y++){
+                for (let q = 1; q < 4; q++){
                     //let l = userGrid[y-1][q-1]["courses"];
                     for (c = 0; c < l.length; c++){
                         // fillFields(("y" + y + "q" + q), l[c]["ID"]);
-                        document.getElementById("header").innerHTML = "So, we can get inside...";
                         fillFields(("y" + y + "q" + q), "TESTCOURSE");
                     }
                 }
@@ -106,14 +102,14 @@ function initialize(){
 }
 
 function fillFields(id, value) {
-    var quarter = document.getElementById(id);
-    var input = document.createElement("input");
+    let quarter = document.getElementById(id);
+    let input = document.createElement("input");
     input.type = "text";
     input.className= "w3-input w3-border";
     input.style.width = "90%";
     input.style.cssFloat = "left";
     input.value = value;
-    var button = document.createElement("button");
+    let button = document.createElement("button");
     button.className= "w3-input w3-border";
     button.textContent = "X";
     button.style.backgroundColor = "#162e54";
@@ -131,14 +127,14 @@ function fillFields(id, value) {
 }
 
 function addField(id) {
-    var quarter = document.getElementById(id);
-    var input = document.createElement("input");
+    let quarter = document.getElementById(id);
+    let input = document.createElement("input");
     input.type = "text";
     input.className= "w3-input w3-border";
     input.style.width = "90%";
     input.style.cssFloat = "left";
     input.placeholder = "e.g. CMPSC56";
-    var button = document.createElement("button");
+    let button = document.createElement("button");
     button.className= "w3-input w3-border";
     button.textContent = "X";
     button.style.backgroundColor = "#162e54";
