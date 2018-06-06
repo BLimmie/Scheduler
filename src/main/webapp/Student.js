@@ -192,7 +192,7 @@ function Verify(){
 function AddCourses(quarterName, year, quarter){
     let courses = quarterName.childNodes;
     for (let i = 0; i < courses.length; i++){
-        if (courses[i].getAttribute("name") == "course") {
+        if ((courses[i].getAttribute("name")).localeCompare("course")) {
             let cname = courses[i].textContent;
             $.ajax({
                 type: "POST",
