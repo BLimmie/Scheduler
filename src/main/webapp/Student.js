@@ -73,6 +73,8 @@ function initialize(){
         }
     });
 
+    /*
+
     $.ajax({
         type: "GET",
         url: '/main',
@@ -114,9 +116,11 @@ function initialize(){
         }
         list.appendChild(p);
     }
+    */
 
 }
 
+/*
 function ViewCourse(courseid){
     let id;
     let title;
@@ -158,6 +162,7 @@ function ViewCourse(courseid){
     }
     modal.style.display = "block";
 }
+*/
 
 function fillFields(id, value) {
     let quarter = document.getElementById(id);
