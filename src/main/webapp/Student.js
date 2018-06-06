@@ -61,7 +61,6 @@ function initialize(){
         },
         success: function(data){
             userGrid = data["grid"];
-            document.getElementById("header").innerHTML = "So, we can get inside...";
             for (let y = 1; y < 5; y++){
                 for (let q = 1; q < 4; q++){
                     let l = userGrid[y-1][q-1]["courses"];
