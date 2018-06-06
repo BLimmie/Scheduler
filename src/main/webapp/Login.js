@@ -48,6 +48,12 @@ function createProfile(){
                 url += data["password"];
                 window.location.href = url;
             }
+        },
+        error: function(){
+            alert("ERROR");
+        },
+        failure: function(){
+            alert("FAILURE");
         }
     });
 }
