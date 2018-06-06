@@ -21,13 +21,6 @@ function studentLogin(){
                 url += data["password"];
                 window.location.href = url;
             }
-        },
-        failure: function(){
-            alert("GOD FUCKING DAMMIT");
-        },
-
-        error: function(){
-            alert("GOD FUCKING DAMMIT");
         }
     });
 

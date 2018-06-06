@@ -73,8 +73,6 @@ function initialize(){
         }
     });
 
-    /*
-
     $.ajax({
         type: "GET",
         url: '/main',
@@ -116,11 +114,8 @@ function initialize(){
         }
         list.appendChild(p);
     }
-    */
 
 }
-
-/*
 
 function ViewCourse(courseid){
     let id;
@@ -147,7 +142,7 @@ function ViewCourse(courseid){
         }
     });
 
-    let modal1 = document.getElementById('courseViewer');
+    let modal = document.getElementById('courseViewer');
     document.getElementById("courseheader").innerHTML = id + " - " + title;
     document.getElementById("courseid").innerHTML = id;
     document.getElementById("coursetitle").innerHTML = title;
@@ -161,10 +156,8 @@ function ViewCourse(courseid){
         pre.innerHTML = preq[n];
         pr.appendChild(pre);
     }
-    modal1.style.display = "block";
+    modal.style.display = "block";
 }
-
-*/
 
 function fillFields(id, value) {
     let quarter = document.getElementById(id);
