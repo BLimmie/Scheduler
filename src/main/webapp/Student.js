@@ -126,7 +126,7 @@ function addField(id) {
 }
 
 // THE GRID OBJECT
-var grid = (function(grid){while(grid.push([null,null,null]) < 4); return grid})([]);
+//var grid = (function(grid){while(grid.push([null,null,null]) < 4); return grid})([]);
 
 function Verify(){
     //TODO: SET THE grid VAR TO A NEW EMPTY GRID
@@ -135,7 +135,7 @@ function Verify(){
         url: "/main",
         headers: {
             "Method": "ClearGrid",
-            "ID": email, //TODO
+            "ID": email,
         },
         success: function (data) {}
     });
@@ -183,21 +183,24 @@ function Verify(){
 }
 
 function AddCourses(quarterName, year, quarter){
-    let courses = quarter.childNodes;
+    let courses = quarterName.childNodes;
     for (let i = 0; i < courses.length; i++){
-        let cname = courses[i].value;
-        $.ajax({
-            type: "POST",
-            url: "/main",
-            headers: {
-                "Method": "AddToGrid",
-                "ID": email,
-                "Year": year,
-                "Quarter": quarter,
-                "CourseID": cname
-            },
-            success: function (data) {}
-        })
+        if ((courses[i].type).localeCompare("input")) {
+            let cname = courses[i].value;
+            $.ajax({
+                type: "POST",
+                url: "/main",
+                headers: {
+                    "Method": "AddToGrid",
+                    "ID": email,
+                    "Year": year,
+                    "Quarter": quarter,
+                    "CourseID": cname
+                },
+                success: function (data) {
+                }
+            })
+        }
     }
     /*
     var i;
