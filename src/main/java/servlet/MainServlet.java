@@ -28,8 +28,26 @@ public class MainServlet extends HttpServlet {
         users = new ArrayList<User>();
         majors = new ArrayList<Major>();
         majors.add(new Major("Computer Science", "College of Engineering"));
-        users.add(new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", majors.get(0),true));
-        courses.add(new Course("CS8", "Comp Sci 8", "Computer Science 8", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        //users.add(new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", majors.get(0),true));
+        courses.add(new Course("CMPSC8", "INTRO TO COMP", "Computer Science 8", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        courses.add(new Course("CMPSC16", "PROBLEM SOLVING I", "Problem Solving with Computers I", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        courses.add(new Course("CMPSC24", "PROBLEM SOLVING II", "Problem Solving with Computers II", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        courses.add(new Course("CMPSC32", "INTRO TO OOB", "Intro to Object Oriented Programming", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        courses.add(new Course("CMPSC48", "COMP SCI PROJECT", "Computer Science Project", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        courses.add(new Course("CMPSC40", "INTRO TO LOGIC", "Introduction to Computer Science Logic", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        courses.add(new Course("CMPSC56", "COMP SCI APP", "Computer Science Applications", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        courses.add(new Course("CMPSC64", "COMP SCI ARCH", "Computer Science Architecture", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        User john = new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", majors.get(0),true);
+        john.AddCourseToGrid(courses.get(1), 1,1);
+        john.AddCourseToGrid(courses.get(2), 1,2);
+        john.AddCourseToGrid(courses.get(3), 1,3);
+        john.AddCourseToGrid(courses.get(5), 2,1);
+        john.AddCourseToGrid(courses.get(6), 2,1);
+        john.AddCourseToGrid(courses.get(7), 2,2);
+        john.AddCourseToGrid(courses.get(4), 2,3);
+        john.UpdateGridLibrary(courses);
+        users.add(john);
+
         super.init();
     }
 

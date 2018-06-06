@@ -65,7 +65,51 @@ function initialize(){
             }
         }
     });
+/*
+    $.ajax({
+        type: "GET",
+        url: '/main',
+        headers: {
+            "email": email,
+            "Method": "user",
+            "password": password,
+            "admin": "false"
+        },
+        success: function(data){
+            q13 = data["grid"][0][2]["courses"]
+            for (i = 0; i < q13.length; i++){
+                display(q13[i]["ID"]);
+            }
+            display(course["ID"])
+        }
+    });
+    */
 
+}
+
+function fillFields(id, value) {
+    var quarter = document.getElementById(id);
+    var input = document.createElement("input");
+    input.type = "text";
+    input.className= "w3-input w3-border";
+    input.style.width = "90%";
+    input.style.cssFloat = "left";
+    input.value = value;
+    var button = document.createElement("button");
+    button.className= "w3-input w3-border";
+    button.textContent = "X";
+    button.style.backgroundColor = "#162e54";
+    button.style.color = "white";
+    button.style.width = "10%";
+    button.style.height = "49px";
+    button.onclick = function()
+    {
+        document.getElementById(id).removeChild(input);
+        document.getElementById(id).removeChild(button)
+    }
+    ;
+    quarter.appendChild(input);
+    quarter.appendChild(button);
 }
 
 function addField(id) {
