@@ -298,24 +298,6 @@ function AddCourses(quarterName, year, quarter){
             })
         }
     }
-    /*
-    var i;
-    for (i = 0; i < courses.length; i++){
-        var course = courses[i].value;
-        $.ajax({
-            type: "GET",
-            url: '/main',
-            headers: {
-                "Method": "course",
-                "ID": course
-            },
-            success: function(data){
-                grid[year][quarter].push(data);
-            }
-        });
-        //TODO: ADD COURSES TO GRID OBJECT
-    }
-    */
 }
 
 function LogOut(){
