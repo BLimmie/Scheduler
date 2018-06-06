@@ -186,6 +186,8 @@ function Verify(){
     // TODO: CALL VERIFY
 }
 
+// Sadness
+
 function AddCourses(quarterName, year, quarter){
     let courses = quarterName.childNodes;
     for (let i = 0; i < courses.length; i++){
