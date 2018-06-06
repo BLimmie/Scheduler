@@ -48,7 +48,7 @@ public class MainServlet extends HttpServlet {
         depts.add("Education (ED)");
         depts.add("Engineering Sciences (ENGR)");
         */
-        
+
         courses = new ArrayList<Course>();
         users = new ArrayList<User>();
         majors = new ArrayList<Major>();
@@ -189,11 +189,7 @@ public class MainServlet extends HttpServlet {
                 }
                 String json = new Gson().toJson(query);
                 resp.getWriter().write(json);
-            } else if (method.equals("dept")){
-                String json = new Gson().toJson(depts);
-                resp.getWriter().write(json);
-            }
-            else if (method.equals("user")) {
+            } else if (method.equals("user")) {
                 String userID = req.getHeader("email");
                 String password = req.getHeader("password");
                 boolean admin = Boolean.parseBoolean(req.getHeader("admin"));
