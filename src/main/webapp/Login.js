@@ -23,8 +23,33 @@ function studentLogin(){
             }
         }
     });
+}
 
-    alert("The AJAX call failed for some reason!");
+function createProfile(){
+    $.ajax({
+        type: "GET",
+        url: '/main',
+        headers: {
+            "email": document.getElementById("studentEmail").value,
+            "Method": "user",
+            "password": document.getElementById("studentPassword").value,
+            "admin": "false"
+        },
+        success: function(data){
+            console.log(data);
+            if(data["response"] == "Invalid Login"){
+                alert("Invalid Login");
+            }
+            else{
+                let url='/Student.html';
+                url += "?email=";
+                url += data["email"];
+                url += "&password=";
+                url += data["password"];
+                window.location.href = url;
+            }
+        }
+    });
 }
 
 function adminLogin(){
