@@ -184,33 +184,27 @@ public class MainServlet extends HttpServlet {
                 resp.getWriter().write(json);
             } else if (method.equals("courses")) {
                 String quarter = req.getHeader("Quarter");
-                ArrayList<Course> query= new ArrayList<Course>(courses);
-                if(quarter.equals("fall")){
-                    for(Course c:query){
-                        if(!c.isFall()){
-                            query.remove(c);
-                        }
-                    }
-                }
-                else if(quarter.equals("winter")){
-                    for(Course c:query){
-                        if(!c.isWinter()){
-                            query.remove(c);
-                        }
-                    }
-                }
-                else if(quarter.equals("spring")){
-                    for(Course c:query){
-                        if(!c.isSpring()){
-                            query.remove(c);
-                        }
-                    }
-                }
+                ArrayList<Course> query= new ArrayList<Course>();
+
                 String deptID = req.getHeader("Dept");
                 if(deptID != null){
-                    for(Course c: query){
+                    for(Course c: courses){
                         if(!c.getDepartment().equals(deptID)){
-                            query.remove(c);
+                            if(quarter.equals("fall")){
+                                if(c.isFall()){
+                                    query.add(c);
+                                }
+                            }
+                            else if(quarter.equals("winter")){
+                                if(c.isWinter()){
+                                    query.add(c);
+                                }
+                            }
+                            else if(quarter.equals("spring")){
+                                if(c.isSpring()){
+                                    query.add(c);
+                                }
+                            }
                         }
                     }
                 }
