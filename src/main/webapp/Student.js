@@ -111,6 +111,7 @@ function addField(id) {
     input.placeholder = "e.g. CMPSC56";
     let button = document.createElement("button");
     button.className= "w3-input w3-border";
+    button.name = "X";
     button.textContent = "X";
     button.style.backgroundColor = "#162e54";
     button.style.color = "white";
@@ -193,9 +194,9 @@ function AddCourses(quarterName, year, quarter){
     let courses = quarterName.children;
     for (let i = 0; i < courses.length; i++){
         //alert("tagName: " + courses[i].tagName);
-        let cname = courses[i].value;
+        let cname = courses[i].name;
         //if (courses[i].tagName == "INPUT"){
-        if (!(cname == "X")){
+        if (!(cname == ("X") || courses[i].tagName == "BUTTON")){
             $.ajax({
                 type: "POST",
                 url: "/main",
