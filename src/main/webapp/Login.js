@@ -23,6 +23,8 @@ function studentLogin(){
             }
         }
     })
+
+    alert("The AJAX call failed for some reason!");
 }
 
 function adminLogin(){
