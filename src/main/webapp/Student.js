@@ -73,6 +73,8 @@ function initialize(){
         }
     });
 
+    /*
+
     $.ajax({
         type: "GET",
         url: '/main',
@@ -114,6 +116,7 @@ function initialize(){
         }
         list.appendChild(p);
     }
+    */
 
 }
 
