@@ -8,6 +8,7 @@ var firstName = null;
 var lastName = null;
 var email = null;
 var password = null;
+var depts;
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -72,6 +73,90 @@ function initialize(){
         }
     });
 
+    $.ajax({
+        type: "GET",
+        url: '/main',
+        headers: {
+            "Method": "dept"
+        },
+        success: function(data){
+            depts = data;
+        }
+    });
+
+    let list = document.getElementById("CoursesList");
+    for (let i = 0; i < depts.length; i++){
+        let butt = document.createElement("button");
+        butt.className = "accordion";
+        butt.innerHTML = depts[i];
+        list.appendChild(butt);
+        let subCourses;
+        $.ajax({
+            type: "GET",
+            url: '/main',
+            headers: {
+                "Method": "courses",
+                "Dept": depts[i]
+            },
+            success: function(data){
+                subCourses = data;
+            }
+        });
+        let p = document.createElement("div");
+        p.className = "panel";
+        for (let j = 0; j < subCourses.length; j++){
+            let tempID = subCourses[j]["ID"];
+            let c = document.createElement("button");
+            c.className = "w3-button w3-block w3-left-align";
+            c.onclick = function() {ViewCourse(tempID)};
+            c.innerHTML = tempID;
+            p.appendChild(c);
+        }
+        list.appendChild(p);
+    }
+
+}
+
+function ViewCourse(courseid){
+    let id;
+    let title;
+    let fulltitle;
+    let dept;
+    let desc;
+    let preq;
+
+    $.ajax({
+        type: "GET",
+        url: '/main',
+        headers: {
+            "Method": "course",
+            "ID": courseid
+        },
+        success: function(data){
+            id = data["ID"];
+            title = data["title"];
+            fulltitle = data["fullTitle"];
+            dept = data["department"];
+            desc = data["description"];
+            preq = data["prerequisites"];
+        }
+    });
+
+    let modal1 = document.getElementById('courseViewer');
+    document.getElementById("courseheader").innerHTML = id + " - " + title;
+    document.getElementById("courseid").innerHTML = id;
+    document.getElementById("coursetitle").innerHTML = title;
+    document.getElementById("coursetitlefull").innerHTML = fullTitle;
+    document.getElementById("department").innerHTML = dept;
+    document.getElementById("description").innerHTML = desc;
+    pr = document.getElementById("prerequisites");
+    for (let n = 0; n < preq.length; n++){
+        let pre = document.createElement("P");
+        pre.className = "inf";
+        pre.innerHTML = preq[n];
+        pr.appendChild(pre);
+    }
+    modal1.style.display = "block";
 }
 
 function fillFields(id, value) {

@@ -21,9 +21,30 @@ public class MainServlet extends HttpServlet {
     private ArrayList<Course> courses;
     private ArrayList<User> users;
     private ArrayList<Major> majors;
+    private ArrayList<String> depts;
     @Override
     public void init() throws ServletException{
         //TODO Make servlet fields to store data for quick retrieval from database
+        depts.add("Anthropology (ANTH)");
+        depts.add("Art (ART)");
+        depts.add("Art History (ARTHI)");
+        depts.add("Art Studio (ARTST)");
+        depts.add("Astronomy (ASTRO)");
+        depts.add("Biology (CCS) (BIOL)");
+        depts.add("Black Studies (BL ST)");
+        depts.add("Chemical Engineering (CH E)");
+        depts.add("Chicano Studies (CH ST)");
+        depts.add("Chinese (CHIN)");
+        depts.add("Classics (CLASS)");
+        depts.add("Communication (COMM)");
+        depts.add("Comparative Literature (CLIT)");
+        depts.add("Computer Science (CMPSC)");
+        depts.add("Computing (CCS) (CMPTG)");
+        depts.add("Dance (DANCE)");
+        depts.add("Earth Science (EARTH)");
+        depts.add("Economics (ECON)");
+        depts.add("Education (ED)");
+        depts.add("Engineering Sciences (ENGR)");
         courses = new ArrayList<Course>();
         users = new ArrayList<User>();
         majors = new ArrayList<Major>();
@@ -164,7 +185,11 @@ public class MainServlet extends HttpServlet {
                 }
                 String json = new Gson().toJson(query);
                 resp.getWriter().write(json);
-            } else if (method.equals("user")) {
+            } else if (method.equals("dept")){
+                String json = new Gson().toJson(depts);
+                resp.getWriter().write(json);
+            }
+            else if (method.equals("user")) {
                 String userID = req.getHeader("email");
                 String password = req.getHeader("password");
                 boolean admin = Boolean.parseBoolean(req.getHeader("admin"));

@@ -162,7 +162,7 @@
     <div class="imgpanel">
         <img src="resources/logo.png">
     </div>
-    <div class="panel3" align="center">
+    <div id="CoursesList" class="panel3" align="center">
     <button class="accordion">Computer Science (CMPSC)</button>
     <div class="panel">
         <button onclick="ViewCourse('CMPSC16')" class="w3-button w3-block w3-left-align">CMPSC16 - PROBLEM SOLVING I</button>
@@ -445,7 +445,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <span class="close">&times;</span>
-            <h3>CMPSC 48 - COMP SCI PROJECT</h3>
+            <h3 id="courseheader">CMPSC 48 - COMP SCI PROJECT</h3>
         </div>
         <div class="modal-body">
             <br>
@@ -496,17 +496,10 @@
 <script>
 
     // Get the modal
-    var modal1 = document.getElementById('courseViewer');
+    let modal1 = document.getElementById('courseViewer');
 
     // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal
-    function ViewCourse(courseid) {
-        document.getElementById("courseid").innerHTML = courseid;
-        modal1.style.display = "block";
-        //TODO: Using text passed to ViewCourse, find that course in database and send its info to the modal
-    }
+    let span = document.getElementsByClassName("close")[0];
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
