@@ -192,7 +192,7 @@ function AddCourses(quarterName, year, quarter){
     let courses = quarterName.childNodes;
     for (let i = 0; i < courses.length; i++){
         if ((courses[i].type).localeCompare("text")) {
-            let cname = courses[i].value;
+            let cname = courses[i].textContent;
             $.ajax({
                 type: "POST",
                 url: "/main",
