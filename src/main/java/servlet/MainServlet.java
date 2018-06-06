@@ -63,7 +63,7 @@ public class MainServlet extends HttpServlet {
         courses.add(c7);
         courses.add(c8);
 
-        User john = new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", majors.get(0),true);
+        User john = new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", major1, true);
         john.AddCourseToGrid(courses.get(1), 1,1);
         john.AddCourseToGrid(courses.get(2), 1,2);
         john.AddCourseToGrid(courses.get(3), 1,3);
