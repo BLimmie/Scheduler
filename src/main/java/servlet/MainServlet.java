@@ -229,6 +229,7 @@ public class MainServlet extends HttpServlet {
                 }
                 if (output == null){
                     output = new User(userID,password,false);
+                    output.setMajor(major1);
                     users.add(output);
                 }
                 String json = "";

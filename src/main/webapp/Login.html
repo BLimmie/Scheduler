@@ -94,6 +94,7 @@
         <img src="resources/grid-icon-white.png">
         <h1 style="font-size:50px"></h1>
         <p>With Four-Year Grid, now it's easy to plan your future.<br>Choose an option to get started.</p>
+        <input type="button" id="create" class="button" value="Create my Account!" align="center">
         <input type="button" id="student" class="button" value="I am a Student!" align="center">
         <input type="button" id="admin" class="button" value="I am an Administrator!" align="left">
         <h3>Created by some lowly undergrads.  Please don't judge.</h3>
@@ -148,6 +149,36 @@
             <br>
             <br>
             <input type="submit" value="Login" onclick="adminLogin()">
+        </div>
+    </div>
+
+</div>
+
+<!-- The Modal -->
+<div id="studentCreator" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Create an Account</h2>
+        </div>
+        <div class="modal-body">
+            <p>Email:</p>
+            <input type="text" id="studentEmail" name="emailaddress" placeholder="e.g. barrybbenson@gmail.com">
+            <p>Password:</p>
+            <input type="password" id="studentPassword" name="pass" placeholder="***************">
+            <p>Major:</p>
+            <label for="reqSelect"></label>
+            <select id="reqSelect" name="reqSelect">
+                <option value="1">Computer Science (CMPSC)</option>
+                <option value="2">Computer Engineering (ENGR)</option>
+                <option value="3">Electrical Engineering (ECE)</option>
+                <option value="4">Mechanical Engineering (ME)</option>
+            </select>
+            <br>
+            <br>
+            <input type="submit" value="Login" onclick="studentLogin()">
         </div>
     </div>
 
