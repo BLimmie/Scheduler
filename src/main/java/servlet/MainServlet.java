@@ -21,9 +21,7 @@ public class MainServlet extends HttpServlet {
     private ArrayList<Course> courses;
     private ArrayList<User> users;
     private ArrayList<Major> majors;
-    //private ArrayList<String> depts;
-
-    @override
+    //@override
     public void init() throws ServletException{
         //TODO Make servlet fields to store data for quick retrieval from database
         /*
