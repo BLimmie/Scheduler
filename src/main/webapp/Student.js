@@ -146,30 +146,30 @@ function Verify(){
 
     let y1q1 = document.getElementById("y1q1");
     AddCourses(y1q1, 1, 1);
-    let y1q2 = document.getElementById("y1q1");
+    let y1q2 = document.getElementById("y1q2");
     AddCourses(y1q2, 1, 2);
-    let y1q3 = document.getElementById("y1q1");
+    let y1q3 = document.getElementById("y1q3");
     AddCourses(y1q3, 1, 3);
 
     let y2q1 = document.getElementById("y2q1");
     AddCourses(y2q1, 2, 1);
-    let y2q2 = document.getElementById("y2q1");
+    let y2q2 = document.getElementById("y2q2");
     AddCourses(y2q2, 2, 2);
-    let y2q3 = document.getElementById("y2q1");
+    let y2q3 = document.getElementById("y2q3");
     AddCourses(y2q3, 2, 3);
 
     let y3q1 = document.getElementById("y3q1");
     AddCourses(y3q1, 3, 1);
-    let y3q2 = document.getElementById("y3q1");
+    let y3q2 = document.getElementById("y3q2");
     AddCourses(y3q2, 3, 2);
-    let y3q3 = document.getElementById("y3q1");
+    let y3q3 = document.getElementById("y3q3");
     AddCourses(y3q3, 3, 3);
 
     let y4q1 = document.getElementById("y4q1");
     AddCourses(y4q1, 4, 1);
-    let y4q2 = document.getElementById("y4q1");
+    let y4q2 = document.getElementById("y4q2");
     AddCourses(y4q2, 4, 2);
-    let y4q3 = document.getElementById("y4q1");
+    let y4q3 = document.getElementById("y4q3");
     AddCourses(y4q3, 4, 3);
 
     $.ajax({
