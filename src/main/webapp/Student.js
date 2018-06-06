@@ -189,7 +189,7 @@ function Verify(){
 function AddCourses(quarterName, year, quarter){
     let courses = quarterName.childNodes;
     for (let i = 0; i < courses.length; i++){
-        if ((courses[i].type).localeCompare("input")) {
+        if ((courses[i].type).localeCompare("text")) {
             let cname = courses[i].value;
             $.ajax({
                 type: "POST",
