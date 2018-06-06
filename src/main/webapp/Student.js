@@ -42,6 +42,27 @@ function initialize(){
             firstName = data["firstName"];
             console.log(firstName);
             document.getElementById("header").innerHTML = "Welcome " + firstName + "!";
+            document.getElementById("header").innerHTML = "AHHHHH IT WORKS";
+            var q11 = userGrid[0][0]["courses"];
+            var q12 = userGrid[0][1]["courses"];
+            var q13 = userGrid[0][2]["courses"];
+            var q21 = userGrid[1][0]["courses"];
+            var q22 = userGrid[1][1]["courses"];
+            var q23 = userGrid[1][2]["courses"];
+            var q31 = userGrid[2][0]["courses"];
+            var q32 = userGrid[2][1]["courses"];
+            var q33 = userGrid[2][2]["courses"];
+            var q41 = userGrid[3][0]["courses"];
+            var q42 = userGrid[3][1]["courses"];
+            var q43 = userGrid[3][2]["courses"];
+            for (y = 1; y < 5; y++){
+                for (q = 1; q < 4; q++){
+                    var l = userGrid[y-1][q-1]["courses"]
+                    for (c = 0; c < l.length; c++){
+                        fillFields(("y" + y + "q" + q), l[c]["ID"]);
+                    }
+                }
+            }
         }
     });
 
