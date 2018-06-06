@@ -349,7 +349,7 @@ public class MainServlet extends HttpServlet {
                     }
                     //TODO fix the total requirements
                 }
-            } else if(method.equals("GRID")){
+            } else if(method.equals("GRID")) {
                 String userID = req.getHeader("ID");
                 User found = null;
                 for (User u : users) {
@@ -358,9 +358,42 @@ public class MainServlet extends HttpServlet {
                         break;
                     }
                 }
-                found.setGrid((Grid) new Gson().fromJson(req.getHeader("GRID"), new TypeToken<Grid>(){}.getType()));
+                found.setGrid((Grid) new Gson().fromJson(req.getHeader("GRID"), new TypeToken<Grid>() {
+                }.getType()));
                 found.getGrid().UpdateLibrary(courses);
                 //TODO Update user's grid in database
+
+            } else if (method.equals("AddToGrid")) {
+                String userID = req.getHeader("ID");
+                User found = null;
+                for (User u : users) {
+                    if (u.getEmail().equals(userID)) {
+                        found = u;
+                        break;
+                    }
+                }
+                int year = req.getHeader("Year");
+                int quarter = req.getHeader("Quarter");
+                String courseName = req.getHeader("CourseID");
+                courseName.replaceAll(" ", "");
+                for (Course course : courses){
+                    if (course.getID().equals(courseName)){
+                        found.AddCourseToGrid(course, year, quarter);
+                        break;
+                    }
+                }
+            }
+            else if (method.equals("ClearGrid")) {
+                String userID = req.getHeader("ID");
+                User found = null;
+                for (User u : users) {
+                    if (u.getEmail().equals(userID)) {
+                        found = u;
+                        break;
+                    }
+                }
+                found.setGrid(new Grid(courses, found.getMajor()));
+
             } else if(method.equals("User")){
                 if(req.getHeader("Action").equals("add")){
                     User input = new Gson().fromJson(req.getHeader("userInfo"), new TypeToken<User>(){}.getType());
