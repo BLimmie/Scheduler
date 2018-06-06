@@ -372,8 +372,8 @@ public class MainServlet extends HttpServlet {
                         break;
                     }
                 }
-                int year = req.getHeader("Year");
-                int quarter = req.getHeader("Quarter");
+                int year = Integer.parseInt(req.getHeader("Year"));
+                int quarter = Integer.parseInt(req.getHeader("Quarter"));
                 String courseName = req.getHeader("CourseID");
                 courseName.replaceAll(" ", "");
                 for (Course course : courses){
