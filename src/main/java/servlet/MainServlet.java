@@ -90,6 +90,14 @@ public class MainServlet extends HttpServlet {
         Course c34 = new Course("CMPSC182", 4);
         Course c35 = new Course("CMPSC184", 4);
         Course c36 = new Course("CMPSC185", 4);
+        Course c37 = new Course("MATH3A", 4);
+        Course c38 = new Course("MATH3B", 4);
+        Course c39 = new Course("MATH4A", 4);
+        Course c40 = new Course("MATH4B", 4);
+        Course c41 = new Course("MATH6A", 4);
+        Course c42 = new Course("PSTAT120A", 4);
+        Course c43 = new Course("PSTAT120B", 4);
+        Course c43 = new Course("ENGR101", 4);
 
         c3.addPrereq(c2);
         c4.addPrereq(c3);
@@ -105,6 +113,27 @@ public class MainServlet extends HttpServlet {
         req1.AddCourse(c6);
         req1.AddCourse(c7);
         req1.AddCourse(c8);
+        req1.AddCourse(c9);
+        req1.AddCourse(c10);
+        req1.AddCourse(c11);
+        req1.AddCourse(c24);
+        req1.AddCourse(c13);
+        req1.AddCourse(c37);
+        req1.AddCourse(c38);
+        req1.AddCourse(c39);
+        req1.AddCourse(c40);
+        req1.AddCourse(c41);
+        req1.AddCourse(c42);
+        req1.AddCourse(c43);
+
+        ORList req2 = new ORList();
+        req2.AddCourse(c21);
+        req2.AddCourse(c22);
+
+        ORList req3 = new ORList();
+        req3.AddCourse(c12);
+        req3.AddCourse(c25);
+
         major1.AddRequirement(req1);
         courses.add(c1);
         courses.add(c2);
