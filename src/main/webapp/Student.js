@@ -181,12 +181,9 @@ function Verify(){
             "email": email
         },
         success: function(data){
-            alert("Verify AJAX works");
             alert(data["response"]);
         }
     });
-
-    // TODO: CALL VERIFY
 }
 
 // Sadness
@@ -208,9 +205,7 @@ function AddCourses(quarterName, year, quarter){
                     "Quarter": quarter,
                     "CourseID": cname
                 },
-                success: function (data) {
-                    alert("Added " + cname + " to Grid");
-                }
+                success: function (data) {}
             })
         }
     }
