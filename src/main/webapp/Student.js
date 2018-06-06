@@ -140,9 +140,7 @@ function Verify(){
             "Method": "ClearGrid",
             "ID": email,
         },
-        success: function (data) {
-            alert("Clearing grid worked!");
-        }
+        success: function (data) {}
     });
 
     let y1q1 = document.getElementById("y1q1");
