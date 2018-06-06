@@ -27,7 +27,7 @@ public class MainServlet extends HttpServlet {
         courses = new ArrayList<Course>();
         users = new ArrayList<User>();
         majors = new ArrayList<Major>();
-        major1 = (new Major("Computer Science", "College of Engineering"));
+        Major major1 = (new Major("Computer Science", "College of Engineering"));
         ANDList req1 = new ANDList();
 	// Test
         //users.add(new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", majors.get(0),true));
@@ -53,6 +53,7 @@ public class MainServlet extends HttpServlet {
         req1.AddCourse(c6);
         req1.AddCourse(c7);
         req1.AddCourse(c8);
+        major1.AddRequirement(req1);
         courses.add(c1);
         courses.add(c2);
         courses.add(c3);
@@ -224,6 +225,8 @@ public class MainServlet extends HttpServlet {
                         break;
                     }
                 }
+                checking.UpdateGridLibrary(courses);
+                checking.UpdateGridMajor(checking.getMajor());
                 String json = new Gson().toJson(checking.getGrid().Verify());
                 resp.getWriter().write(json);
             }
