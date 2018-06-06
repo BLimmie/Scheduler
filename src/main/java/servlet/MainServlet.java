@@ -114,25 +114,6 @@ public class MainServlet extends HttpServlet {
         req1.AddCourse(c7);
         req1.AddCourse(c8);
         req1.AddCourse(c9);
-        req1.AddCourse(c10);
-        req1.AddCourse(c11);
-        req1.AddCourse(c24);
-        req1.AddCourse(c13);
-        req1.AddCourse(c37);
-        req1.AddCourse(c38);
-        req1.AddCourse(c39);
-        req1.AddCourse(c40);
-        req1.AddCourse(c41);
-        req1.AddCourse(c42);
-        req1.AddCourse(c43);
-
-        ORList req2 = new ORList();
-        req2.AddCourse(c21);
-        req2.AddCourse(c22);
-
-        ORList req3 = new ORList();
-        req3.AddCourse(c12);
-        req3.AddCourse(c25);
 
         major1.AddRequirement(req1);
         courses.add(c1);
