@@ -202,7 +202,7 @@ function AddCourses(quarterName, year, quarter){
                     "CourseID": cname
                 },
                 success: function (data) {
-                    alert("Added courses to Grid");
+                    alert("Added " + cname + "courses to Grid");
                 }
             })
         }
