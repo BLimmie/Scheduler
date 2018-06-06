@@ -193,7 +193,7 @@ function AddCourses(quarterName, year, quarter){
     let courses = quarterName.childNodes;
     for (let i = 0; i < courses.length; i++){
         //alert("tagName: " + courses[i].tagName);
-        let cname = courses[i].textContent;
+        let cname = courses[i].innerHTML;
         //if (courses[i].tagName == "INPUT"){
         if (!(cname == "X")){
             $.ajax({
