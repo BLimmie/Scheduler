@@ -98,7 +98,7 @@ public class MainServlet extends HttpServlet {
         Course c42 = new Course("PSTAT120A", 4);
         Course c43 = new Course("PSTAT120B", 4);
         Course c44 = new Course("ENGR101", 4);
-
+// Sigh
         c3.addPrereq(c2);
         c4.addPrereq(c3);
         c5.addPrereq(c4);
