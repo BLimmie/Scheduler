@@ -70,6 +70,16 @@ function initialize(){
         }
     });
 
+            for (let y = 1; y < 5; y++){
+                for (let q = 1; q < 4; q++){
+                    //let l = userGrid[y-1][q-1]["courses"];
+                    for (c = 0; c < 3; c++){
+                        // fillFields(("y" + y + "q" + q), l[c]["ID"]);
+                        fillFields(("y" + y + "q" + q), "TESTCOURSE");
+                    }
+                }
+            }
+
     $.ajax({
         type: "GET",
         url: '/main',
