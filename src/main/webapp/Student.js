@@ -74,7 +74,6 @@ function initialize(){
     });
 
     /*
-
     $.ajax({
         type: "GET",
         url: '/main',
@@ -85,6 +84,7 @@ function initialize(){
             depts = data;
         }
     });
+
 
     let list = document.getElementById("CoursesList");
     for (let i = 0; i < depts.length; i++){
