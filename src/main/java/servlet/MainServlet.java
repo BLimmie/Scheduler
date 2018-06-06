@@ -184,7 +184,7 @@ public class MainServlet extends HttpServlet {
                 String userID = req.getHeader("email");
                 User output = null;
                 for (User u : this.users) {
-                    if (u.getEmail() == (userID)) {
+                    if ((u.getEmail()).equals(userID)) {
                         output = u;
                         break;
                     }
