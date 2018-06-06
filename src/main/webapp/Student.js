@@ -120,6 +120,8 @@ function initialize(){
 
 }
 
+/*
+
 function ViewCourse(courseid){
     let id;
     let title;
@@ -161,6 +163,8 @@ function ViewCourse(courseid){
     }
     modal1.style.display = "block";
 }
+
+*/
 
 function fillFields(id, value) {
     let quarter = document.getElementById(id);
