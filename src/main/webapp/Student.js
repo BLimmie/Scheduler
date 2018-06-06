@@ -94,8 +94,8 @@ function initialize(){
                 for (let q = 1; q < 4; q++){
                     let l = userGrid[y-1][q-1]["courses"];
                     for (c = 0; c < l.length; c++){
-                        // fillFields(("y" + y + "q" + q), l[c]["ID"]);
-                        fillFields(("y" + y + "q" + q), "TESTCOURSE");
+                        fillFields(("y" + y + "q" + q), l[c]["ID"]);
+                        // fillFields(("y" + y + "q" + q), "TESTCOURSE");
                     }
                 }
             }
