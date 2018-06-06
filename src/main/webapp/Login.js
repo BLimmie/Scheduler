@@ -22,7 +22,7 @@ function studentLogin(){
                 window.location.href = url;
             }
         }
-    })
+    });
 
     alert("The AJAX call failed for some reason!");
 }
