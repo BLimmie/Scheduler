@@ -193,8 +193,9 @@ function AddCourses(quarterName, year, quarter){
     let courses = quarterName.childNodes;
     for (let i = 0; i < courses.length; i++){
         //alert("tagName: " + courses[i].tagName);
-        if (courses[i].tagName.localeCompare("INPUT")){
-            let cname = courses[i].textContent;
+        let cname = courses[i].textContent;
+        //if (courses[i].tagName == "INPUT"){
+        if (!(cname.localeCompare("X"))){
             $.ajax({
                 type: "POST",
                 url: "/main",
