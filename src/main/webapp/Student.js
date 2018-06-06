@@ -104,6 +104,7 @@ function addField(id) {
     let quarter = document.getElementById(id);
     let input = document.createElement("input");
     input.type = "text";
+    input.name = "course";
     input.className= "w3-input w3-border";
     input.style.width = "90%";
     input.style.cssFloat = "left";
@@ -191,7 +192,7 @@ function Verify(){
 function AddCourses(quarterName, year, quarter){
     let courses = quarterName.childNodes;
     for (let i = 0; i < courses.length; i++){
-        if (courses[i].type == "text") {
+        if (courses[i].getAttribute("name") == "course") {
             let cname = courses[i].textContent;
             $.ajax({
                 type: "POST",
