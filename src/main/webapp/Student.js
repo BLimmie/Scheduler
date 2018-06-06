@@ -5,6 +5,7 @@ var courseList = null;
 var userGrid = null;
 var userMajor = null;
 var firstName = null;
+var email;
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -22,7 +23,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
 };
 
 function initialize(){
-    var email = getUrlParameter("email");
+    email = getUrlParameter("email");
     var password = getUrlParameter("password");
     console.log(email);
     console.log(password);
@@ -37,13 +38,12 @@ function initialize(){
         },
         success: function(data){
             console.log(data);
-            userGrid = data["grid"];
             userMajor = data["major"];
             firstName = data["firstName"];
             console.log(firstName);
             document.getElementById("header").innerHTML = "Welcome " + firstName + "!";
             document.getElementById("header").innerHTML = "AHHHHH IT WORKS";
-	    document.getElementById("header").innerHTML = userGrid[1][1]["courses"][0]["ID"];
+	    // document.getElementById("header").innerHTML = userGrid[1][1]["courses"][0]["ID"];
 		/*
             var q11 = userGrid[0][0]["courses"];
             var q12 = userGrid[0][1]["courses"];
@@ -70,17 +70,24 @@ function initialize(){
 		*/
         }
     });
-/*
     $.ajax({
         type: "GET",
         url: '/main',
         headers: {
             "email": email,
-            "Method": "user",
-            "password": password,
-            "admin": "false"
+            "Method": "grid",
         },
         success: function(data){
+            userGrid = data["grid"];
+            for (y = 1; y < 5; y++){
+                for (q = 1; q < 4; q++){
+                    let l = userGrid[y-1][q-1]["courses"];
+                    //document.getElementById("header").innerHTML = userGrid[y-1][q-1]["courses"][0];
+                    for (c = 0; c < l.length; c++){
+                        fillFields(("y" + y + "q" + q), l[c]["ID"]);
+                    }
+                }
+            }
             q13 = data["grid"][0][2]["courses"]
             for (i = 0; i < q13.length; i++){
                 display(q13[i]["ID"]);
@@ -88,7 +95,6 @@ function initialize(){
             display(course["ID"])
         }
     });
-    */
 
 }
 
