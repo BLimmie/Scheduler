@@ -21,7 +21,6 @@ public class MainServlet extends HttpServlet {
     private ArrayList<Course> courses;
     private ArrayList<User> users;
     private ArrayList<Major> majors;
-    private ArrayList<String> depts;
     //@override
     public void init() throws ServletException{
         //TODO Make servlet fields to store data for quick retrieval from database
@@ -56,13 +55,42 @@ public class MainServlet extends HttpServlet {
 	// Test
         //users.add(new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", majors.get(0),true));
         Course c1 = new Course("CMPSC8", "INTRO TO COMP", "Computer Science 8", "CMPSC", "bad class", 4, new ANDList(),true,true, true);
-        Course c2 = (new Course("CMPSC16", "PROBLEM SOLVING I", "Problem Solving with Computers I", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
-        Course c3 = (new Course("CMPSC24", "PROBLEM SOLVING II", "Problem Solving with Computers II", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
-        Course c4 = (new Course("CMPSC32", "INTRO TO OOB", "Intro to Object Oriented Programming", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
-        Course c5 = (new Course("CMPSC48", "COMP SCI PROJECT", "Computer Science Project", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
-        Course c6 = (new Course("CMPSC40", "INTRO TO LOGIC", "Introduction to Computer Science Logic", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
-        Course c7 = (new Course("CMPSC56", "COMP SCI APP", "Computer Science Applications", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
-        Course c8 = (new Course("CMPSC64", "COMP SCI ARCH", "Computer Science Architecture", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
+        Course c2 = (new Course("CMPSC16", "PROBLEM SOLVING I", "Problem Solving with Computers I", "CMPSC", "good class", 4, new ANDList(),true,true, true));
+        Course c3 = (new Course("CMPSC24", "PROBLEM SOLVING II", "Problem Solving with Computers II", "CMPSC", "good class", 4, new ANDList(),true,true, true));
+        Course c4 = (new Course("CMPSC32", "INTRO TO OOB", "Intro to Object Oriented Programming", "CMPSC", "good class", 4, new ANDList(),true,true, true));
+        Course c5 = (new Course("CMPSC48", "COMP SCI PROJECT", "Computer Science Project", "CMPSC", "good class", 4, new ANDList(),true,true, true));
+        Course c6 = (new Course("CMPSC40", "INTRO TO LOGIC", "Introduction to Computer Science Logic", "CMPSC", "good class", 4, new ANDList(),true,true, true));
+        Course c7 = (new Course("CMPSC56", "COMP SCI APP", "Computer Science Applications", "CMPSC", "good class", 4, new ANDList(),true,true, true));
+        Course c8 = (new Course("CMPSC64", "COMP SCI ARCH", "Computer Science Architecture", "CMPSC", "good class", 4, new ANDList(),true,true, true));
+        Course c9 = new Course("CMPSC130A", 4);
+        Course c9 = new Course("CMPSC130B", 4);
+        Course c9 = new Course("CMPSC138", 4);
+        Course c9 = new Course("CMPSC160", 4);
+        Course c9 = new Course("CMPSC170", 4);
+        Course c9 = new Course("CMPSC178", 4);
+        Course c9 = new Course("CMPSC177", 4);
+        Course c9 = new Course("CMPSC176A", 4);
+        Course c9 = new Course("CMPSC176B", 4);
+        Course c9 = new Course("CMPSC176C", 4);
+        Course c9 = new Course("CMPSC160", 4);
+        Course c9 = new Course("CMPSC199", 4);
+        Course c9 = new Course("CMPSC111", 4);
+        Course c9 = new Course("CMPSC140", 4);
+        Course c9 = new Course("CMPSC153A", 4);
+        Course c9 = new Course("CMPSC154", 4);
+        Course c9 = new Course("CMPSC162", 4);
+        Course c9 = new Course("CMPSC165A", 4);
+        Course c9 = new Course("CMPSC165B", 4);
+        Course c9 = new Course("CMPSC171", 4);
+        Course c9 = new Course("CMPSC172", 4);
+        Course c9 = new Course("CMPSC174A", 4);
+        Course c9 = new Course("CMPSC174B", 4);
+        Course c9 = new Course("CMPSC180", 4);
+        Course c9 = new Course("CMPSC181", 4);
+        Course c9 = new Course("CMPSC182", 4);
+        Course c9 = new Course("CMPSC184", 4);
+        Course c9 = new Course("CMPSC185", 4);
+
         c3.addPrereq(c2);
         c4.addPrereq(c3);
         c5.addPrereq(c4);
