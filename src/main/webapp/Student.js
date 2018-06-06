@@ -43,6 +43,8 @@ function initialize(){
             console.log(firstName);
             document.getElementById("header").innerHTML = "Welcome " + firstName + "!";
             document.getElementById("header").innerHTML = "AHHHHH IT WORKS";
+		document.getElementById("header").innerHTML = userGrid[1][1]["courses"][0];
+		/*
             var q11 = userGrid[0][0]["courses"];
             var q12 = userGrid[0][1]["courses"];
             var q13 = userGrid[0][2]["courses"];
@@ -55,14 +57,17 @@ function initialize(){
             var q41 = userGrid[3][0]["courses"];
             var q42 = userGrid[3][1]["courses"];
             var q43 = userGrid[3][2]["courses"];
+		
             for (y = 1; y < 5; y++){
                 for (q = 1; q < 4; q++){
-                    var l = userGrid[y-1][q-1]["courses"]
+                    // var l = userGrid[y-1][q-1]["courses"]
+		    document.getElementById("header").innerHTML = userGrid[y-1][q-1]["courses"][0]
                     for (c = 0; c < l.length; c++){
                         fillFields(("y" + y + "q" + q), l[c]["ID"]);
                     }
                 }
             }
+		*/
         }
     });
 /*
