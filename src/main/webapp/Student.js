@@ -84,6 +84,7 @@ function initialize(){
                     //let l = userGrid[y-1][q-1]["courses"];
                     for (c = 0; c < l.length; c++){
                         // fillFields(("y" + y + "q" + q), l[c]["ID"]);
+                        document.getElementById("header").innerHTML = "So, we can get inside...";
                         fillFields(("y" + y + "q" + q), "TESTCOURSE");
                     }
                 }
