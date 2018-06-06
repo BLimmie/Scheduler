@@ -21,10 +21,12 @@ public class MainServlet extends HttpServlet {
     private ArrayList<Course> courses;
     private ArrayList<User> users;
     private ArrayList<Major> majors;
-    private ArrayList<String> depts;
-    @Override
+    //private ArrayList<String> depts;
+
+    @override
     public void init() throws ServletException{
         //TODO Make servlet fields to store data for quick retrieval from database
+        /*
         depts.add("Anthropology (ANTH)");
         depts.add("Art (ART)");
         depts.add("Art History (ARTHI)");
@@ -45,6 +47,8 @@ public class MainServlet extends HttpServlet {
         depts.add("Economics (ECON)");
         depts.add("Education (ED)");
         depts.add("Engineering Sciences (ENGR)");
+        */
+        
         courses = new ArrayList<Course>();
         users = new ArrayList<User>();
         majors = new ArrayList<Major>();
