@@ -14,13 +14,20 @@ function studentLogin(){
                 alert("Invalid Login");
             }
             else{
-                var url='/Student.html';
+                let url='/Student.html';
                 url += "?email=";
                 url += data["email"];
                 url += "&password=";
                 url += data["password"];
                 window.location.href = url;
             }
+        },
+        failure: function(){
+            alert("GOD FUCKING DAMMIT");
+        },
+
+        error: function(){
+            alert("GOD FUCKING DAMMIT");
         }
     });
 
