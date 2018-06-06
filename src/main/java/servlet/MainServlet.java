@@ -28,6 +28,7 @@ public class MainServlet extends HttpServlet {
         users = new ArrayList<User>();
         majors = new ArrayList<Major>();
         majors.add(new Major("Computer Science", "College of Engineering"));
+	// Test
         //users.add(new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", majors.get(0),true));
         courses.add(new Course("CMPSC8", "INTRO TO COMP", "Computer Science 8", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
         courses.add(new Course("CMPSC16", "PROBLEM SOLVING I", "Problem Solving with Computers I", "CMPSC", "bad class", 4, new ANDList(),true,true, true));
