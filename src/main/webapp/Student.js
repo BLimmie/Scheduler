@@ -181,6 +181,7 @@ function Verify(){
             "email": email
         },
         success: function(data){
+            alert("Verify AJAX works");
             alert(data["response"]);
         }
     });
