@@ -195,7 +195,7 @@ function AddCourses(quarterName, year, quarter){
         //alert("tagName: " + courses[i].tagName);
         let cname = courses[i].textContent;
         //if (courses[i].tagName == "INPUT"){
-        if (!(cname.localeCompare("X"))){
+        if (!(cname == "X")){
             $.ajax({
                 type: "POST",
                 url: "/main",
@@ -207,7 +207,7 @@ function AddCourses(quarterName, year, quarter){
                     "CourseID": cname
                 },
                 success: function (data) {
-                    alert("Added " + cname + "courses to Grid");
+                    alert("Added " + cname + " to Grid");
                 }
             })
         }
