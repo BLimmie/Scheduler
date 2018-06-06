@@ -129,6 +129,7 @@ function addField(id) {
 //var grid = (function(grid){while(grid.push([null,null,null]) < 4); return grid})([]);
 
 function Verify(){
+
     //TODO: SET THE grid VAR TO A NEW EMPTY GRID
     $.ajax({
         type: "POST",
@@ -137,8 +138,11 @@ function Verify(){
             "Method": "ClearGrid",
             "ID": email,
         },
-        success: function (data) {}
+        success: function (data) {
+            alert("Clearing grid worked!");
+        }
     });
+
     let y1q1 = document.getElementById("y1q1");
     AddCourses(y1q1, 1, 1);
     let y1q2 = document.getElementById("y1q1");
@@ -198,6 +202,7 @@ function AddCourses(quarterName, year, quarter){
                     "CourseID": cname
                 },
                 success: function (data) {
+                    alert("Added courses to Grid");
                 }
             })
         }
