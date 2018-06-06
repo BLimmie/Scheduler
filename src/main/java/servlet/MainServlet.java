@@ -187,23 +187,21 @@ public class MainServlet extends HttpServlet {
                 ArrayList<Course> query= new ArrayList<Course>();
 
                 String deptID = req.getHeader("Dept");
-                if(deptID != null){
-                    for(Course c: courses){
-                        if(!c.getDepartment().equals(deptID)){
-                            if(quarter.equals("fall")){
-                                if(c.isFall()){
-                                    query.add(c);
-                                }
+                for(Course c: courses){
+                    if(c.getDepartment().equals(deptID) || deptID == null){
+                        if(quarter.equals("fall") || quarter == null){
+                            if(c.isFall()){
+                                query.add(c);
                             }
-                            else if(quarter.equals("winter")){
-                                if(c.isWinter()){
-                                    query.add(c);
-                                }
+                        }
+                        else if(quarter.equals("winter")|| quarter == null){
+                            if(c.isWinter()){
+                                query.add(c);
                             }
-                            else if(quarter.equals("spring")){
-                                if(c.isSpring()){
-                                    query.add(c);
-                                }
+                        }
+                        else if(quarter.equals("spring")|| quarter == null){
+                            if(c.isSpring()){
+                                query.add(c);
                             }
                         }
                     }
