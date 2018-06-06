@@ -70,6 +70,9 @@ function initialize(){
 		*/
         }
     });
+
+    document.getElementById("header").innerHTML = "So, we can get inside...";
+
     $.ajax({
         type: "GET",
         url: '/main',
