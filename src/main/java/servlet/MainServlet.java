@@ -229,6 +229,8 @@ public class MainServlet extends HttpServlet {
                 String json = new Gson().toJson(output);
                 resp.getWriter().write(json);
             } else if (method.equals("courses")) {
+                System.out.println(req.getHeader("Quarter"));
+                System.out.println(req.getHeader("Dept"));
                 String quarter = req.getHeader("Quarter");
                 ArrayList<Course> query= new ArrayList<Course>();
 
