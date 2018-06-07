@@ -238,7 +238,7 @@ public class MainServlet extends HttpServlet {
                 for(Course c: courses){
                     if(deptID == null || c.getDepartment().equals(deptID)){
                         if(quarter == null || quarter.equals("fall") ){
-                            if(c.isFall()){
+                            if(quarter == null || c.isFall()){
                                 query.add(c);
                             }
                         }
