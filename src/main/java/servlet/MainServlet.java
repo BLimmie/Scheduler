@@ -256,7 +256,7 @@ public class MainServlet extends HttpServlet {
                     System.err.println(query);
                 }
                 System.err.println(query);
-                String json = new Gson().toJson(new ArrayResponse(query));
+                String json = new Gson().toJson(query);
                 resp.getWriter().write(json);
             } else if (method.equals("user")) {
                 String userID = req.getHeader("email");
