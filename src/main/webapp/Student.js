@@ -235,6 +235,21 @@ function Verify(){
         success: function (data) {}
     });
 
+    setTimeout(function(){
+        $.ajax({
+            type: "GET",
+            url: "/main",
+            async: "false",
+            headers: {
+                "Method": "verify",
+                "email": email
+            },
+            success: function(data){
+                alert(data["response"]);
+            }
+        });
+    },500);
+
     let y1q1 = document.getElementById("y1q1");
     AddCourses(y1q1, 1, 1);
     let y1q2 = document.getElementById("y1q2");
@@ -262,19 +277,6 @@ function Verify(){
     AddCourses(y4q2, 4, 2);
     let y4q3 = document.getElementById("y4q3");
     AddCourses(y4q3, 4, 3);
-
-    $.ajax({
-        type: "GET",
-        url: "/main",
-        async: "false",
-        headers: {
-            "Method": "verify",
-            "email": email
-        },
-        success: function(data){
-            alert(data["response"]);
-        }
-    });
 }
 
 // Sadness
