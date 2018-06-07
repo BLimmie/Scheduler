@@ -210,6 +210,7 @@ public class MainServlet extends HttpServlet {
             resp.setContentType("application/json");
             String method = req.getHeader("Method");
             if (method.equals("test")){
+                System.out.println(courses);
                 resp.getWriter().write(new Gson().toJson(new Response("Testing message")));
             }
             else if (method.equals("course")) {
