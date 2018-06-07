@@ -251,6 +251,7 @@ public class MainServlet extends HttpServlet {
                             }
                         }
                     }
+                    System.out.println(query);
                 }
                 System.out.println(query);
                 String json = new Gson().toJson(new ArrayResponse(query));
