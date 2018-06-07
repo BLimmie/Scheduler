@@ -328,7 +328,7 @@ public class MainServlet extends HttpServlet {
             }
             resp.getWriter().flush();
         } catch(Exception e){
-            //TODO print error in request
+            System.out.println(e);
         }
     }
 
