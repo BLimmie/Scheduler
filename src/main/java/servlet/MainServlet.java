@@ -160,8 +160,6 @@ public class MainServlet extends HttpServlet {
         courses.add(c42);
         courses.add(c43);
 
-        System.out.println(courses);
-        
         User john = new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", major1, true);
         john.AddCourseToGrid(courses.get(1), 1,1);
         john.AddCourseToGrid(courses.get(2), 1,2);
@@ -331,6 +329,7 @@ public class MainServlet extends HttpServlet {
                 resp.getWriter().write(json);
             }
             else{
+                System.out.println(courses);
                 resp.getWriter().write(new Gson().toJson(new Response("Invalid Method")));
             }
             resp.getWriter().flush();
