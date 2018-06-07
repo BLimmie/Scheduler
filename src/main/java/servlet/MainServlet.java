@@ -236,18 +236,18 @@ public class MainServlet extends HttpServlet {
 
                 String deptID = req.getHeader("Dept");
                 for(Course c: courses){
-                    if(c.getDepartment().equals(deptID) || deptID == null){
-                        if(quarter.equals("fall") || quarter == null){
+                    if(deptID == null || c.getDepartment().equals(deptID)){
+                        if(quarter == null || quarter.equals("fall") ){
                             if(c.isFall()){
                                 query.add(c);
                             }
                         }
-                        else if(quarter.equals("winter")|| quarter == null){
+                        else if(quarter == null || quarter.equals("winter")){
                             if(c.isWinter()){
                                 query.add(c);
                             }
                         }
-                        else if(quarter.equals("spring")|| quarter == null){
+                        else if(quarter == null || quarter.equals("spring")){
                             if(c.isSpring()){
                                 query.add(c);
                             }
