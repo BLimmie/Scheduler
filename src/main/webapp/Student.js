@@ -37,6 +37,7 @@ function initialize(){
     $.ajax({
         type: "GET",
         url: '/main',
+        async: "false",
         headers: {
             "email": email,
             "Method": "user",
@@ -56,6 +57,7 @@ function initialize(){
     $.ajax({
         type: "GET",
         url: '/main',
+        async: "false",
         headers: {
             "email": email,
             "Method": "grid"
@@ -225,6 +227,7 @@ function Verify(){
     $.ajax({
         type: "POST",
         url: "/main",
+        async: "false",
         headers: {
             "Method": "ClearGrid",
             "ID": email,
@@ -263,6 +266,7 @@ function Verify(){
     $.ajax({
         type: "GET",
         url: "/main",
+        async: "false",
         headers: {
             "Method": "verify",
             "email": email
@@ -285,6 +289,7 @@ function AddCourses(quarterName, year, quarter){
             $.ajax({
                 type: "POST",
                 url: "/main",
+                async: "false",
                 headers: {
                     "Method": "AddToGrid",
                     "ID": email,
