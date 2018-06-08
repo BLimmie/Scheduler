@@ -15,7 +15,7 @@ function CreateCourse(){
     let courseid = document.getElementById("courseid");
     let coursetitle = document.getElementById("coursetitle");
     let coursefulltitle = document.getElementById("coursefulltitle");
-    let units = document.getElementById("units");
+    let units = document.getElementById("units").value;
     let d = document.getElementById("dept");
     let desc = document.getElementById("description");
     let dept = d.options[d.selectedIndex].text;
@@ -33,11 +33,11 @@ function CreateCourse(){
             "Method": "Course",
             "Action": "create",
             "CourseID": courseid.innerHTML,
-            "Title": coursetitle,
-            "Full Title": coursefulltitle,
+            "Title": coursetitle.innerHTML,
+            "Full Title": coursefulltitle.innerHTML,
             "Department": dept,
             "Prerequisites": prereqs,
-            "Description": desc,
+            "Description": desc.innerHTML,
             "Units": units
         },
         success: function(data) {
