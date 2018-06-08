@@ -17,6 +17,7 @@ function CreateCourse(){
     let coursefulltitle = document.getElementById("coursefulltitle");
     let units = document.getElementById("units");
     let d = document.getElementById("dept");
+    let desc = document.getElementById("description");
     let dept = d.options[d.selectedIndex].text;
     let prereqs = [];
     let p = document.getElementsByClassName("prereq");
