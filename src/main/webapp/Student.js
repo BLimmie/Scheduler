@@ -140,13 +140,18 @@ function ViewCourse(courseid){
         },
         success: function(data){
             alert("Well it works");
-            modal.style.display = "block";
             id = data["ID"];
+            alert("id: " + id);
             title = data["title"];
+            alert("title: " + title);
             fulltitle = data["fullTitle"];
+            alert("fulltitle: " + fulltitle);
             dept = data["department"];
+            alert("department: " + dept);
             desc = data["description"];
+            alert("description: " + desc);
             preq = data["prerequisites"];
+            alert("prerequisites: " + preq);
             let modal = document.getElementById('courseViewer');
             document.getElementById("courseheader").innerHTML = id + " - " + title;
             document.getElementById("courseid").innerHTML = id;
