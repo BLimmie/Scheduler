@@ -15,9 +15,9 @@ function CreateCourse(){
     let courseid = document.getElementById("courseid");
     let coursetitle = document.getElementById("coursetitle");
     let coursefulltitle = document.getElementById("coursefulltitle");
-    let units = document.getElementsById("units");
+    let units = document.getElementById("units");
     let d = document.getElementById("dept");
-    let dept = e.options[e.selectedIndex].text;
+    let dept = d.options[d.selectedIndex].text;
     let prereqs = [];
     let p = document.getElementsByClassName("prereq");
     for (let i = 0; i < p.length; i++){
