@@ -24,6 +24,8 @@ function CreateCourse(){
     for (let i = 0; i < p.length; i++){
         prereqs.push(p[i].value);
     }
+
+
     alert("Got this far...");
     $.ajax({
         type: "POST",
@@ -31,14 +33,18 @@ function CreateCourse(){
         async: "false",
         headers: {
             "Method": "Course",
-            "Action": "create",
-            "CourseID": courseid.value,
-            "Title": coursetitle.value,
-            "Full Title": coursefulltitle.value,
-            "Department": dept,
-            "Prerequisites": prereqs,
-            "Description": desc.value,
-            "Units": units
+            "Action": "add",
+            "courseData": JSON.stringify({
+                "ID": courseid.value,
+                "title": coursetitle.value,
+                "fullTitle": coursefulltitle.value,
+                "department": dept,
+                "units": units,
+                "fall": true,
+                "winter": true,
+                "spring": true,
+            }),
+            "Prerequisites": prereqs
         },
         success: function(data) {
             alert("Course Added Successfully!");

@@ -244,6 +244,8 @@ public class Course {
         this.prereqs.AddCourse(prereq);
     }
 
+    public void addPrereq(ANDList prereq) { this.prereqs = prereq; }
+
     /**
      * Removes a Course from this Course's prerequisites.
      * @param prereq The Course to remove from this Course's prerequisites.
