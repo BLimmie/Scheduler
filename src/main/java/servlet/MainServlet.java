@@ -420,8 +420,10 @@ public class MainServlet extends HttpServlet {
                     System.out.println(c.getTitle());
                     System.out.println("Printed Course");
                     String p = req.getHeader("Prerequisites");
+                    System.out.println("MAKING PREREQUISITES");
                     ArrayList<String> prereqs = new Gson().fromJson(p, new TypeToken<ArrayList<String>>(){}.getType());
-                    ANDList boi = new ANDList();
+                    System.out.println("WE MADE THE PREREQS!");
+                    ANDList boi = new ANDList(prereqs);
                     c.addPrereq(boi);
                     courses.add(c);
 
