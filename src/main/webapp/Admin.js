@@ -32,12 +32,12 @@ function CreateCourse(){
         headers: {
             "Method": "Course",
             "Action": "create",
-            "CourseID": courseid.innerHTML,
-            "Title": coursetitle.innerHTML,
-            "Full Title": coursefulltitle.innerHTML,
+            "CourseID": courseid.value,
+            "Title": coursetitle.value,
+            "Full Title": coursefulltitle.value,
             "Department": dept,
             "Prerequisites": prereqs,
-            "Description": desc.innerHTML,
+            "Description": desc.value,
             "Units": units
         },
         success: function(data) {
