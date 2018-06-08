@@ -10,6 +10,11 @@
     <properties>
         <tomcat.version>8.5.23</tomcat.version>
     </properties>
+    <repository>
+        <id>in-project</id>
+        <name>In Project Repo</name>
+        <url>file://${project.basedir}/lib</url>
+    </repository>
     <dependencies>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -20,6 +25,11 @@
             <groupId>com.google.firebase</groupId>
             <artifactId>firebase-admin</artifactId>
             <version>5.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
