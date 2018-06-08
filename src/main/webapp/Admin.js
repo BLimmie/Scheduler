@@ -42,6 +42,12 @@ function CreateCourse(){
         },
         success: function(data) {
             alert("Course Added Successfully!");
+        },
+        error: function(){
+            alert("Error");
+        },
+        failure: function(){
+            alert("Failure");
         }
     });
     //TODO: USE ID'S FROM COURSE CREATOR MODAL TO CREATE A COURSE OBJECT AND ADD IT TO THE DATABASE
