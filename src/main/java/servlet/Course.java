@@ -124,6 +124,28 @@ public class Course {
         this.spring = spring;
     }
 
+    public Course(String ID,
+                  String title,
+                  String fullTitle,
+                  String department,
+                  String description,
+                  int units,
+                  boolean fall,
+                  boolean winter,
+                  boolean spring) {
+        this.ID = ID;
+        this.title = title;
+        this.fullTitle = fullTitle;
+        this.department = department;
+        this.description = description;
+        this.units = units;
+        this.prereqs = new ANDList();
+        this.fall = fall;
+        this.winter = winter;
+        this.spring = spring;
+    }
+
+
     /**
      * Checks if two courses are equal
      * @param o An object to check equivalence
@@ -243,6 +265,8 @@ public class Course {
     public void addPrereq(String prereq) {
         this.prereqs.AddCourse(prereq);
     }
+
+    public void addPrereq(ANDList prereq) { this.prereqs = prereq; }
 
     /**
      * Removes a Course from this Course's prerequisites.

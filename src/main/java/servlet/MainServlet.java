@@ -403,8 +403,8 @@ public class MainServlet extends HttpServlet {
             resp.setContentType("application/json");
             String method = req.getHeader("Method");
             //TODO Check if user is admin
-            if(method.equals("Course")){
-                if(req.getHeader("Action").equals("delete")){
+            if(method.equals("Course")) {
+                if (req.getHeader("Action").equals("delete")) {
                     String id = req.getHeader("CourseID");
                     for (Course c : courses) {
                         if (c.getID().equals(id)) {
@@ -413,10 +413,23 @@ public class MainServlet extends HttpServlet {
                             break;
                         }
                     }
-                } else if(req.getHeader("Action").equals("add")){
-                    courses.add((Course)new Gson().fromJson(req.getHeader("courseData"), new TypeToken<Course>(){}.getType()));
+                } else if (req.getHeader("Action").equals("add")) {
+                    Course c = ((Course) new Gson().fromJson(req.getHeader("courseData"), new TypeToken<Course>() {
+                    }.getType()));
+                    System.out.println("Printing the course:");
+                    System.out.println(c.getTitle());
+                    System.out.println("Printed Course");
+                    String p = req.getHeader("Prerequisites");
+                    System.out.println("MAKING PREREQUISITES");
+                    ArrayList<String> prereqs = new Gson().fromJson(p, new TypeToken<ArrayList<String>>(){}.getType());
+                    System.out.println("WE MADE THE PREREQS!");
+                    ANDList boi = new ANDList(prereqs);
+                    c.addPrereq(boi);
+                    courses.add(c);
+
                     //TODO Add to database
-                } else if(req.getHeader("Action").equals("edit")){
+
+                } else if (req.getHeader("Action").equals("edit")) {
                     String id = req.getHeader("CourseID");
                     Course edit = null;
                     for (Course c : courses) {
@@ -426,9 +439,22 @@ public class MainServlet extends HttpServlet {
                             break;
                         }
                     }
-                    courses.add((Course)new Gson().fromJson(req.getHeader("courseData"), new TypeToken<Course>(){}.getType()));
+                    courses.add((Course) new Gson().fromJson(req.getHeader("courseData"), new TypeToken<Course>() {
+                    }.getType()));
                     //TODO Add back to database
                 }
+            } else if (method.equals("ANDList")){
+                String majorname = req.getHeader("Major");
+                Major thismajor;
+                for (Major m : majors){
+                    if (m.getTitle().equals(majorname)){
+                        thismajor = m;
+                    }
+                }
+                String list = req.getHeader("List");
+                ArrayList<String> courses = new Gson().fromJson(list, new TypeToken<ArrayList<String>>(){}.getType());
+
+
             } else if(method.equals("Major")){
                 if(req.getHeader("Action").equals("delete")){
                     String id = req.getHeader("Title");

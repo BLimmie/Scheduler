@@ -122,7 +122,7 @@ function initialize(){
 
 }
 
-/*
+
 function ViewCourse(courseid){
     let id;
     let title;
@@ -145,26 +145,32 @@ function ViewCourse(courseid){
             dept = data["department"];
             desc = data["description"];
             preq = data["prerequisites"];
+            let modal = document.getElementById('courseViewer');
+            modal.style.display = "block";
+            document.getElementById("courseheader").innerHTML = id + " - " + title;
+            document.getElementById("courseid").innerHTML = id;
+            document.getElementById("coursetitle").innerHTML = title;
+            document.getElementById("coursetitlefull").innerHTML = fulltitle;
+            document.getElementById("department").innerHTML = dept;
+            document.getElementById("description").innerHTML = desc;
+            pr = document.getElementById("prerequisites");
+            for (let n = 0; n < preq.length; n++){
+                let pre = document.createElement("P");
+                pre.className = "inf";
+                pre.innerHTML = preq[n];
+                pr.appendChild(pre);
+            }
+            modal.style.display = "block";
+        },
+        error: function() {
+            alert("ERROR! AHHHHHHH");
+        },
+        failure: function() {
+            alert("FAILURE! AHHHHHHHHHH");
         }
     });
-
-    let modal = document.getElementById('courseViewer');
-    document.getElementById("courseheader").innerHTML = id + " - " + title;
-    document.getElementById("courseid").innerHTML = id;
-    document.getElementById("coursetitle").innerHTML = title;
-    document.getElementById("coursetitlefull").innerHTML = fullTitle;
-    document.getElementById("department").innerHTML = dept;
-    document.getElementById("description").innerHTML = desc;
-    pr = document.getElementById("prerequisites");
-    for (let n = 0; n < preq.length; n++){
-        let pre = document.createElement("P");
-        pre.className = "inf";
-        pre.innerHTML = preq[n];
-        pr.appendChild(pre);
-    }
-    modal.style.display = "block";
 }
-*/
+
 
 function fillFields(id, value) {
     let quarter = document.getElementById(id);
@@ -235,6 +241,24 @@ function Verify(){
         success: function (data) {}
     });
 
+    document.getElementById("spinnyboi").style.display = "block";
+
+    setTimeout(function(){
+        $.ajax({
+            type: "GET",
+            url: "/main",
+            async: "false",
+            headers: {
+                "Method": "verify",
+                "email": email
+            },
+            success: function(data){
+                alert(data["response"]);
+            }
+        });
+        document.getElementById("spinnyboi").style.display = "none";
+    },5000);
+
     let y1q1 = document.getElementById("y1q1");
     AddCourses(y1q1, 1, 1);
     let y1q2 = document.getElementById("y1q2");
@@ -262,19 +286,6 @@ function Verify(){
     AddCourses(y4q2, 4, 2);
     let y4q3 = document.getElementById("y4q3");
     AddCourses(y4q3, 4, 3);
-
-    $.ajax({
-        type: "GET",
-        url: "/main",
-        async: "false",
-        headers: {
-            "Method": "verify",
-            "email": email
-        },
-        success: function(data){
-            alert(data["response"]);
-        }
-    });
 }
 
 // Sadness
