@@ -140,6 +140,7 @@ function ViewCourse(courseid){
         },
         success: function(data){
             alert("Well it works");
+            modal.style.display = "block";
             id = data["ID"];
             title = data["title"];
             fulltitle = data["fullTitle"];
