@@ -153,6 +153,7 @@ function ViewCourse(courseid){
             preq = data["prerequisites"];
             alert("prerequisites: " + preq);
             let modal = document.getElementById('courseViewer');
+            modal.style.display = "block";
             document.getElementById("courseheader").innerHTML = id + " - " + title;
             document.getElementById("courseid").innerHTML = id;
             document.getElementById("coursetitle").innerHTML = title;
