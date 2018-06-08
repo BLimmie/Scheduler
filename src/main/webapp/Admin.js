@@ -11,6 +11,36 @@ function CreateMajor(){
 }
 
 function CreateCourse(){
+    let courseid = document.getElementById("courseid");
+    let coursetitle = document.getElementById("coursetitle");
+    let coursefulltitle = document.getElementById("coursefulltitle");
+    let units = document.getElementsById("units");
+    let d = document.getElementById("dept");
+    let dept = e.options[e.selectedIndex].text;
+    let prereqs = [];
+    let p = document.getElementsByClassName("prereq");
+    for (let i = 0; i < p.length; i++){
+        prereqs.push(p[i]);
+    }
+    $.ajax({
+        type: "POST",
+        url: "/main",
+        async: "false",
+        headers: {
+            "Method": "Course",
+            "ID": email,
+            "Action": "create",
+            "CourseID": courseid.innerHTML,
+            "Title": coursetitle,
+            "Full Title": coursefulltitle,
+            "Department": dept,
+            "Prerequisites": prereqs,
+            "Units": units
+        },
+        success: function (data) {
+            alert("Course Added Successfully!");
+        }
+    });
     //TODO: USE ID'S FROM COURSE CREATOR MODAL TO CREATE A COURSE OBJECT AND ADD IT TO THE DATABASE
 }
 
@@ -18,7 +48,7 @@ function addPrereqField() {
     var container = document.getElementById("prereqsList");
     var input = document.createElement("input");
     input.type = "text";
-    input.className= "w3-input w3-border";
+    input.className= "prereq";
     input.style.width = "90%";
     input.style.cssFloat = "left";
     input.placeholder = "e.g. CMPSC56";

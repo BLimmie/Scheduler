@@ -431,6 +431,16 @@ public class MainServlet extends HttpServlet {
                     courses.add((Course) new Gson().fromJson(req.getHeader("courseData"), new TypeToken<Course>() {
                     }.getType()));
                     //TODO Add back to database
+                } else if (req.getHeader("Action").equals("create")){
+                    String id = req.getHeader("CourseID");
+                    String title = req.getHeader("Title");
+                    String ftitle = req.getHeader("Full Title");
+                    String dept = req.getHeader("Department");
+                    String desc = req.getHeader("Description");
+                    int units = Integer.parseInt(req.getHeader("Units"));
+                    String p = req.getHeader("Prerequisites");
+                    ArrayList<String> prereqs = new Gson().fromJson(p, new TypeToken<ArrayList<String>>(){}.getType());
+                    courses.add(new Course(id, title, ftitle, dept, desc, units, new ANDList(prereqs), true, true, true));
                 }
             } else if (method.equals("ANDList")){
                 String majorname = req.getHeader("Major");

@@ -392,6 +392,8 @@
         <input type="text" id="coursetitle" name="coursetitle" placeholder="e.g. COMP SCI PROJECT">
         <p>Course Title (Full):</p>
         <input type="text" id="coursefulltitle" name="coursefulltitle" placeholder="e.g. Computer Science Project">
+        <label for="units"></label>
+        <input type="number" id="units">
         <p>Department:</p>
         <label for="dept"></label>
         <select id="dept" name="dept">
@@ -409,6 +411,15 @@
         <p></p>
         <p></p>
     </div>
+
+    <style>
+        var courseid = getElementById("courseid");
+        var coursetitle = getElementById("coursetitle");
+        var coursefulltitle = getElementById("coursefulltitle");
+        var d = document.getElementById("dept");
+        var dept = e.options[e.selectedIndex].text;
+
+    </style>
 
     <div id="majormenu" class="modal-body" style="display:none;">
         <p style="color:black;">Major:</p>
