@@ -22,7 +22,7 @@ function CreateCourse(){
     let prereqs = [];
     let p = document.getElementsByClassName("prereq");
     for (let i = 0; i < p.length; i++){
-        prereqs.push(p[i]);
+        prereqs.push(p[i].value);
     }
     alert("Got this far...");
     $.ajax({
