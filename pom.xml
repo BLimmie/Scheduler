@@ -10,11 +10,6 @@
     <properties>
         <tomcat.version>8.5.23</tomcat.version>
     </properties>
-    <repository>
-        <id>in-project</id>
-        <name>In Project Repo</name>
-        <url>file://${project.basedir}/lib</url>
-    </repository>
     <dependencies>
         <dependency>
             <groupId>com.google.code.gson</groupId>
