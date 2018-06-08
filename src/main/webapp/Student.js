@@ -122,7 +122,7 @@ function initialize(){
 
 }
 
-/*
+
 function ViewCourse(courseid){
     let id;
     let title;
@@ -145,26 +145,25 @@ function ViewCourse(courseid){
             dept = data["department"];
             desc = data["description"];
             preq = data["prerequisites"];
+            let modal = document.getElementById('courseViewer');
+            document.getElementById("courseheader").innerHTML = id + " - " + title;
+            document.getElementById("courseid").innerHTML = id;
+            document.getElementById("coursetitle").innerHTML = title;
+            document.getElementById("coursetitlefull").innerHTML = fulltitle;
+            document.getElementById("department").innerHTML = dept;
+            document.getElementById("description").innerHTML = desc;
+            pr = document.getElementById("prerequisites");
+            for (let n = 0; n < preq.length; n++){
+                let pre = document.createElement("P");
+                pre.className = "inf";
+                pre.innerHTML = preq[n];
+                pr.appendChild(pre);
+            }
+            modal.style.display = "block";
         }
     });
-
-    let modal = document.getElementById('courseViewer');
-    document.getElementById("courseheader").innerHTML = id + " - " + title;
-    document.getElementById("courseid").innerHTML = id;
-    document.getElementById("coursetitle").innerHTML = title;
-    document.getElementById("coursetitlefull").innerHTML = fullTitle;
-    document.getElementById("department").innerHTML = dept;
-    document.getElementById("description").innerHTML = desc;
-    pr = document.getElementById("prerequisites");
-    for (let n = 0; n < preq.length; n++){
-        let pre = document.createElement("P");
-        pre.className = "inf";
-        pre.innerHTML = preq[n];
-        pr.appendChild(pre);
-    }
-    modal.style.display = "block";
 }
-*/
+
 
 function fillFields(id, value) {
     let quarter = document.getElementById(id);
