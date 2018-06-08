@@ -11,6 +11,7 @@ function CreateMajor(){
 }
 
 function CreateCourse(){
+    alert("Called create Course");
     let courseid = document.getElementById("courseid");
     let coursetitle = document.getElementById("coursetitle");
     let coursefulltitle = document.getElementById("coursefulltitle");
@@ -22,22 +23,23 @@ function CreateCourse(){
     for (let i = 0; i < p.length; i++){
         prereqs.push(p[i]);
     }
+    alert("Got this far...");
     $.ajax({
         type: "POST",
         url: "/main",
         async: "false",
         headers: {
             "Method": "Course",
-            "ID": email,
             "Action": "create",
             "CourseID": courseid.innerHTML,
             "Title": coursetitle,
             "Full Title": coursefulltitle,
             "Department": dept,
             "Prerequisites": prereqs,
+            "Description": desc,
             "Units": units
         },
-        success: function (data) {
+        success: function(data) {
             alert("Course Added Successfully!");
         }
     });
