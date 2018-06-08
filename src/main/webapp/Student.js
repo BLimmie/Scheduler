@@ -168,6 +168,7 @@ function ViewCourse(courseid){
             alert("FAILURE! AHHHHHHHHHH");
         }
     });
+    alert("AHHHHHHHHHHHHHHHH!!!!!");
 }
 
 
