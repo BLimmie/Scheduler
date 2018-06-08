@@ -45,7 +45,7 @@ function CreateCourse(){
                 "winter": true,
                 "spring": true,
             }),
-            "Prerequisites": prereqs
+            "Prerequisites": JSON.stringify(prereqs)
         },
         success: function(data) {
             alert("Course Added Successfully!");
