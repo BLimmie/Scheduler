@@ -417,7 +417,7 @@ public class MainServlet extends HttpServlet {
                     Course c = ((Course) new Gson().fromJson(req.getHeader("courseData"), new TypeToken<Course>() {
                     }.getType()));
                     System.out.println("Printing the course:");
-                    System.out.println(c.getTitle);
+                    System.out.println(c.getTitle());
                     System.out.println("Printed Course");
                     String p = req.getHeader("Prerequisites");
                     ArrayList<String> prereqs = new Gson().fromJson(p, new TypeToken<ArrayList<String>>(){}.getType());
