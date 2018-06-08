@@ -418,7 +418,7 @@ public class MainServlet extends HttpServlet {
                     }.getType()));
                     String p = req.getHeader("Prerequisites");
                     ArrayList<String> prereqs = new Gson().fromJson(p, new TypeToken<ArrayList<String>>(){}.getType());
-                    ANDList boi = new ANDList()
+                    ANDList boi = new ANDList();
                     c.addPrereq(boi);
                     courses.add(c);
 
