@@ -160,6 +160,12 @@ function ViewCourse(courseid){
                 pr.appendChild(pre);
             }
             modal.style.display = "block";
+        },
+        error: function() {
+            alert("ERROR! AHHHHHHH");
+        },
+        failure: function() {
+            alert("FAILURE! AHHHHHHHHHH");
         }
     });
 }
