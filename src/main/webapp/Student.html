@@ -11,6 +11,27 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
 
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+        }
+
+        /* Safari */
+        @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .verify{
             color:white;
             background-color: #314668;
@@ -380,6 +401,10 @@
         <h1 id="header" align="center">Welcome, Justin!</h1>
         <p align="center">This is your Four Year Grid.  Just enter the ID of the course you want to take in the right quarter.  When you're done, click verify to see if your grid checks out.</p>
         <p align="center">You can browse various courses with that list on the left.</p>
+    </div>
+    <div id="spinnyboi">
+        <p align="center">Please wait while we verify your grid.</p>
+        <div align="center" class="loader"></div>
     </div>
     <p></p>
 

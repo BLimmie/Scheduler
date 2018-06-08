@@ -235,6 +235,8 @@ function Verify(){
         success: function (data) {}
     });
 
+    document.getElementById("spinnyboi").style.display = "block";
+
     setTimeout(function(){
         $.ajax({
             type: "GET",
@@ -248,6 +250,7 @@ function Verify(){
                 alert(data["response"]);
             }
         });
+        document.getElementById("spinnyboi").style.display = "none";
     },5000);
 
     let y1q1 = document.getElementById("y1q1");
