@@ -248,7 +248,7 @@ function Verify(){
                 alert(data["response"]);
             }
         });
-    },500);
+    },5000);
 
     let y1q1 = document.getElementById("y1q1");
     AddCourses(y1q1, 1, 1);
