@@ -145,6 +145,7 @@ function ViewCourse(courseid){
             dept = data["department"];
             desc = data["description"];
             preq = data["prerequisites"];
+            alert("" + preq.length);
             let modal = document.getElementById('courseViewer');
             modal.style.display = "block";
             document.getElementById("courseheader").innerHTML = id + " - " + title;
@@ -169,7 +170,6 @@ function ViewCourse(courseid){
             alert("FAILURE! AHHHHHHHHHH");
         }
     });
-    alert("AHHHHHHHHHHHHHHHH!!!!!");
 }
 
 
