@@ -9,7 +9,7 @@ For student users, this platform serves to give the ability to add the courses t
 
 Website Link: http://grid-scheduler.herokuapp.com/Login.html
 
-*The following credentials can be used to access a default student account or a default admin account:*
+*User account creation is possible. Nonetheless, the following credentials can be used to access a default student account or a default admin account:*
 
 * *_Email:_* **john.doe@gmail.com**
 * *_Password:_* **password**
