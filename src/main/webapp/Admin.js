@@ -11,6 +11,52 @@ function CreateMajor(){
 }
 
 function CreateCourse(){
+    alert("Called create Course");
+    let courseid = document.getElementById("courseid");
+    let coursetitle = document.getElementById("coursetitle");
+    let coursefulltitle = document.getElementById("coursefulltitle");
+    let units = document.getElementById("units").value;
+    let d = document.getElementById("dept");
+    let desc = document.getElementById("description");
+    let dept = d.options[d.selectedIndex].text;
+    let prereqs = [];
+    let p = document.getElementsByClassName("prereq");
+    for (let i = 0; i < p.length; i++){
+        prereqs.push(p[i].value);
+    }
+
+
+    alert("Got this far...");
+    $.ajax({
+        type: "POST",
+        url: "/main",
+        async: "false",
+        headers: {
+            "Method": "Course",
+            "Action": "add",
+            "courseData": JSON.stringify({
+                "ID": courseid.value,
+                "title": coursetitle.value,
+                "fullTitle": coursefulltitle.value,
+                "department": dept,
+                "description": desc.value,
+                "units": parseInt(units),
+                "fall": true,
+                "winter": true,
+                "spring": true,
+            }),
+            "Prerequisites": JSON.stringify(prereqs)
+        },
+        success: function(data) {
+            alert("Course Added Successfully!");
+        },
+        error: function(){
+            alert("Error");
+        },
+        failure: function(){
+            alert("Failure");
+        }
+    });
     //TODO: USE ID'S FROM COURSE CREATOR MODAL TO CREATE A COURSE OBJECT AND ADD IT TO THE DATABASE
 }
 
@@ -18,7 +64,7 @@ function addPrereqField() {
     var container = document.getElementById("prereqsList");
     var input = document.createElement("input");
     input.type = "text";
-    input.className= "w3-input w3-border";
+    input.className= "prereq";
     input.style.width = "90%";
     input.style.cssFloat = "left";
     input.placeholder = "e.g. CMPSC56";

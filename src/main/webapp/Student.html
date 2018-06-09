@@ -11,6 +11,27 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
 
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+        }
+
+        /* Safari */
+        @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .verify{
             color:white;
             background-color: #314668;
@@ -381,6 +402,10 @@
         <p align="center">This is your Four Year Grid.  Just enter the ID of the course you want to take in the right quarter.  When you're done, click verify to see if your grid checks out.</p>
         <p align="center">You can browse various courses with that list on the left.</p>
     </div>
+    <div id="spinnyboi" style="display:none">
+        <p align="center">Please wait while we verify your grid.</p>
+        <div align="center" class="loader"></div>
+    </div>
     <p></p>
 
     <div class="w3-row-padding" style="background-color:gainsboro;">
@@ -521,21 +546,35 @@
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
+    /*
     function ViewCourse(courseid){
         document.getElementById("courseheader").innerHTML = courseid;
         document.getElementById("courseid").innerHTML = courseid;
         modal1.style.display = "block";
     }
+    */
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal1.style.display = "none";
+        document.getElementById("courseheader").innerHTML = "";
+        document.getElementById("courseid").innerHTML = "";
+        document.getElementById("coursetitle").innerHTML = "";
+        document.getElementById("coursetitlefull").innerHTML = "";
+        document.getElementById("department").innerHTML = "";
+        document.getElementById("description").innerHTML = "";
     }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal1) {
             modal1.style.display = "none";
+            document.getElementById("courseheader").innerHTML = "";
+            document.getElementById("courseid").innerHTML = "";
+            document.getElementById("coursetitle").innerHTML = "";
+            document.getElementById("coursetitlefull").innerHTML = "";
+            document.getElementById("department").innerHTML = "";
+            document.getElementById("description").innerHTML = "";
         }
     }
 </script>

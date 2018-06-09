@@ -160,7 +160,6 @@ public class MainServlet extends HttpServlet {
         courses.add(c42);
         courses.add(c43);
 
-
         User john = new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", major1, true);
         john.AddCourseToGrid(courses.get(1), 1,1);
         john.AddCourseToGrid(courses.get(2), 1,2);
@@ -211,6 +210,7 @@ public class MainServlet extends HttpServlet {
             resp.setContentType("application/json");
             String method = req.getHeader("Method");
             if (method.equals("test")){
+                System.out.println(courses);
                 resp.getWriter().write(new Gson().toJson(new Response("Testing message")));
             }
             else if (method.equals("course")) {
@@ -229,29 +229,33 @@ public class MainServlet extends HttpServlet {
                 String json = new Gson().toJson(output);
                 resp.getWriter().write(json);
             } else if (method.equals("courses")) {
+                System.out.println(req.getHeader("Quarter"));
+                System.out.println(req.getHeader("Dept"));
                 String quarter = req.getHeader("Quarter");
                 ArrayList<Course> query= new ArrayList<Course>();
 
                 String deptID = req.getHeader("Dept");
                 for(Course c: courses){
-                    if(c.getDepartment().equals(deptID) || deptID == null){
-                        if(quarter.equals("fall") || quarter == null){
-                            if(c.isFall()){
+                    if(deptID == null || c.getDepartment().equals(deptID)){
+                        if(quarter == null || quarter.equals("fall") ){
+                            if(quarter == null || c.isFall()){
                                 query.add(c);
                             }
                         }
-                        else if(quarter.equals("winter")|| quarter == null){
+                        else if(quarter == null || quarter.equals("winter")){
                             if(c.isWinter()){
                                 query.add(c);
                             }
                         }
-                        else if(quarter.equals("spring")|| quarter == null){
+                        else if(quarter == null || quarter.equals("spring")){
                             if(c.isSpring()){
                                 query.add(c);
                             }
                         }
                     }
+                    System.err.println(query);
                 }
+                System.err.println(query);
                 String json = new Gson().toJson(query);
                 resp.getWriter().write(json);
             } else if (method.equals("user")) {
@@ -322,11 +326,12 @@ public class MainServlet extends HttpServlet {
                 resp.getWriter().write(json);
             }
             else{
+                System.out.println(courses);
                 resp.getWriter().write(new Gson().toJson(new Response("Invalid Method")));
             }
             resp.getWriter().flush();
         } catch(Exception e){
-            //TODO print error in request
+            System.out.println(e);
         }
     }
 
@@ -398,8 +403,8 @@ public class MainServlet extends HttpServlet {
             resp.setContentType("application/json");
             String method = req.getHeader("Method");
             //TODO Check if user is admin
-            if(method.equals("Course")){
-                if(req.getHeader("Action").equals("delete")){
+            if(method.equals("Course")) {
+                if (req.getHeader("Action").equals("delete")) {
                     String id = req.getHeader("CourseID");
                     for (Course c : courses) {
                         if (c.getID().equals(id)) {
@@ -408,10 +413,23 @@ public class MainServlet extends HttpServlet {
                             break;
                         }
                     }
-                } else if(req.getHeader("Action").equals("add")){
-                    courses.add((Course)new Gson().fromJson(req.getHeader("courseData"), new TypeToken<Course>(){}.getType()));
+                } else if (req.getHeader("Action").equals("add")) {
+                    Course c = ((Course) new Gson().fromJson(req.getHeader("courseData"), new TypeToken<Course>() {
+                    }.getType()));
+                    System.out.println("Printing the course:");
+                    System.out.println(c.getTitle());
+                    System.out.println("Printed Course");
+                    String p = req.getHeader("Prerequisites");
+                    System.out.println("MAKING PREREQUISITES");
+                    ArrayList<String> prereqs = new Gson().fromJson(p, new TypeToken<ArrayList<String>>(){}.getType());
+                    System.out.println("WE MADE THE PREREQS!");
+                    ANDList boi = new ANDList(prereqs);
+                    c.addPrereq(boi);
+                    courses.add(c);
+
                     //TODO Add to database
-                } else if(req.getHeader("Action").equals("edit")){
+
+                } else if (req.getHeader("Action").equals("edit")) {
                     String id = req.getHeader("CourseID");
                     Course edit = null;
                     for (Course c : courses) {
@@ -421,9 +439,22 @@ public class MainServlet extends HttpServlet {
                             break;
                         }
                     }
-                    courses.add((Course)new Gson().fromJson(req.getHeader("courseData"), new TypeToken<Course>(){}.getType()));
+                    courses.add((Course) new Gson().fromJson(req.getHeader("courseData"), new TypeToken<Course>() {
+                    }.getType()));
                     //TODO Add back to database
                 }
+            } else if (method.equals("ANDList")){
+                String majorname = req.getHeader("Major");
+                Major thismajor;
+                for (Major m : majors){
+                    if (m.getTitle().equals(majorname)){
+                        thismajor = m;
+                    }
+                }
+                String list = req.getHeader("List");
+                ArrayList<String> courses = new Gson().fromJson(list, new TypeToken<ArrayList<String>>(){}.getType());
+
+
             } else if(method.equals("Major")){
                 if(req.getHeader("Action").equals("delete")){
                     String id = req.getHeader("Title");
