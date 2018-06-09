@@ -13,9 +13,12 @@ for arg in sys.argv[3:]:
 	node = node >> arg 
 
 if sys.argv[2] == "push":
-	with open(filename, 'r') as fp:
-		data = json.load(fp)
-		node.set(data)
+	if filename == "None":
+		node.set(None)
+	else:
+		with open(filename, 'r') as fp:
+			data = json.load(fp)
+			node.set(data)
 	
 if sys.argv[2] == "pull":
 	with open(filename, 'w') as fp:

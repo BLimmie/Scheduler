@@ -46,12 +46,21 @@ public class MainServlet extends HttpServlet {
         depts.add("Education (ED)");
         depts.add("Engineering Sciences (ENGR)");
         */
-
+        Fbdb fbdb = new Fbdb();
         courses = new ArrayList<Course>();
         users = new ArrayList<User>();
         majors = new ArrayList<Major>();
         Major major1 = (new Major("Computer Science", "College of Engineering"));
         ANDList req1 = new ANDList();
+
+        String localpath = "./temp_12345";
+        /*
+        String fbdbpath = "Course";
+        fbdb.pull(localpath, fbdbpath);
+        try {TimeUnit.SECONDS.sleep(1);} catch (Exception e) {}
+        JsonIO<Course> jsonio = new JsonIO<Course>(localpath, Course.class);
+        Course cs48 = jsonio.read();
+        */
 	// Test
         //users.add(new User("john.doe@gmail.com", "John", "Doe", 1010101, "password", majors.get(0),true));
         Course c1 = new Course("CMPSC8", "INTRO TO COMP", "Computer Science 8", "CMPSC", "bad class", 4, new ANDList(),true,true, true);
@@ -409,6 +418,7 @@ public class MainServlet extends HttpServlet {
                     for (Course c : courses) {
                         if (c.getID().equals(id)) {
                             //TODO Remove from database
+                            fbdb.push("None", "Course " + edit.getID())
                             courses.remove(c);
                             break;
                         }
@@ -428,6 +438,8 @@ public class MainServlet extends HttpServlet {
                     courses.add(c);
 
                     //TODO Add to database
+                    new JsonIO("./temp12345", Course.class).write(edit);
+                    fbdb.push("./temp12345", "Course " + edit.getID());
 
                 } else if (req.getHeader("Action").equals("edit")) {
                     String id = req.getHeader("CourseID");
@@ -435,6 +447,7 @@ public class MainServlet extends HttpServlet {
                     for (Course c : courses) {
                         if (c.getID().equals(id)) {
                             //TODO Remove from database
+                            fbdb.push("None", "Course " + edit.getID())
                             courses.remove(c);
                             break;
                         }
@@ -442,6 +455,8 @@ public class MainServlet extends HttpServlet {
                     courses.add((Course) new Gson().fromJson(req.getHeader("courseData"), new TypeToken<Course>() {
                     }.getType()));
                     //TODO Add back to database
+                    new JsonIO("./temp12345", Course.class).write(edit);
+                    fbdb.push("./temp12345", "Course " + edit.getID());
                 }
             } else if (method.equals("ANDList")){
                 String majorname = req.getHeader("Major");
@@ -461,6 +476,7 @@ public class MainServlet extends HttpServlet {
                     for (Major m : majors) {
                         if (m.getTitle().equals(id)) {
                             //TODO Remove from database
+                            fbdb.push("None", "Major " + m.getTitle())
                             majors.remove(m);
                             break;
                         }
@@ -471,6 +487,8 @@ public class MainServlet extends HttpServlet {
                             req.getHeader("Department")
                     ));
                     //TODO Add to database
+                    new JsonIO("./temp12345", Major.class).write(m);
+                    fbdb.push("./temp12345", "Major " + m.getTitle());
                     Major temp = majors.get(majors.size()-1);
                     ArrayList<Requirement> reqs = new Gson().fromJson(req.getHeader("Requirements"),new TypeToken<ArrayList<Requirement>>(){}.getType());
                     for(Requirement r: reqs){
@@ -482,6 +500,7 @@ public class MainServlet extends HttpServlet {
                     for (Major m : majors) {
                         if (m.getTitle().equals(id)) {
                             //TODO Remove from database
+                            fbdb.push("None", "Major " + m.getTitle())
                             majors.remove(m);
                             break;
                         }
@@ -491,6 +510,8 @@ public class MainServlet extends HttpServlet {
                             req.getHeader("Department")
                     ));
                     //TODO Add back to database
+                    new JsonIO("./temp12345", Major.class).write(m);
+                    fbdb.push("./temp12345", "Major " + m.getTitle());
                     Major temp = majors.get(majors.size()-1);
                     ArrayList<Requirement> reqs = new Gson().fromJson(req.getHeader("Requirements"),new TypeToken<ArrayList<Requirement>>(){}.getType());
                     for(Requirement r: reqs){
@@ -548,17 +569,22 @@ public class MainServlet extends HttpServlet {
                     User input = new Gson().fromJson(req.getHeader("userInfo"), new TypeToken<User>(){}.getType());
                     users.add(input);
                     //TODO Add user to database
+                    new JsonIO("./temp12345", User.class).write(input);
+                    fbdb.push("./temp12345", "User " + input.getEmail());
                 }
                 else if(req.getHeader("Action").equals("edit")){
                     User input = new Gson().fromJson(req.getHeader("userInfo"), new TypeToken<User>(){}.getType());
                     for(User u: users){
                         if(u.getPerm() == input.getPerm()){
                             //TODO Remove user from database
+                            fbdb.push("None", "User " + input.getEmail());
                             users.remove(u);
                             break;
                         }
                     }
                     //TODO Add back to database
+                    new JsonIO("./temp12345", User.class).write(input);
+                    fbdb.push("./temp12345", "User " + input.getEmail());
                     users.add(input);
                 }
             }
